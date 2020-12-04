@@ -1,6 +1,22 @@
 <template>
   <div class="bg-gray-50 min-h-screen">
-    <nav class="h-20 bg-yellow-600 text-white flex items-center p-5 shadow-lg">
+    <nav
+      class="bg-yellow-600 text-white flex justify-between items-center px-5 py-2 shadow-lg"
+    >
+      <svg
+        class="h-8"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M4 6h16M4 12h16M4 18h16"
+        ></path>
+      </svg>
       <div class="flex items-center space-x-2">
         <svg
           class="h-10"
@@ -18,7 +34,7 @@
         </svg>
         <NuxtLink class="text-3xl" to="/">Find My Doggo</NuxtLink>
       </div>
-      <div class="ml-auto flex items-center space-x-3">
+      <div class="flex items-center space-x-3">
         <NuxtLink to="/login">Login</NuxtLink>
         <NuxtLink to="/signup">Sign up</NuxtLink>
         <svg
