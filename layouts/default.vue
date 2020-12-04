@@ -48,6 +48,35 @@ export default {}
 </script>
 
 <style>
+:root {
+  --slide-distance: 30px;
+}
+.slide-left-enter-active,
+.slide-left-leave-active {
+  transition: opacity 0.25s ease-in-out, transform 0.25s ease-in-out;
+}
+.slide-left-leave-to {
+  opacity: 0;
+  transform: translate3d(calc(var(--slide-distance) * -1), 0, 0);
+}
+.slide-left-enter {
+  opacity: 0;
+  transform: translate3d(var(--slide-distance), 0, 0);
+}
+
+.slide-right-enter-active,
+.slide-right-leave-active {
+  transition: opacity 0.25s ease-in-out, transform 0.25s ease-in-out;
+}
+.slide-right-leave-to {
+  opacity: 0;
+  transform: translate3d(var(--slide-distance), 0, 0);
+}
+.slide-right-enter {
+  opacity: 0;
+  transform: translate3d(calc(var(--slide-distance) * -1), 0, 0);
+}
+
 button {
   @apply text-white;
   @apply bg-black;

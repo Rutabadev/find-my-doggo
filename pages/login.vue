@@ -33,6 +33,11 @@
 
 <script>
 export default {
+  transition(to) {
+    if (to.name === 'signup') {
+      return 'slide-left'
+    }
+  },
   data() {
     return {
       usernameOrEmail: '',

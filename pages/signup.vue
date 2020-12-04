@@ -32,7 +32,13 @@
 </template>
 
 <script>
-export default {}
+export default {
+  transition(to) {
+    if (to.name === 'login') {
+      return 'slide-right'
+    }
+  },
+}
 </script>
 
 <style></style>
