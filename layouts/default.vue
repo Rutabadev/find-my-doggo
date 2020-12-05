@@ -1,7 +1,7 @@
 <template>
   <div class="bg-gray-50 min-h-screen">
     <nav
-      class="bg-yellow-600 text-white flex justify-between items-center px-5 py-2 shadow-lg"
+      class="bg-yellow-600 text-white flex justify-between items-center px-1 md:px-5 py-2 shadow-lg"
     >
       <svg
         class="h-8"
@@ -32,13 +32,21 @@
             d="M8 16l2.879-2.879m0 0a3 3 0 104.243-4.242 3 3 0 00-4.243 4.242zM21 12a9 9 0 11-18 0 9 9 0 0118 0z"
           ></path>
         </svg>
-        <NuxtLink class="text-3xl" to="/">Find My Doggo</NuxtLink>
+        <NuxtLink class="text-3xl whitespace-nowrap" to="/"
+          >Find My Doggo</NuxtLink
+        >
       </div>
       <div class="flex items-center space-x-3">
-        <NuxtLink to="/login">Login</NuxtLink>
-        <NuxtLink to="/signup">Sign up</NuxtLink>
+        <template v-if="!user">
+          <NuxtLink to="/login">Login</NuxtLink>
+          <NuxtLink class="whitespace-nowrap" to="/signup">Sign up</NuxtLink>
+        </template>
+        <template v-else>
+          <span>{{ user.name }}</span>
+          <a class="cursor-pointer whitespace-nowrap" @click="logout">Logout</a>
+        </template>
         <svg
-          class="h-10"
+          class="h-10 hidden sm:block"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -60,7 +68,21 @@
 </template>
 
 <script>
-export default {}
+import { authStore } from '~/store'
+
+export default {
+  computed: {
+    user() {
+      return authStore.user
+    },
+  },
+
+  methods: {
+    logout() {
+      authStore.logout()
+    },
+  },
+}
 </script>
 
 <style>
@@ -93,7 +115,7 @@ export default {}
   transform: translate3d(calc(var(--slide-distance) * -1), 0, 0);
 }
 
-button {
+.button {
   @apply text-white;
   @apply bg-black;
   @apply border-2;
@@ -103,8 +125,8 @@ button {
   @apply py-1;
 }
 
-button:hover,
-button:focus {
+.button:hover,
+.button:focus {
   @apply border-black;
   @apply text-black;
   @apply bg-white;

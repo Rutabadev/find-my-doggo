@@ -20,7 +20,7 @@
         placeholder="Qu3lqUeCh0sedEloNg"
         required
       />
-      <button class="my-2 uppercase">Sign up</button>
+      <button class="button my-2 uppercase">Sign up</button>
     </form>
     <p class="ml-auto mt-5">
       Already have an account yet ? Go to
