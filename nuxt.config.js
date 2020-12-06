@@ -1,6 +1,10 @@
 import { process } from 'autoprefixer'
 
 export default {
+  publicRuntimeConfig: {
+    baseURL: 'https://nuxtjs.org',
+  },
+
   // Global page headers (https://go.nuxtjs.dev/config-head)
   head: {
     title: 'find-my-doggo',
@@ -37,7 +41,7 @@ export default {
 
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)
   axios: {
-    baseURL: process.env.API_URL || 'http://localhost:3001', // Used as fallback if no runtime config is provided
+    baseURL: 'http://localhost:3001', // Used as fallback if no runtime config is provided (API_URL)
   },
 
   auth: {
