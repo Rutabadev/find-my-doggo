@@ -64,7 +64,9 @@ export default {
           data: this.loginInfo,
         })
       } catch (err) {
-        this.errors = [...err]
+        this.errors = err?.response?.data?.errors?.map(
+          ({ message }) => message
+        ) ?? [err?.response?.data] ?? [err.message]
       }
     },
   },
