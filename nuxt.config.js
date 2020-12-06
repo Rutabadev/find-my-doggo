@@ -1,3 +1,5 @@
+import { process } from 'autoprefixer'
+
 export default {
   // Global page headers (https://go.nuxtjs.dev/config-head)
   head: {
@@ -35,7 +37,7 @@ export default {
 
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)
   axios: {
-    baseURL: 'http://localhost:3001', // Used as fallback if no runtime config is provided
+    baseURL: process.env.API_URL || 'http://localhost:3001', // Used as fallback if no runtime config is provided
   },
 
   auth: {
