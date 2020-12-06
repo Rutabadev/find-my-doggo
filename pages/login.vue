@@ -40,7 +40,6 @@
 </template>
 
 <script>
-import { authStore } from '~/store'
 export default {
   transition(to) {
     if (to.name === 'signup') {
@@ -60,26 +59,12 @@ export default {
 
   methods: {
     async login() {
-      const config = {
-        headers: {
-          Accept: 'application/json',
-        },
-      }
       try {
-        const { jwt } = await this.$axios.$post(
-          '/users/login',
-          this.loginInfo,
-          config
-        )
-
-        config.headers.Authorization = `Bearer ${jwt}`
-        const user = await this.$axios.$get('/users/me', config)
-        authStore.setUser(user)
-        this.$router.push('/')
+        await this.$auth.loginWith('local', {
+          data: this.loginInfo,
+        })
       } catch (err) {
-        this.errors = err?.response?.data?.errors?.map(
-          ({ message }) => message
-        ) ?? [err?.response?.data] ?? [err.message]
+        this.errors = [...err]
       }
     },
   },

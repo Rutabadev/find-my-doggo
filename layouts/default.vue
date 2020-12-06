@@ -68,18 +68,16 @@
 </template>
 
 <script>
-import { authStore } from '~/store'
-
 export default {
   computed: {
     user() {
-      return authStore.user
+      return this.$auth.user
     },
   },
 
   methods: {
     logout() {
-      authStore.logout()
+      this.$auth.logout()
     },
   },
 }

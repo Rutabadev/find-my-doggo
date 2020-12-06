@@ -30,11 +30,34 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
+    '@nuxtjs/auth-next',
   ],
 
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)
   axios: {
     baseURL: 'http://localhost:3001', // Used as fallback if no runtime config is provided
+  },
+
+  auth: {
+    strategies: {
+      local: {
+        token: {
+          property: 'jwt',
+        },
+        user: {
+          property: false,
+        },
+        endpoints: {
+          login: { url: '/users/login', method: 'post' },
+          user: { url: '/users/me', method: 'get' },
+          logout: false,
+        },
+      },
+    },
+  },
+
+  router: {
+    middleware: ['auth'],
   },
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)

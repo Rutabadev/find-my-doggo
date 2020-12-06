@@ -33,6 +33,7 @@
 
 <script>
 export default {
+  auth: false,
   transition(to) {
     if (to.name === 'login') {
       return 'slide-right'
