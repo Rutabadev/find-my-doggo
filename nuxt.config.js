@@ -1,5 +1,3 @@
-import { process } from 'autoprefixer'
-
 export default {
   publicRuntimeConfig: {
     baseURL: 'https://nuxtjs.org',
