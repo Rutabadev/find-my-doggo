@@ -1,6 +1,6 @@
 <template>
   <div
-    class="max-w-md mt-10 rounded-lg bg-white mx-auto shadow-md p-5 flex flex-col"
+    class="max-w-sm mt-10 mx-auto rounded-lg bg-white shadow-md p-5 flex flex-col"
   >
     <h1 class="text-2xl text-center mb-6">Login</h1>
     <transition name="fade">
