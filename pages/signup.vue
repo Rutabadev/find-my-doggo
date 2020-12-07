@@ -5,7 +5,7 @@
     <h1 class="text-2xl text-center mb-6">Sign up</h1>
     <form class="flex flex-col" action="">
       <label for="username">Username</label>
-      <input type="text" ame="username" placeholder="AlphonseBrown37" n />
+      <input type="text" name="username" placeholder="AlphonseBrown37" />
       <label for="email">Email</label>
       <input
         type="email"
@@ -42,4 +42,12 @@ export default {
 }
 </script>
 
-<style></style>
+<style>
+input[type='email']:valid {
+  @apply text-green-600;
+}
+
+input[type='email']:invalid {
+  @apply text-red-500;
+}
+</style>
