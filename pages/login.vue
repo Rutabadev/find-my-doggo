@@ -9,7 +9,7 @@
         class="bg-red-200 p-2 mb-6 rounded-lg font-semibold"
       >
         <ul v-for="error in errors" :key="error">
-          <li>{{ error.message || error }}</li>
+          <li>{{ error }}</li>
         </ul>
       </div>
     </transition>
@@ -32,7 +32,15 @@
         />
         <label for="password">Password</label>
       </div>
-      <button class="button my-2 uppercase tracking-widest">Login</button>
+      <button
+        class="button my-2 self-center inline-flex items-center uppercase tracking-widest"
+      >
+        <span v-if="!isLoading">Login</span>
+        <template v-else>
+          <Spinner class="h-5 w-5 mr-2"></Spinner>
+          Logging you in...
+        </template>
+      </button>
     </form>
     <p class="ml-auto mt-5">
       Don't have an account yet ? Go to
@@ -44,6 +52,7 @@
 </template>
 
 <script>
+import { parseRequestErrors } from '~/utils'
 export default {
   transition(to) {
     if (to.name === 'signup') {
@@ -53,6 +62,7 @@ export default {
 
   data() {
     return {
+      isLoading: false,
       loginInfo: {
         usernameOrEmail: '',
         password: '',
@@ -63,14 +73,15 @@ export default {
 
   methods: {
     async login() {
+      this.isLoading = true
       try {
         await this.$auth.loginWith('local', {
           data: this.loginInfo,
         })
       } catch (err) {
-        this.errors = err?.response?.data?.errors?.map(
-          ({ message }) => message
-        ) ?? [err?.response?.data] ?? [err.message]
+        this.errors = parseRequestErrors(err)
+      } finally {
+        this.isLoading = false
       }
     },
   },

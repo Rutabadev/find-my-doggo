@@ -45,7 +45,15 @@
           >Password <span class="text-red-500">*</span></label
         >
       </div>
-      <button class="button my-2 uppercase">Sign up</button>
+      <button
+        class="button my-2 self-center inline-flex items-center uppercase tracking-widest"
+      >
+        <span v-if="!isLoading">Sign up</span>
+        <template v-else>
+          <Spinner class="h-5 w-5 mr-2"></Spinner>
+          Signing you up...
+        </template>
+      </button>
     </form>
     <p class="ml-auto mt-5">
       Already have an account yet ? Go to
@@ -57,6 +65,7 @@
 </template>
 
 <script>
+import { parseRequestErrors } from '~/utils'
 export default {
   auth: false,
   transition(to) {
@@ -67,6 +76,7 @@ export default {
 
   data() {
     return {
+      isLoading: false,
       signupInfo: {
         name: '',
         email: '',
@@ -78,16 +88,16 @@ export default {
 
   methods: {
     signup() {
+      this.isLoading = true
       this.$axios
         .$post('/users', this.signupInfo)
         .then(() => {
           this.$router.push('/login')
         })
         .catch((err) => {
-          this.errors = err?.response?.data?.errors?.map(
-            ({ message }) => message
-          ) ?? [err?.response?.data] ?? [err.message]
+          this.errors = parseRequestErrors(err)
         })
+        .finally(() => (this.isLoading = false))
     },
   },
 }

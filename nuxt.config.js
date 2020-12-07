@@ -1,8 +1,4 @@
 export default {
-  publicRuntimeConfig: {
-    baseURL: 'https://nuxtjs.org',
-  },
-
   // Global page headers (https://go.nuxtjs.dev/config-head)
   head: {
     title: 'find-my-doggo',
