@@ -3,18 +3,47 @@
     class="max-w-sm mt-10 mx-auto rounded-lg bg-white shadow-md p-5 flex flex-col"
   >
     <h1 class="text-2xl text-center mb-6">Sign up</h1>
-    <form class="flex flex-col" action="">
+    <transition name="fade">
+      <div
+        v-if="errors.length"
+        class="bg-red-200 p-2 mb-6 rounded-lg font-semibold"
+      >
+        <ul v-for="error in errors" :key="error">
+          <li>{{ error.message || error }}</li>
+        </ul>
+      </div>
+    </transition>
+    <form class="flex flex-col" @submit.prevent="signup">
       <div class="field">
-        <input type="text" name="username" placeholder=" " />
-        <label for="username">Username</label>
+        <input
+          v-model="signupInfo.name"
+          type="text"
+          name="username"
+          placeholder=" "
+        />
+        <label for="username"
+          >Username <span class="text-red-500">*</span></label
+        >
       </div>
       <div class="field">
-        <input type="email" name="email" placeholder=" " required />
+        <input
+          v-model="signupInfo.email"
+          type="email"
+          name="email"
+          placeholder=" "
+        />
         <label for="email">Email</label>
       </div>
       <div class="field">
-        <input type="password" name="password" placeholder=" " required />
-        <label for="password">Password</label>
+        <input
+          v-model="signupInfo.password"
+          type="password"
+          name="password"
+          placeholder=" "
+        />
+        <label for="password"
+          >Password <span class="text-red-500">*</span></label
+        >
       </div>
       <button class="button my-2 uppercase">Sign up</button>
     </form>
@@ -34,6 +63,32 @@ export default {
     if (to.name === 'login') {
       return 'slide-right'
     }
+  },
+
+  data() {
+    return {
+      signupInfo: {
+        name: '',
+        email: '',
+        password: '',
+      },
+      errors: [],
+    }
+  },
+
+  methods: {
+    signup() {
+      this.$axios
+        .$post('/users', this.signupInfo)
+        .then(() => {
+          this.$router.push('/login')
+        })
+        .catch((err) => {
+          this.errors = err?.response?.data?.errors?.map(
+            ({ message }) => message
+          ) ?? [err?.response?.data] ?? [err.message]
+        })
+    },
   },
 }
 </script>
