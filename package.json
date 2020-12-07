@@ -37,6 +37,8 @@
     "jest": "^26.5.0",
     "postcss": "^7",
     "prettier": "^2.1.2",
+    "sass": "^1.30.0",
+    "sass-loader": "^10.1.0",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat",
     "ts-jest": "^26.4.1",
     "vue-jest": "^3.0.4",
