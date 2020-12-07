@@ -14,20 +14,24 @@
       </div>
     </transition>
     <form class="flex flex-col" @submit.prevent="login">
-      <label for="usernameOrEmail">Username or email</label>
-      <input
-        v-model="loginInfo.usernameOrEmail"
-        name="usernameOrEmail"
-        type="text"
-        placeholder="AlphonseBrown37 or alphonse.brown37@gmail.com"
-      />
-      <label for="password">Password</label>
-      <input
-        v-model="loginInfo.password"
-        type="password"
-        name="password"
-        placeholder="Qu3lqUeCh0sedEloNg"
-      />
+      <div class="field">
+        <input
+          v-model="loginInfo.usernameOrEmail"
+          name="usernameOrEmail"
+          type="text"
+          placeholder=" "
+        />
+        <label for="usernameOrEmail">Username or email</label>
+      </div>
+      <div class="field">
+        <input
+          v-model="loginInfo.password"
+          type="password"
+          name="password"
+          placeholder=" "
+        />
+        <label for="password">Password</label>
+      </div>
       <button class="button my-2 uppercase tracking-widest">Login</button>
     </form>
     <p class="ml-auto mt-5">

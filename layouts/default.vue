@@ -19,7 +19,7 @@
 export default {}
 </script>
 
-<style>
+<style lang="scss">
 :root {
   --slide-distance: 30px;
 }
@@ -70,7 +70,34 @@ input {
   @apply rounded;
   @apply border-2;
   @apply p-2;
-  @apply mt-1;
-  @apply mb-3;
+}
+
+.field {
+  @apply relative;
+  @apply mt-4;
+  @apply mb-6;
+
+  input {
+    @apply block;
+    @apply w-full;
+  }
+
+  label {
+    @apply absolute;
+    top: 2px;
+    @apply p-2;
+    @apply text-gray-400;
+    @apply pointer-events-none;
+    @apply duration-200;
+  }
+
+  input:focus-within ~ label,
+  input:not(:placeholder-shown) ~ label {
+    @apply top-0;
+    @apply p-0;
+    @apply transform;
+    @apply scale-90;
+    @apply -translate-y-6;
+  }
 }
 </style>

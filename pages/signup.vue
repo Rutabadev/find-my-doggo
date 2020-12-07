@@ -4,22 +4,18 @@
   >
     <h1 class="text-2xl text-center mb-6">Sign up</h1>
     <form class="flex flex-col" action="">
-      <label for="username">Username</label>
-      <input type="text" name="username" placeholder="AlphonseBrown37" />
-      <label for="email">Email</label>
-      <input
-        type="email"
-        name="email"
-        placeholder="alphonse.brown37@gmail.com"
-        required
-      />
-      <label for="password">Password</label>
-      <input
-        type="password"
-        name="password"
-        placeholder="Qu3lqUeCh0sedEloNg"
-        required
-      />
+      <div class="field">
+        <input type="text" name="username" placeholder=" " />
+        <label for="username">Username</label>
+      </div>
+      <div class="field">
+        <input type="email" name="email" placeholder=" " required />
+        <label for="email">Email</label>
+      </div>
+      <div class="field">
+        <input type="password" name="password" placeholder=" " required />
+        <label for="password">Password</label>
+      </div>
       <button class="button my-2 uppercase">Sign up</button>
     </form>
     <p class="ml-auto mt-5">
@@ -47,7 +43,7 @@ input[type='email']:valid {
   @apply text-green-600;
 }
 
-input[type='email']:invalid {
+input[type='email']:not(:placeholder-shown):invalid {
   @apply text-red-500;
 }
 </style>
