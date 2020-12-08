@@ -1,25 +1,30 @@
 <template>
   <div class="user-section hidden sm:flex">
     <template v-if="!user">
-      <button class="uppercase">
-        <NuxtLink to="/login">Log in</NuxtLink>
-      </button>
-      <button class="whitespace-nowrap uppercase">
-        <NuxtLink to="/signup">Sign up</NuxtLink>
-      </button>
+      <NuxtLink
+        to="/login"
+        class="uppercase px-4 hover:bg-yellow-700 focus:bg-yellow-700"
+      >
+        Log in
+      </NuxtLink>
+      <NuxtLink
+        to="/signup"
+        class="whitespace-nowrap uppercase px-4 hover:bg-yellow-700 focus:bg-yellow-700"
+        >Sign up</NuxtLink
+      >
       <div class="px-4 hidden sm:inline-block self-center">
         <User class="h-10"></User>
       </div>
     </template>
     <template v-else>
-      <button>
+      <a class="px-4 hover:bg-yellow-700 focus:bg-yellow-700s">
         {{ user.name }}
-      </button>
-      <button>
-        <a class="cursor-pointer whitespace-nowrap uppercase" @click="logout"
-          >Log out</a
-        >
-      </button>
+      </a>
+      <a
+        class="cursor-pointer whitespace-nowrap uppercase px-4 hover:bg-yellow-700 focus:bg-yellow-700"
+        @click="logout"
+        >Log out</a
+      >
     </template>
   </div>
 </template>
@@ -40,13 +45,9 @@ export default {
 }
 </script>
 
-<style lang="scss">
-.user-section {
-  button {
-    @apply px-4;
-    &:hover {
-      @apply bg-yellow-700;
-    }
-  }
+<style>
+/* Fix for vertical center of NuxtLinks */
+a {
+  line-height: 64px;
 }
 </style>

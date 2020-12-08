@@ -3,12 +3,12 @@
     <nav
       class="relative bg-yellow-600 text-white flex justify-between h-16 shadow-lg"
     >
-      <Title
-        class="absolute inset-y-0 left-1/2 transform-gpu -translate-x-1/2"
-      ></Title>
       <button class="px-4">
         <BurgerMenu class="h-8"></BurgerMenu>
       </button>
+      <Title
+        class="absolute inset-y-0 left-1/2 transform-gpu -translate-x-1/2"
+      ></Title>
       <UserSection></UserSection>
     </nav>
     <div class="container p-5 mx-auto">
