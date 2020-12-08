@@ -1,27 +1,26 @@
 <template>
-  <div class="hidden sm:flex items-center space-x-3">
+  <div class="user-section hidden sm:flex">
     <template v-if="!user">
-      <NuxtLink to="/login">Login</NuxtLink>
-      <NuxtLink class="whitespace-nowrap" to="/signup">Sign up</NuxtLink>
+      <button class="uppercase">
+        <NuxtLink to="/login">Log in</NuxtLink>
+      </button>
+      <button class="whitespace-nowrap uppercase">
+        <NuxtLink to="/signup">Sign up</NuxtLink>
+      </button>
+      <div class="px-4 hidden sm:inline-block self-center">
+        <User class="h-10"></User>
+      </div>
     </template>
     <template v-else>
-      <span>{{ user.name }}</span>
-      <a class="cursor-pointer whitespace-nowrap" @click="logout">Logout</a>
+      <button>
+        {{ user.name }}
+      </button>
+      <button>
+        <a class="cursor-pointer whitespace-nowrap uppercase" @click="logout"
+          >Log out</a
+        >
+      </button>
     </template>
-    <svg
-      class="h-10 hidden sm:block"
-      fill="none"
-      stroke="currentColor"
-      viewBox="0 0 24 24"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        stroke-width="2"
-        d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-      ></path>
-    </svg>
   </div>
 </template>
 
@@ -41,4 +40,13 @@ export default {
 }
 </script>
 
-<style></style>
+<style lang="scss">
+.user-section {
+  button {
+    @apply px-4;
+    &:hover {
+      @apply bg-yellow-700;
+    }
+  }
+}
+</style>

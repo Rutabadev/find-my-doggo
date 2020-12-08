@@ -1,12 +1,14 @@
 <template>
   <div class="bg-gray-50 min-h-screen">
     <nav
-      class="relative bg-yellow-600 text-white flex justify-between items-center px-1 sm:px-5 py-2 shadow-lg"
+      class="relative bg-yellow-600 text-white flex justify-between h-16 shadow-lg"
     >
       <Title
         class="absolute inset-y-0 left-1/2 transform-gpu -translate-x-1/2"
       ></Title>
-      <BurgerMenu></BurgerMenu>
+      <button class="px-4">
+        <BurgerMenu class="h-8"></BurgerMenu>
+      </button>
       <UserSection></UserSection>
     </nav>
     <div class="container p-5 mx-auto">
