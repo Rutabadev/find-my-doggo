@@ -3,22 +3,22 @@
     <template v-if="!user">
       <NuxtLink
         to="/login"
-        class="uppercase px-4 hover:bg-yellow-700 focus:bg-yellow-700 hidden md:block"
+        class="uppercase px-4 hover:bg-primary-700 focus:bg-primary-700 hidden md:block"
       >
         Log in
       </NuxtLink>
       <NuxtLink
         to="/signup"
-        class="whitespace-nowrap uppercase px-4 hover:bg-yellow-700 focus:bg-yellow-700 hidden md:block"
+        class="whitespace-nowrap uppercase px-4 hover:bg-primary-700 focus:bg-primary-700 hidden md:block"
         >Sign up</NuxtLink
       >
     </template>
     <template v-else>
-      <button class="px-4 hover:bg-yellow-700 focus:bg-yellow-700">
+      <button class="px-4 hover:bg-primary-700 focus:bg-primary-700">
         {{ user.name }}
       </button>
       <button
-        class="cursor-pointer whitespace-nowrap uppercase px-4 hover:bg-yellow-700 focus:bg-yellow-700 hidden md:block"
+        class="cursor-pointer whitespace-nowrap uppercase px-4 hover:bg-primary-700 focus:bg-primary-700 hidden md:block"
         @click="logout"
       >
         Log out

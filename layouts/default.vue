@@ -1,9 +1,12 @@
 <template>
   <div class="bg-gray-50 min-h-screen">
     <nav
-      class="relative bg-yellow-600 text-white flex justify-between h-16 shadow-lg"
+      class="relative bg-primary-600 text-white flex justify-between h-16 shadow-lg"
     >
-      <button class="px-4 md:hidden hover:bg-yellow-700" @click="toggleSidebar">
+      <button
+        class="px-4 md:hidden hover:bg-primary-700"
+        @click="toggleSidebar"
+      >
         <BurgerMenu class="h-8"></BurgerMenu>
       </button>
       <Title
