@@ -28,9 +28,7 @@
             :to="link.route"
             @click.native="toggleSidebar"
           >
-            <span>
-              {{ link.name }}
-            </span>
+            {{ link.name }}
             <Notification v-if="isRouteActive(link.route)"></Notification>
           </NuxtLink>
           <button
