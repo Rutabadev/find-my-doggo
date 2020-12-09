@@ -29,8 +29,8 @@
           :tabindex="!show ? '-1' : ''"
           class="hover:bg-yellow-700 focus:bg-yellow-700 py-4"
           @click.native="toggleSidebar"
-          >Log in</NuxtLink
-        >
+          >Log in
+        </NuxtLink>
         <NuxtLink
           to="/signup"
           :tabindex="!show ? '-1' : ''"
@@ -51,14 +51,16 @@
   </div>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import Vue from 'vue'
+
+export default Vue.extend({
   props: {
     show: Boolean,
   },
 
   computed: {
-    user() {
+    user(): any {
       return this.$auth.user
     },
   },
@@ -73,7 +75,7 @@ export default {
       this.toggleSidebar()
     },
   },
-}
+})
 </script>
 
 <style></style>

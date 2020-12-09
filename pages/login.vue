@@ -51,16 +51,25 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
+import Vue from 'vue'
 import { parseRequestErrors } from '~/utils'
-export default {
+export default Vue.extend({
   transition(to) {
     if (to.name === 'signup') {
       return 'slide-left'
     }
+    return ''
   },
 
-  data() {
+  data(): {
+    isLoading: boolean
+    loginInfo: {
+      usernameOrEmail: string
+      password: string
+    }
+    errors: string[]
+  } {
     return {
       isLoading: false,
       loginInfo: {
@@ -85,7 +94,7 @@ export default {
       }
     },
   },
-}
+})
 </script>
 
 <style>

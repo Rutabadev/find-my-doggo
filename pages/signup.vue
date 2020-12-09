@@ -64,17 +64,29 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
+import Vue from 'vue'
 import { parseRequestErrors } from '~/utils'
-export default {
+
+export default Vue.extend({
   auth: false,
+
   transition(to) {
     if (to.name === 'login') {
       return 'slide-right'
     }
+    return ''
   },
 
-  data() {
+  data(): {
+    isLoading: boolean
+    signupInfo: {
+      name: string
+      email: string
+      password: string
+    }
+    errors: string[]
+  } {
     return {
       isLoading: false,
       signupInfo: {
@@ -100,7 +112,7 @@ export default {
         .finally(() => (this.isLoading = false))
     },
   },
-}
+})
 </script>
 
 <style>

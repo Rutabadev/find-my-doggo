@@ -27,10 +27,12 @@
   </div>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import Vue from 'vue'
+
+export default Vue.extend({
   computed: {
-    user() {
+    user(): any {
       return this.$auth.user
     },
   },
@@ -40,7 +42,7 @@ export default {
       this.$auth.logout()
     },
   },
-}
+})
 </script>
 
 <style lang="scss">
