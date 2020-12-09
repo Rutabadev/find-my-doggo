@@ -3,14 +3,15 @@
     <nav
       class="relative bg-yellow-600 text-white flex justify-between h-16 shadow-lg"
     >
-      <button class="px-4">
+      <button class="px-4 md:hidden hover:bg-yellow-700" @click="toggleSidebar">
         <BurgerMenu class="h-8"></BurgerMenu>
       </button>
       <Title
         class="absolute inset-y-0 left-1/2 transform-gpu -translate-x-1/2"
       ></Title>
-      <UserSection></UserSection>
+      <UserSection class="hidden md:flex ml-auto"></UserSection>
     </nav>
+    <Sidebar :show="showSidebar" @onToggleSidebar="toggleSidebar"></Sidebar>
     <div class="container p-5 mx-auto">
       <Nuxt></Nuxt>
     </div>
@@ -18,7 +19,17 @@
 </template>
 
 <script>
-export default {}
+export default {
+  data() {
+    return { showSidebar: false }
+  },
+
+  methods: {
+    toggleSidebar() {
+      this.showSidebar = !this.showSidebar
+    },
+  },
+}
 </script>
 
 <style lang="scss">

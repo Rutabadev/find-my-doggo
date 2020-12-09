@@ -1,5 +1,5 @@
 <template>
-  <div class="user-section hidden sm:flex">
+  <div class="user-section">
     <template v-if="!user">
       <NuxtLink
         to="/login"
@@ -45,9 +45,11 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
 /* Fix for vertical center of NuxtLinks */
-a {
-  line-height: 64px;
+.user-section {
+  a {
+    line-height: 64px;
+  }
 }
 </style>
