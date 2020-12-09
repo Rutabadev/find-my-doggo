@@ -1,6 +1,6 @@
 <template>
-  <main class="dark">
-    <div class="bg-gray-50 dark:bg-gray-800 min-h-screen">
+  <main :class="{ dark: isDarkMode }">
+    <div class="bg-gray-50 dark:bg-gray-800 transition min-h-screen">
       <nav
         class="relative bg-primary-600 text-white flex justify-between h-16 shadow-lg"
       >
@@ -13,7 +13,26 @@
         <Title
           class="absolute inset-y-0 left-1/2 transform-gpu -translate-x-1/2"
         ></Title>
-        <UserSection class="ml-auto"></UserSection>
+        <button class="px-3 cursor-pointer ml-auto" @click="toggleDarkMode">
+          <svg width="60" height="32" aria-hidden="true">
+            <rect
+              x="6"
+              y="2"
+              width="48"
+              height="28"
+              rx="14"
+              :fill="isDarkMode ? '#1f2937' : 'grey'"
+            />
+            <circle
+              style="transition: all 150ms ease"
+              :cx="isDarkMode ? 40 : 20"
+              cy="16"
+              r="11"
+              fill="white"
+            />
+          </svg>
+        </button>
+        <UserSection></UserSection>
       </nav>
       <Sidebar :show="showSidebar" @onToggleSidebar="toggleSidebar"></Sidebar>
       <div class="container p-5 mx-auto">
@@ -23,18 +42,33 @@
   </main>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import Vue from 'vue'
+import { themeStore } from '~/store'
+
+export default Vue.extend({
   data() {
-    return { showSidebar: false }
+    return {
+      showSidebar: false,
+    }
+  },
+
+  computed: {
+    isDarkMode(): boolean {
+      return themeStore.darkMode
+    },
   },
 
   methods: {
     toggleSidebar() {
       this.showSidebar = !this.showSidebar
     },
+
+    toggleDarkMode() {
+      themeStore.setDarkMode(!themeStore.darkMode)
+    },
   },
-}
+})
 </script>
 
 <style lang="scss">
@@ -84,17 +118,18 @@ export default {
   @apply bg-white;
 }
 
-.dark {
-  input {
-    @apply bg-gray-600;
-    @apply border-gray-800;
-  }
-}
-
 input {
   @apply rounded;
   @apply border-2;
   @apply p-2;
+  @apply transition;
+}
+
+.dark {
+  input {
+    @apply bg-gray-600;
+    @apply border-gray-700;
+  }
 }
 
 .field {

@@ -1,7 +1,11 @@
 <template>
   <div>
-    <h1 class="text-xl text-center mb-8">This is the landing page</h1>
-    <NuxtLink to="/protected" class="text-blue-600 hover:underline"
+    <h1 class="text-xl text-center mb-8 dark:text-white">
+      This is the landing page
+    </h1>
+    <NuxtLink
+      to="/protected"
+      class="text-blue-600 dark:text-blue-400 hover:underline"
       >Go to a protected page</NuxtLink
     >
   </div>
