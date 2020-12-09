@@ -1,12 +1,12 @@
 <template>
   <div
-    class="max-w-sm mt-10 mx-auto rounded-lg bg-white shadow-md p-5 flex flex-col"
+    class="max-w-sm mt-10 mx-auto rounded-lg bg-white dark:bg-gray-700 dark:text-white shadow-md p-5 flex flex-col"
   >
     <h1 class="text-2xl text-center mb-6">Login</h1>
     <transition name="fade">
       <div
         v-if="errors.length"
-        class="bg-red-200 p-2 mb-6 rounded-lg font-semibold"
+        class="bg-red-200 dark:bg-red-500 p-2 mb-6 rounded-lg font-semibold"
       >
         <ul v-for="error in errors" :key="error">
           <li>{{ error }}</li>
@@ -44,7 +44,9 @@
     </form>
     <p class="ml-auto mt-5">
       Don't have an account yet ? Go to
-      <NuxtLink to="/signup" class="text-blue-600 hover:underline"
+      <NuxtLink
+        to="/signup"
+        class="text-blue-600 dark:text-blue-400 hover:underline"
         >sign up</NuxtLink
       >
     </p>

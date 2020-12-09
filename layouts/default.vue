@@ -1,24 +1,26 @@
 <template>
-  <div class="bg-gray-50 min-h-screen">
-    <nav
-      class="relative bg-primary-600 text-white flex justify-between h-16 shadow-lg"
-    >
-      <button
-        class="px-4 md:hidden hover:bg-primary-700"
-        @click="toggleSidebar"
+  <main class="dark">
+    <div class="bg-gray-50 dark:bg-gray-800 min-h-screen">
+      <nav
+        class="relative bg-primary-600 text-white flex justify-between h-16 shadow-lg"
       >
-        <BurgerMenu class="h-8"></BurgerMenu>
-      </button>
-      <Title
-        class="absolute inset-y-0 left-1/2 transform-gpu -translate-x-1/2"
-      ></Title>
-      <UserSection class="ml-auto"></UserSection>
-    </nav>
-    <Sidebar :show="showSidebar" @onToggleSidebar="toggleSidebar"></Sidebar>
-    <div class="container p-5 mx-auto">
-      <Nuxt></Nuxt>
+        <button
+          class="px-4 md:hidden hover:bg-primary-700"
+          @click="toggleSidebar"
+        >
+          <BurgerMenu class="h-8"></BurgerMenu>
+        </button>
+        <Title
+          class="absolute inset-y-0 left-1/2 transform-gpu -translate-x-1/2"
+        ></Title>
+        <UserSection class="ml-auto"></UserSection>
+      </nav>
+      <Sidebar :show="showSidebar" @onToggleSidebar="toggleSidebar"></Sidebar>
+      <div class="container p-5 mx-auto">
+        <Nuxt></Nuxt>
+      </div>
     </div>
-  </div>
+  </main>
 </template>
 
 <script>
@@ -80,6 +82,13 @@ export default {
   @apply border-black;
   @apply text-black;
   @apply bg-white;
+}
+
+.dark {
+  input {
+    @apply bg-gray-600;
+    @apply border-gray-800;
+  }
 }
 
 input {
