@@ -1,30 +1,28 @@
 <template>
-  <div class="user-section">
+  <div class="user-section flex">
     <template v-if="!user">
       <NuxtLink
         to="/login"
-        class="uppercase px-4 hover:bg-yellow-700 focus:bg-yellow-700"
+        class="uppercase px-4 hover:bg-yellow-700 focus:bg-yellow-700 hidden md:block"
       >
         Log in
       </NuxtLink>
       <NuxtLink
         to="/signup"
-        class="whitespace-nowrap uppercase px-4 hover:bg-yellow-700 focus:bg-yellow-700"
+        class="whitespace-nowrap uppercase px-4 hover:bg-yellow-700 focus:bg-yellow-700 hidden md:block"
         >Sign up</NuxtLink
       >
-      <div class="px-4 hidden sm:inline-block self-center">
-        <User class="h-10"></User>
-      </div>
     </template>
     <template v-else>
-      <a class="px-4 hover:bg-yellow-700 focus:bg-yellow-700s">
+      <button class="px-4 hover:bg-yellow-700 focus:bg-yellow-700">
         {{ user.name }}
-      </a>
-      <a
-        class="cursor-pointer whitespace-nowrap uppercase px-4 hover:bg-yellow-700 focus:bg-yellow-700"
+      </button>
+      <button
+        class="cursor-pointer whitespace-nowrap uppercase px-4 hover:bg-yellow-700 focus:bg-yellow-700 hidden md:block"
         @click="logout"
-        >Log out</a
       >
+        Log out
+      </button>
     </template>
   </div>
 </template>

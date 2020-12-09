@@ -9,7 +9,7 @@
       <Title
         class="absolute inset-y-0 left-1/2 transform-gpu -translate-x-1/2"
       ></Title>
-      <UserSection class="hidden md:flex ml-auto"></UserSection>
+      <UserSection class="ml-auto"></UserSection>
     </nav>
     <Sidebar :show="showSidebar" @onToggleSidebar="toggleSidebar"></Sidebar>
     <div class="container p-5 mx-auto">

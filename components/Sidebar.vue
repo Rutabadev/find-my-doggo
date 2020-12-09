@@ -10,29 +10,43 @@
       :class="{ '-translate-x-full': !show }"
     >
       <button
-        class="h-16 px-4 hover:bg-yellow-700 self-start"
+        class="h-16 px-4 hover:bg-yellow-700 focus:bg-yellow-700 self-start"
+        :tabindex="!show ? '-1' : ''"
         @click="toggleSidebar"
       >
         <Cross class="h-8"></Cross>
       </button>
       <NuxtLink
         to="/"
-        class="hover:bg-yellow-700 py-4"
+        :tabindex="!show ? '-1' : ''"
+        class="hover:bg-yellow-700 focus:bg-yellow-700 py-4"
         @click.native="toggleSidebar"
         >Home</NuxtLink
       >
-      <NuxtLink
-        to="/login"
-        class="hover:bg-yellow-700 py-4"
-        @click.native="toggleSidebar"
-        >Log in</NuxtLink
+      <template v-if="!user">
+        <NuxtLink
+          to="/login"
+          :tabindex="!show ? '-1' : ''"
+          class="hover:bg-yellow-700 focus:bg-yellow-700 py-4"
+          @click.native="toggleSidebar"
+          >Log in</NuxtLink
+        >
+        <NuxtLink
+          to="/signup"
+          :tabindex="!show ? '-1' : ''"
+          class="hover:bg-yellow-700 focus:bg-yellow-700 py-4"
+          @click.native="toggleSidebar"
+          >Sign up</NuxtLink
+        >
+      </template>
+      <button
+        v-else
+        :tabindex="!show ? '-1' : ''"
+        class="hover:bg-yellow-700 focus:bg-yellow-700 py-4 cursor-pointer uppercase"
+        @click="logout"
       >
-      <NuxtLink
-        to="/signup"
-        class="hover:bg-yellow-700 py-4"
-        @click.native="toggleSidebar"
-        >Sign up</NuxtLink
-      >
+        Log out
+      </button>
     </ul>
   </div>
 </template>
@@ -43,9 +57,20 @@ export default {
     show: Boolean,
   },
 
+  computed: {
+    user() {
+      return this.$auth.user
+    },
+  },
+
   methods: {
     toggleSidebar() {
       this.$emit('onToggleSidebar')
+    },
+
+    logout() {
+      this.$auth.logout()
+      this.toggleSidebar()
     },
   },
 }
