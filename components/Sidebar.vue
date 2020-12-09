@@ -16,37 +16,34 @@
       >
         <Cross class="h-8"></Cross>
       </button>
-      <NuxtLink
-        to="/"
-        :tabindex="!show ? '-1' : ''"
-        class="hover:bg-yellow-700 focus:bg-yellow-700 py-4"
-        @click.native="toggleSidebar"
-        >Home</NuxtLink
-      >
-      <template v-if="!user">
-        <NuxtLink
-          to="/login"
-          :tabindex="!show ? '-1' : ''"
-          class="hover:bg-yellow-700 focus:bg-yellow-700 py-4"
-          @click.native="toggleSidebar"
-          >Log in
-        </NuxtLink>
-        <NuxtLink
-          to="/signup"
-          :tabindex="!show ? '-1' : ''"
-          class="hover:bg-yellow-700 focus:bg-yellow-700 py-4"
-          @click.native="toggleSidebar"
-          >Sign up</NuxtLink
+      <template v-for="link of links">
+        <template
+          v-if="(link.user && user) || (!link.user && !user) || link.always"
         >
+          <NuxtLink
+            v-if="link.route"
+            :key="link.name"
+            :tabindex="!show ? '-1' : ''"
+            class="hover:bg-yellow-700 focus:bg-yellow-700 py-4 uppercase"
+            :to="link.route"
+            @click.native="toggleSidebar"
+          >
+            <span>
+              {{ link.name }}
+            </span>
+            <Notification v-if="isRouteActive(link.route)"></Notification>
+          </NuxtLink>
+          <button
+            v-else
+            :key="link.name"
+            :tabindex="!show ? '-1' : ''"
+            class="hover:bg-yellow-700 focus:bg-yellow-700 py-4 cursor-pointer uppercase"
+            @click="logout"
+          >
+            {{ link.name }}
+          </button>
+        </template>
       </template>
-      <button
-        v-else
-        :tabindex="!show ? '-1' : ''"
-        class="hover:bg-yellow-700 focus:bg-yellow-700 py-4 cursor-pointer uppercase"
-        @click="logout"
-      >
-        Log out
-      </button>
     </ul>
   </div>
 </template>
@@ -59,6 +56,39 @@ export default Vue.extend({
     show: Boolean,
   },
 
+  data(): {
+    links: {
+      route?: string
+      name: string
+      user?: boolean
+      always?: boolean
+    }[]
+  } {
+    return {
+      links: [
+        {
+          route: '/',
+          name: 'home',
+          always: true,
+        },
+        {
+          route: '/login',
+          name: 'log in',
+          user: false,
+        },
+        {
+          route: '/signup',
+          name: 'sign up',
+          user: false,
+        },
+        {
+          name: 'log out',
+          user: true,
+        },
+      ],
+    }
+  },
+
   computed: {
     user(): any {
       return this.$auth.user
@@ -66,6 +96,10 @@ export default Vue.extend({
   },
 
   methods: {
+    isRouteActive(route: string): boolean {
+      return this.$route.path === route
+    },
+
     toggleSidebar() {
       this.$emit('onToggleSidebar')
     },
