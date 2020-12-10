@@ -6,8 +6,12 @@
       @click="toggleSidebar"
     ></div>
     <ul
-      class="absolute left-0 top-0 bottom-0 w-2/3 max-w-md bg-primary-600 shadow-lg flex flex-col text-lg uppercase text-gray-100 text-center transform-gpu duration-200 z-10"
-      :class="{ '-translate-x-full': !show }"
+      class="absolute left-0 top-0 bottom-0 w-2/3 max-w-md bg-primary-600 shadow-lg flex flex-col text-lg uppercase text-gray-100 text-center duration-200 z-10"
+      :style="
+        show
+          ? 'transform: translate3d(0, 0, 0)'
+          : 'transform: translate3d(-102%, 0, 0)'
+      "
     >
       <button
         class="h-16 px-4 hover:bg-primary-700 focus:bg-primary-700 self-start"
