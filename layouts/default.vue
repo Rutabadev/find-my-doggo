@@ -59,6 +59,12 @@ export default Vue.extend({
     },
   },
 
+  mounted() {
+    themeStore.setDarkMode(
+      JSON.parse(localStorage.getItem('dark-mode') || 'false')
+    )
+  },
+
   methods: {
     toggleSidebar() {
       this.showSidebar = !this.showSidebar
