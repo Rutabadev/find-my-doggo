@@ -1,19 +1,25 @@
 <template>
   <button class="px-3 cursor-pointer" @click="toggleDarkMode">
-    <svg width="60" height="32" aria-hidden="true">
+    <svg
+      class="h-7 w-14"
+      width="42"
+      height="24"
+      viewBox="0 0 42 24"
+      xmlns="http://www.w3.org/2000/svg"
+    >
       <rect
-        x="6"
-        y="2"
-        width="48"
-        height="28"
-        rx="14"
+        x="0"
+        y="0"
+        width="42"
+        height="24"
+        rx="12"
         :fill="isDarkMode ? '#1f2937' : 'grey'"
       />
       <circle
         style="transition: all 150ms ease"
-        :cx="isDarkMode ? 40 : 20"
-        cy="16"
-        r="11"
+        :cx="isDarkMode ? 29 : 13"
+        cy="12"
+        r="10"
         fill="white"
       />
     </svg>
