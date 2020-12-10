@@ -13,13 +13,16 @@
           : 'transform: translate3d(-102%, 0, 0)'
       "
     >
-      <button
-        class="h-16 px-4 hover:bg-primary-700 focus:bg-primary-700 self-start"
-        :tabindex="!show ? '-1' : ''"
-        @click="toggleSidebar"
-      >
-        <Cross class="h-8"></Cross>
-      </button>
+      <div class="flex justify-between">
+        <button
+          class="h-16 px-4 hover:bg-primary-700 focus:bg-primary-700"
+          :tabindex="!show ? '-1' : ''"
+          @click="toggleSidebar"
+        >
+          <Cross class="h-8"></Cross>
+        </button>
+        <DarkModeSwitch class="md:hidden"></DarkModeSwitch>
+      </div>
       <template v-for="link of links">
         <template
           v-if="(link.user && user) || (!link.user && !user) || link.always"

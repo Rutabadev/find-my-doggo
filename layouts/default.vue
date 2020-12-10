@@ -13,25 +13,7 @@
         <Title
           class="absolute inset-y-0 left-1/2 transform-gpu -translate-x-1/2"
         ></Title>
-        <button class="px-3 cursor-pointer ml-auto" @click="toggleDarkMode">
-          <svg width="60" height="32" aria-hidden="true">
-            <rect
-              x="6"
-              y="2"
-              width="48"
-              height="28"
-              rx="14"
-              :fill="isDarkMode ? '#1f2937' : 'grey'"
-            />
-            <circle
-              style="transition: all 150ms ease"
-              :cx="isDarkMode ? 40 : 20"
-              cy="16"
-              r="11"
-              fill="white"
-            />
-          </svg>
-        </button>
+        <DarkModeSwitch class="hidden md:block ml-auto"></DarkModeSwitch>
         <UserSection></UserSection>
       </nav>
       <Sidebar :show="showSidebar" @onToggleSidebar="toggleSidebar"></Sidebar>
@@ -68,10 +50,6 @@ export default Vue.extend({
   methods: {
     toggleSidebar() {
       this.showSidebar = !this.showSidebar
-    },
-
-    toggleDarkMode() {
-      themeStore.setDarkMode(!themeStore.darkMode)
     },
   },
 })
