@@ -134,7 +134,7 @@ input {
 .dark {
   input {
     @apply bg-gray-600;
-    @apply border-gray-700;
+    @apply border-gray-800;
   }
 }
 
@@ -160,6 +160,7 @@ input {
   input:focus-within ~ label,
   input:not(:placeholder-shown) ~ label {
     @apply top-0;
+    @apply -left-1;
     @apply p-0;
     @apply transform;
     @apply scale-90;
