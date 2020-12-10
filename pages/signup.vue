@@ -56,7 +56,7 @@
       </button>
     </form>
     <p class="ml-auto mt-5">
-      Already have an account yet ? Go to
+      Already have an account ? Go to
       <NuxtLink to="/login" class="text-blue-400 hover:underline mt-5"
         >login</NuxtLink
       >

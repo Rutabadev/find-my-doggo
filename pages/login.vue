@@ -43,7 +43,7 @@
       </button>
     </form>
     <p class="ml-auto mt-5">
-      Don't have an account yet ? Go to
+      Don't have an account ? Go to
       <NuxtLink
         to="/signup"
         class="text-blue-600 dark:text-blue-400 hover:underline"
