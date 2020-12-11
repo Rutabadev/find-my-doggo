@@ -1,11 +1,11 @@
 <template>
   <button class="dark-mode-switch px-3 cursor-pointer" @click="toggleDarkMode">
     <div
-      class="rounded-full w-9 h-6 text-secondary-500 bg-gray-50 dark:text-blue-400 dark:bg-gray-800 transition relative"
+      class="rounded-full w-10 h-6 text-secondary-500 bg-gray-200 dark:text-blue-400 dark:bg-blue-900 transition shadow-inner"
     >
       <div
-        class="absolute transition-transform transform-gpu"
-        :class="isDarkMode ? 'translate-x-1/2' : 'translate'"
+        class="transition-transform transform-gpu bg-gray-50 dark:bg-gray-800 h-6 w-6 rounded-full shadow"
+        :class="isDarkMode ? 'translate-x-4' : 'translate'"
       >
         <Moon v-if="isDarkMode"></Moon>
         <Sun v-else></Sun>
