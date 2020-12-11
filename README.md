@@ -1,5 +1,9 @@
 # find-my-doggo
 
+Find the doggo that suits you (spoiler, all of them).
+
+Made with Nuxt.
+
 ## Build Setup
 
 ```bash
