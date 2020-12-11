@@ -4,6 +4,7 @@ module.exports = {
     '^~/(.*)$': '<rootDir>/$1',
     '^vue$': 'vue/dist/vue.common.js',
   },
+  modulePathIgnorePatterns: ['.qawolf'],
   moduleFileExtensions: ['ts', 'js', 'vue', 'json'],
   transform: {
     '^.+\\.ts$': 'ts-jest',
