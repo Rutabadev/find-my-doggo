@@ -13,13 +13,13 @@
         >
           <BurgerMenu class="h-8"></BurgerMenu>
         </button>
-        <Title
-          class="absolute inset-y-0 left-1/2 transform-gpu -translate-x-1/2"
-        ></Title>
         <DarkModeSwitch
           id="dark-mode-switch-desktop"
           class="hidden md:block"
         ></DarkModeSwitch>
+        <Title
+          class="absolute inset-y-0 left-1/2 transform-gpu -translate-x-1/2"
+        ></Title>
         <UserSection></UserSection>
       </nav>
       <Sidebar :show="showSidebar" @onToggleSidebar="toggleSidebar"></Sidebar>
@@ -61,4 +61,4 @@ export default Vue.extend({
 })
 </script>
 
-<style lang="scss"></style>
+<style></style>
