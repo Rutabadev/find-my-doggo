@@ -25,6 +25,7 @@
         <DarkModeSwitch
           id="dark-mode-switch-mobile"
           class="md:hidden"
+          :tabindex="!show ? '-1' : ''"
         ></DarkModeSwitch>
       </div>
       <template v-for="link of links">
