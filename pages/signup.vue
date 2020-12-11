@@ -1,6 +1,6 @@
 <template>
   <div
-    class="max-w-sm mt-10 mx-auto rounded-lg bg-white dark:bg-gray-700 dark:text-white transition shadow-md p-5 flex flex-col"
+    class="max-w-sm mt-10 mx-auto rounded-lg bg-white dark:bg-gray-700 transition shadow-md p-5 flex flex-col"
   >
     <h1 class="text-2xl text-center mb-6">Sign up</h1>
     <transition name="fade">
@@ -57,7 +57,9 @@
     </form>
     <p class="ml-auto mt-5">
       Already have an account ? Go to
-      <NuxtLink to="/login" class="text-blue-400 hover:underline mt-5"
+      <NuxtLink
+        to="/login"
+        class="text-blue-600 dark:text-blue-400 hover:underline mt-5"
         >login</NuxtLink
       >
     </p>

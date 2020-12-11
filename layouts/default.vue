@@ -1,6 +1,8 @@
 <template>
   <main :class="{ dark: isDarkMode }">
-    <div class="bg-gray-50 dark:bg-gray-800 transition min-h-screen">
+    <div
+      class="bg-gray-50 dark:bg-gray-800 dark:text-gray-300 transition min-h-screen"
+    >
       <nav
         class="relative bg-primary-600 text-white flex justify-between h-16 shadow-lg"
       >
