@@ -15,13 +15,17 @@
     >
       <div class="flex justify-between">
         <button
+          id="close-sidebar"
           class="h-16 px-4 hover:bg-primary-700 focus:bg-primary-700"
           :tabindex="!show ? '-1' : ''"
           @click="toggleSidebar"
         >
           <Cross class="h-8"></Cross>
         </button>
-        <DarkModeSwitch class="md:hidden"></DarkModeSwitch>
+        <DarkModeSwitch
+          id="dark-mode-switch-mobile"
+          class="md:hidden"
+        ></DarkModeSwitch>
       </div>
       <template v-for="link of links">
         <template

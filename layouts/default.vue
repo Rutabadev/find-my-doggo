@@ -7,6 +7,7 @@
         class="relative bg-primary-600 text-white flex justify-between h-16 shadow-lg"
       >
         <button
+          id="toggle-sidebar"
           class="px-4 md:hidden hover:bg-primary-700"
           @click="toggleSidebar"
         >
@@ -15,7 +16,10 @@
         <Title
           class="absolute inset-y-0 left-1/2 transform-gpu -translate-x-1/2"
         ></Title>
-        <DarkModeSwitch class="hidden md:block"></DarkModeSwitch>
+        <DarkModeSwitch
+          id="dark-mode-switch-desktop"
+          class="hidden md:block"
+        ></DarkModeSwitch>
         <UserSection></UserSection>
       </nav>
       <Sidebar :show="showSidebar" @onToggleSidebar="toggleSidebar"></Sidebar>
