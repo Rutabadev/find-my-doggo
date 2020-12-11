@@ -4,24 +4,23 @@
     viewBox="0 0 300 300"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
+    stroke-width="3"
+    stroke="black"
   >
     <path
       id="head"
       d="M68.1235 82.9264L149.5 55.7012L230.877 82.9264L216.615 212.77L149.5 256.749L82.3854 212.77L68.1235 82.9264Z"
       fill="#F3D69E"
-      stroke="black"
     />
     <path
       id="left-ear"
       d="M51.4149 44L127.693 63.8757L16 128.036L51.4149 44Z"
       fill="#803B14"
-      stroke="black"
     />
     <path
       id="right-ear"
       d="M250.283 48.255L179.817 66.1179L283 123.781L250.283 48.255Z"
       fill="#813B14"
-      stroke="black"
     />
     <ellipse
       id="left-eye"
@@ -41,15 +40,15 @@
     />
     <path
       id="mouth"
-      d="M150.016 228.028L92.5896 193.988H205.347L150.016 228.028Z"
+      d="M150.016 228.028L92.5896 193.988H205.347L150.016
+    228.028Z"
       fill="black"
-      stroke="black"
+      stroke-width="0"
     />
     <path
       id="tongue"
       d="M114.928 200.371C114.928 256.683 179.817 257.523 179.817 200.371H114.928Z"
       fill="#FFA397"
-      stroke="black"
     />
   </svg>
 </template>
