@@ -1,5 +1,5 @@
 <template>
-  <button class="dark-mode-switch px-3 cursor-pointer" @click="toggleDarkMode">
+  <button class="dark-mode-switch px-4 cursor-pointer" @click="toggleDarkMode">
     <div
       class="rounded-full w-10 h-6 text-secondary-500 bg-gray-200 dark:text-blue-400 dark:bg-blue-900 transition shadow-inner"
     >

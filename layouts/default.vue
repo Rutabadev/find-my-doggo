@@ -13,7 +13,7 @@
         <Title
           class="absolute inset-y-0 left-1/2 transform-gpu -translate-x-1/2"
         ></Title>
-        <DarkModeSwitch class="hidden md:block ml-auto"></DarkModeSwitch>
+        <DarkModeSwitch class="hidden md:block"></DarkModeSwitch>
         <UserSection></UserSection>
       </nav>
       <Sidebar :show="showSidebar" @onToggleSidebar="toggleSidebar"></Sidebar>
