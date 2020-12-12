@@ -17,7 +17,7 @@
           <LangDropdown class="hidden md:block"></LangDropdown>
           <DarkModeSwitch
             id="dark-mode-switch-desktop"
-            class="hidden md:block"
+            class="hidden md:block h-full"
           ></DarkModeSwitch>
         </div>
         <Title
