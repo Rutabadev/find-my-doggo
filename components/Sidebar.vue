@@ -37,7 +37,7 @@
             :key="link.name"
             :tabindex="!show ? '-1' : ''"
             class="hover:bg-primary-700 focus:bg-primary-700 py-4 uppercase"
-            :to="link.route"
+            :to="localePath(link.route)"
             @click.native="toggleSidebar"
           >
             {{ link.name }}

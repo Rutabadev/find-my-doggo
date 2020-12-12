@@ -60,6 +60,7 @@ export default {
         },
       },
     },
+    plugins: [{ src: '~/plugins/auth-lang-redirect.ts' }],
   },
 
   router: {

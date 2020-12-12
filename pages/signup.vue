@@ -2,7 +2,7 @@
   <div
     class="max-w-sm mt-10 mx-auto rounded-lg bg-white dark:bg-gray-700 transition shadow-md p-5 flex flex-col"
   >
-    <h1 class="text-2xl text-center mb-6">Sign up</h1>
+    <h1 class="text-2xl text-center mb-6">{{ $t('signup.title') }}</h1>
     <FormErrors :errors="errors"></FormErrors>
     <form class="flex flex-col" @submit.prevent="signup">
       <div class="field">
@@ -49,7 +49,7 @@
     <p class="ml-auto mt-5">
       Already have an account ? Go to
       <NuxtLink
-        to="/login"
+        :to="localePath('/login')"
         class="text-blue-600 dark:text-blue-400 hover:underline mt-5"
         >login</NuxtLink
       >
@@ -65,7 +65,7 @@ export default Vue.extend({
   auth: false,
 
   transition(to) {
-    if (to.name === 'login') {
+    if (to.name?.startsWith('login')) {
       return 'slide-right'
     }
     return ''
@@ -109,6 +109,19 @@ export default Vue.extend({
 </script>
 
 <style>
+.slide-right-enter-active,
+.slide-right-leave-active {
+  transition: opacity 0.25s ease-in-out, transform 0.25s ease-in-out;
+}
+.slide-right-leave-to {
+  opacity: 0;
+  transform: translate3d(var(--slide-distance), 0, 0);
+}
+.slide-right-enter {
+  opacity: 0;
+  transform: translate3d(calc(var(--slide-distance) * -1), 0, 0);
+}
+
 input[type='email']:valid {
   @apply text-green-600;
 }

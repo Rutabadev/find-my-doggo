@@ -7,9 +7,9 @@
     <Dog class="h-64 w-64 m-auto"></Dog>
 
     <NuxtLink
-      to="/protected"
+      :to="localePath('/protected')"
       class="text-blue-600 dark:text-blue-400 hover:underline"
-      >{{ $t('index.go-to-protected') }}</NuxtLink
+      >{{ $t('index.goProtected') }}</NuxtLink
     >
   </div>
 </template>
