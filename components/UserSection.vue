@@ -2,13 +2,13 @@
   <div class="user-section flex">
     <template v-if="!user">
       <NuxtLink
-        :to="localePath('/login')"
+        to="/login"
         class="uppercase px-4 hover:bg-primary-700 focus:bg-primary-700 hidden md:block"
       >
         Log in
       </NuxtLink>
       <NuxtLink
-        :to="localePath('/signup')"
+        to="/signup"
         class="whitespace-nowrap uppercase px-4 hover:bg-primary-700 focus:bg-primary-700 hidden md:block"
         >Sign up</NuxtLink
       >

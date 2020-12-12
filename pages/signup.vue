@@ -2,7 +2,7 @@
   <div
     class="max-w-sm mt-10 mx-auto rounded-lg bg-white dark:bg-gray-700 transition shadow-md p-5 flex flex-col"
   >
-    <h1 class="text-2xl text-center mb-6">{{ $t('signup.title') }}</h1>
+    <h1 class="text-2xl text-center mb-6">Sign up</h1>
     <FormErrors :errors="errors"></FormErrors>
     <form class="flex flex-col" @submit.prevent="signup">
       <div class="field">
@@ -49,7 +49,7 @@
     <p class="ml-auto mt-5">
       Already have an account ? Go to
       <NuxtLink
-        :to="localePath('/login')"
+        to="login"
         class="text-blue-600 dark:text-blue-400 hover:underline mt-5"
         >login</NuxtLink
       >

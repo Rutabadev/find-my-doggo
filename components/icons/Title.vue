@@ -1,7 +1,7 @@
 <template>
   <NuxtLink
     class="text-xl sm:text-3xl whitespace-nowrap capitalize flex items-center sm:space-x-2"
-    :to="localePath('/')"
+    to="/"
   >
     <svg
       class="hidden sm:block h-10"

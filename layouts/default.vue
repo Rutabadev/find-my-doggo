@@ -6,22 +6,18 @@
       <nav
         class="relative bg-primary-600 text-white flex justify-between h-16 shadow-lg"
       >
-        <div class="flex items-center space-x-4">
-          <button
-            id="toggle-sidebar"
-            class="px-4 md:hidden hover:bg-primary-700 h-full"
-            @click="toggleSidebar"
-          >
-            <BurgerMenu class="h-8"></BurgerMenu>
-          </button>
+        <button
+          id="toggle-sidebar"
+          class="px-4 md:hidden hover:bg-primary-700 h-full"
+          @click="toggleSidebar"
+        >
+          <BurgerMenu class="h-8"></BurgerMenu>
+        </button>
 
-          <LangDropdown class="hidden md:block"></LangDropdown>
-
-          <DarkModeSwitch
-            id="dark-mode-switch-desktop"
-            class="hidden md:block"
-          ></DarkModeSwitch>
-        </div>
+        <DarkModeSwitch
+          id="dark-mode-switch-desktop"
+          class="hidden md:block"
+        ></DarkModeSwitch>
         <Title
           class="absolute inset-y-0 left-1/2 transform-gpu -translate-x-1/2"
         ></Title>

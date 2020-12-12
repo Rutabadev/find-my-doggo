@@ -2,7 +2,7 @@
   <div
     class="max-w-sm mt-10 mx-auto rounded-lg bg-white dark:bg-gray-700 transition shadow-md p-5 flex flex-col"
   >
-    <h1 class="text-2xl text-center mb-6">{{ $t('login.title') }}</h1>
+    <h1 class="text-2xl text-center mb-6">Login</h1>
     <FormErrors :errors="errors"></FormErrors>
     <form class="flex flex-col" @submit.prevent="login">
       <div class="field">
@@ -12,7 +12,7 @@
           type="text"
           placeholder=" "
         />
-        <label for="usernameOrEmail">{{ $t('login.usernameOrEmail') }}</label>
+        <label for="usernameOrEmail">Username or email</label>
       </div>
       <div class="field">
         <input
@@ -21,24 +21,24 @@
           name="password"
           placeholder=" "
         />
-        <label for="password">{{ $t('login.password') }}</label>
+        <label for="password">Password</label>
       </div>
       <button
         class="button my-2 self-center inline-flex items-center uppercase tracking-widest"
       >
-        <span v-if="!isLoading">{{ $t('login.login') }}</span>
+        <span v-if="!isLoading">Login</span>
         <template v-else>
           <Spinner class="h-5 w-5 mr-2"></Spinner>
-          {{ $t('login.loggingIn') }}
+          Logging you in
         </template>
       </button>
     </form>
     <p class="ml-auto mt-5">
-      {{ $t('login.noAccount') }}
+      Don't have an account ? Go to
       <NuxtLink
-        :to="localePath('/signup')"
+        to="/signup"
         class="text-blue-600 dark:text-blue-400 hover:underline"
-        >{{ $t('login.signup') }}</NuxtLink
+        >sign up</NuxtLink
       >
     </p>
   </div>
