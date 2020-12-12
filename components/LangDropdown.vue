@@ -2,9 +2,9 @@
   <div class="relative inline-block text-left">
     <div>
       <button
+        id="options-menu"
         type="button"
         class="inline-flex justify-center w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500"
-        id="options-menu"
         aria-haspopup="true"
         aria-expanded="true"
         @click="langDropdownOpen = !langDropdownOpen"
@@ -44,12 +44,12 @@
           aria-labelledby="options-menu"
         >
           <NuxtLink
-            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
-            role="menuitem"
-            @click.native="langDropdownOpen = !langDropdownOpen"
             v-for="locale in availableLocales"
             :key="locale.code"
+            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+            role="menuitem"
             :to="switchLocalePath(locale.code)"
+            @click.native="langDropdownOpen = !langDropdownOpen"
             >{{ locale.code }}
           </NuxtLink>
         </div>
@@ -59,8 +59,8 @@
 </template>
 
 <script lang="ts">
+import { NuxtVueI18n } from 'nuxt-i18n/types/nuxt-i18n'
 import Vue from 'vue'
-import { NuxtVueI18n } from 'nuxt-i18n'
 
 export default Vue.extend({
   data() {
