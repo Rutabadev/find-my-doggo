@@ -5,12 +5,12 @@
         to="/login"
         class="uppercase px-4 hover:bg-primary-700 focus:bg-primary-700 hidden md:block"
       >
-        Log in
+        {{ $t('login.title') }}
       </NuxtLink>
       <NuxtLink
         to="/signup"
         class="whitespace-nowrap uppercase px-4 hover:bg-primary-700 focus:bg-primary-700 hidden md:block"
-        >Sign up</NuxtLink
+        >{{ $t('signup.title') }}</NuxtLink
       >
     </template>
     <template v-else>
@@ -21,7 +21,7 @@
         class="cursor-pointer whitespace-nowrap uppercase px-4 hover:bg-primary-700 focus:bg-primary-700 hidden md:block"
         @click="logout"
       >
-        Log out
+        {{ $t('logout') }}
       </button>
     </template>
   </div>

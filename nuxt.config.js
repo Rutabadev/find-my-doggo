@@ -35,6 +35,7 @@ export default {
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
     '@nuxtjs/auth-next',
+    'nuxt-i18n',
   ],
 
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)
@@ -63,6 +64,25 @@ export default {
 
   router: {
     middleware: ['auth'],
+  },
+
+  i18n: {
+    locales: [
+      {
+        code: 'fr',
+        iso: 'fr-FR',
+        file: 'fr.js',
+      },
+      {
+        code: 'en',
+        iso: 'en-US',
+        file: 'en.js',
+      },
+    ],
+    langDir: 'i18n/',
+    defaultLocale: 'en',
+    lazy: true,
+    strategy: 'no_prefix',
   },
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)

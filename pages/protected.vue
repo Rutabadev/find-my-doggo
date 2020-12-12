@@ -1,5 +1,5 @@
 <template>
-  <p>protected page</p>
+  <p>{{ $t('protected') }}</p>
 </template>
 
 <script>

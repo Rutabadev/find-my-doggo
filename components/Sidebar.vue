@@ -40,7 +40,7 @@
             :to="link.route"
             @click.native="toggleSidebar"
           >
-            {{ link.name }}
+            {{ $t(link.name) }}
             <Notification v-if="isRouteActive(link.route)"></Notification>
           </NuxtLink>
           <button
@@ -50,7 +50,7 @@
             class="hover:bg-primary-700 focus:bg-primary-700 py-4 cursor-pointer uppercase"
             @click="logout"
           >
-            {{ link.name }}
+            {{ $t(link.name) }}
           </button>
         </template>
       </template>
@@ -79,21 +79,21 @@ export default Vue.extend({
       links: [
         {
           route: '/',
-          name: 'home',
+          name: 'index.title',
           always: true,
         },
         {
           route: '/login',
-          name: 'log in',
+          name: 'login.title',
           user: false,
         },
         {
           route: '/signup',
-          name: 'sign up',
+          name: 'signup.title',
           user: false,
         },
         {
-          name: 'log out',
+          name: 'logout',
           user: true,
         },
       ],

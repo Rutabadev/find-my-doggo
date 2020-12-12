@@ -2,7 +2,7 @@
   <div
     class="max-w-sm mt-10 mx-auto rounded-lg bg-white dark:bg-gray-700 transition shadow-md p-5 flex flex-col"
   >
-    <h1 class="text-2xl text-center mb-6">Sign up</h1>
+    <h1 class="text-2xl text-center mb-6">{{ $t('signup.title') }}</h1>
     <FormErrors :errors="errors"></FormErrors>
     <form class="flex flex-col" @submit.prevent="signup">
       <div class="field">
@@ -13,7 +13,8 @@
           placeholder=" "
         />
         <label for="username"
-          >Username <span class="text-red-500">*</span></label
+          >{{ $t('signup.username') }}
+          <span class="text-red-500">*</span></label
         >
       </div>
       <div class="field">
@@ -23,7 +24,7 @@
           name="email"
           placeholder=" "
         />
-        <label for="email">Email</label>
+        <label for="email">{{ $t('signup.email') }}</label>
       </div>
       <div class="field">
         <input
@@ -33,25 +34,26 @@
           placeholder=" "
         />
         <label for="password"
-          >Password <span class="text-red-500">*</span></label
+          >{{ $t('signup.password') }}
+          <span class="text-red-500">*</span></label
         >
       </div>
       <button
         class="button my-2 self-center inline-flex items-center uppercase tracking-widest"
       >
-        <span v-if="!isLoading">Sign up</span>
+        <span v-if="!isLoading">{{ $t('signup.signup') }}</span>
         <template v-else>
           <Spinner class="h-5 w-5 mr-2"></Spinner>
-          Signing you up...
+          {{ $t('signup.signing_up') }}
         </template>
       </button>
     </form>
     <p class="ml-auto mt-5">
-      Already have an account ? Go to
+      {{ $t('signup.already') }}
       <NuxtLink
-        to="login"
+        to="/login"
         class="text-blue-600 dark:text-blue-400 hover:underline mt-5"
-        >login</NuxtLink
+        >{{ $t('signup.login') }}</NuxtLink
       >
     </p>
   </div>
