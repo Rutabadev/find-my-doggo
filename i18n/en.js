@@ -8,7 +8,7 @@ export default {
   login: {
     title: 'Login',
     username_or_email: 'Username or email',
-    password: 'password',
+    password: 'Password',
     login: 'Login',
     logging_in: 'Logging you in...',
     no_account: "Don't have an account ? Go to",
