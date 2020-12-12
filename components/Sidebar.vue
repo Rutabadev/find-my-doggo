@@ -54,6 +54,7 @@
           </button>
         </template>
       </template>
+      <LangDropdown class="self-center normal-case"></LangDropdown>
     </ul>
   </div>
 </template>
