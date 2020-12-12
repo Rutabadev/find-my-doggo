@@ -1,6 +1,6 @@
 export default {
   index: {
-    title: 'Acceuil',
+    title: 'Accueil',
     welcome: 'Trouve le doggo qui te correspond le mieux',
     spoiler: '(divulgachage, tous)',
     go_to_protected: 'Aller à une page protégée',
