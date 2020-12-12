@@ -43,15 +43,14 @@
           aria-orientation="vertical"
           aria-labelledby="options-menu"
         >
-          <NuxtLink
+          <a
             v-for="locale in availableLocales"
             :key="locale.code"
             class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
             role="menuitem"
-            :to="switchLocalePath(locale.code)"
-            @click.native="langDropdownOpen = !langDropdownOpen"
+            @click="linkClick(locale.code)"
             >{{ locale.code }}
-          </NuxtLink>
+          </a>
         </div>
       </div>
     </transition>
@@ -76,6 +75,25 @@ export default Vue.extend({
           typeof i !== 'string' ? i.code !== this.$i18n.locale : false
         ) || []
       )
+    },
+  },
+
+  methods: {
+    linkClick(localeCode: string) {
+      this.langDropdownOpen = !this.langDropdownOpen
+      /*
+
+      Need to set local code manually before because:
+
+      1. The router.push(switchLocalePath) get redirected to /login instead of /{code}/login
+      2. The plugin auth-lang-redrect catches the redirection
+         and sets the redirect to the correct locale path /{code}/login
+         But if the switchLocalePath was redirected the localPath did not update,
+         so we set it manually before
+
+      */
+      this.$i18n.setLocale(localeCode)
+      this.$router.push(this.switchLocalePath(localeCode))
     },
   },
 })
