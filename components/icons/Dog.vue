@@ -63,7 +63,8 @@ export default {}
 <style lang="scss">
 #dog {
   --ear-speed: 1s;
-  --tongue-speed: 0.2s;
+  --tongue-speed: 200ms;
+  transition: transform 200ms;
 
   #left-ear {
     animation: left-ear var(--ear-speed) ease-in-out alternate infinite;
@@ -108,6 +109,24 @@ export default {}
     }
     to {
       transform: scaleY(1.7);
+    }
+  }
+
+  &:hover {
+    transform: rotate(-15deg);
+
+    #left-ear,
+    #right-ear,
+    #tongue {
+      animation: none;
+    }
+
+    #tongue {
+      display: none;
+    }
+
+    #mouth {
+      clip-path: polygon(0 0, 100% 0, 100% 10%, 0 10%);
     }
   }
 }
