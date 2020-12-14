@@ -13,4 +13,9 @@ export default class Theme extends VuexModule {
     this.darkMode = darkMode
     localStorage.setItem('dark-mode', darkMode.toString())
   }
+
+  @Mutation
+  setDarkModeWhithoutSaving(darkMode: boolean) {
+    this.darkMode = darkMode
+  }
 }

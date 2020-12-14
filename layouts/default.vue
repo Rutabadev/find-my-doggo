@@ -23,9 +23,11 @@ export default Vue.extend({
   },
 
   mounted() {
-    themeStore.setDarkMode(
-      JSON.parse(localStorage.getItem('dark-mode') || 'false')
-    )
+    const darkMode =
+      localStorage['dark-mode'] ||
+      (!('dark-mode' in localStorage) &&
+        window.matchMedia('(prefers-color-scheme: dark)').matches)
+    themeStore.setDarkModeWhithoutSaving(JSON.parse(darkMode))
   },
 })
 </script>
