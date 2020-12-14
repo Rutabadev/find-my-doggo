@@ -28,7 +28,6 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import { themeStore } from '~/store'
 
 export default Vue.extend({
   data() {
