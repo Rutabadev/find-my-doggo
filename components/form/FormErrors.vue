@@ -4,7 +4,7 @@
       v-if="errors.length"
       class="bg-red-200 dark:bg-red-500 dark:text-gray-50 p-2 mb-6 rounded-lg font-semibold shake"
     >
-      <ul v-for="(error, index) in errors" :key="index">
+      <ul v-for="error in errors" :key="error.message">
         <li>{{ error.message || error }}</li>
       </ul>
     </div>
