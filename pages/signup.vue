@@ -3,41 +3,30 @@
     class="max-w-sm mt-10 mx-auto rounded-lg bg-white dark:bg-gray-700 transition shadow-md p-5 flex flex-col"
   >
     <h1 class="text-2xl text-center mb-6">{{ $t('signup.title') }}</h1>
-    <FormErrors :errors="errors"></FormErrors>
+    <FormErrors
+      :errors="errors.filter((e) => e.field === 'global')"
+    ></FormErrors>
     <form class="flex flex-col" @submit.prevent="signup">
-      <div class="field">
-        <input
-          v-model="signupInfo.name"
-          type="text"
-          name="username"
-          placeholder=" "
-        />
-        <label for="username"
-          >{{ $t('signup.username') }}
-          <span class="text-red-500">*</span></label
-        >
-      </div>
-      <div class="field">
-        <input
-          v-model="signupInfo.email"
-          type="email"
-          name="email"
-          placeholder=" "
-        />
-        <label for="email">{{ $t('signup.email') }}</label>
-      </div>
-      <div class="field">
-        <input
-          v-model="signupInfo.password"
-          type="password"
-          name="password"
-          placeholder=" "
-        />
-        <label for="password"
-          >{{ $t('signup.password') }}
-          <span class="text-red-500">*</span></label
-        >
-      </div>
+      <InputField
+        v-model="signupInfo.name"
+        name="name"
+        required
+        :label="$t('signup.username')"
+        :errors="errors"
+      />
+      <InputField
+        v-model="signupInfo.email"
+        name="email"
+        :label="$t('signup.email')"
+        :errors="errors"
+      />
+      <InputField
+        v-model="signupInfo.password"
+        name="password"
+        required
+        :label="$t('signup.password')"
+        :errors="errors"
+      />
       <button
         class="button my-2 self-center inline-flex items-center uppercase tracking-widest"
       >
@@ -61,7 +50,6 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import { parseRequestErrors } from '~/utils'
 
 export default Vue.extend({
   auth: false,
@@ -102,7 +90,13 @@ export default Vue.extend({
           this.$router.push('/login')
         })
         .catch((err) => {
-          this.errors = parseRequestErrors(err)
+          // Clear errors and reset them in the next tick to force transition again
+          this.errors = []
+          this.$nextTick(() => {
+            this.errors = err?.response?.data?.errors || [
+              { field: 'global', message: err.message },
+            ]
+          })
         })
         .finally(() => (this.isLoading = false))
     },

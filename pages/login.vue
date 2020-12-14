@@ -3,26 +3,23 @@
     class="max-w-sm mt-10 mx-auto rounded-lg bg-white dark:bg-gray-700 transition shadow-md p-5 flex flex-col"
   >
     <h1 class="text-2xl text-center mb-6">{{ $t('login.title') }}</h1>
-    <FormErrors :errors="errors"></FormErrors>
+    <FormErrors
+      :errors="errors.filter((e) => e.field === 'global')"
+    ></FormErrors>
     <form class="flex flex-col" @submit.prevent="login">
-      <div class="field">
-        <input
-          v-model="loginInfo.usernameOrEmail"
-          name="usernameOrEmail"
-          type="text"
-          placeholder=" "
-        />
-        <label for="usernameOrEmail">{{ $t('login.username_or_email') }}</label>
-      </div>
-      <div class="field">
-        <input
-          v-model="loginInfo.password"
-          type="password"
-          name="password"
-          placeholder=" "
-        />
-        <label for="password">{{ $t('login.password') }}</label>
-      </div>
+      <InputField
+        v-model="loginInfo.usernameOrEmail"
+        name="usernameOrEmail"
+        :label="$t('login.username_or_email')"
+        :errors="errors"
+      />
+      <InputField
+        v-model="loginInfo.password"
+        name="password"
+        type="password"
+        :label="$t('login.password')"
+        :errors="errors"
+      />
       <button
         class="button my-2 self-center inline-flex items-center uppercase tracking-widest"
       >
@@ -46,7 +43,8 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import { parseRequestErrors } from '~/utils'
+import { FormError } from '~/types'
+
 export default Vue.extend({
   transition(to) {
     if (to.name?.startsWith('signup')) {
@@ -61,7 +59,7 @@ export default Vue.extend({
       usernameOrEmail: string
       password: string
     }
-    errors: string[]
+    errors: FormError[]
   } {
     return {
       isLoading: false,
@@ -81,7 +79,13 @@ export default Vue.extend({
           data: this.loginInfo,
         })
       } catch (err) {
-        this.errors = parseRequestErrors(err)
+        // Clear errors and reset them in the next tick to force transition again
+        this.errors = []
+        this.$nextTick(() => {
+          this.errors = err?.response?.data?.errors || [
+            { field: 'global', message: err?.response?.data || err.message },
+          ]
+        })
       } finally {
         this.isLoading = false
       }

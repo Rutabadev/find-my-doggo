@@ -43,32 +43,34 @@ input {
   }
 }
 
-.field {
-  @apply relative;
-  @apply mt-4;
-  @apply mb-6;
-
-  input {
-    @apply block;
-    @apply w-full;
+@keyframes shake {
+  10%,
+  90% {
+    transform: translate3d(-1px, 0, 0);
   }
 
-  label {
-    @apply absolute;
-    top: 2px;
-    @apply p-2;
-    @apply text-gray-400;
-    @apply pointer-events-none;
-    @apply duration-200;
+  20%,
+  80% {
+    transform: translate3d(2px, 0, 0);
   }
 
-  input:focus-within ~ label,
-  input:not(:placeholder-shown) ~ label {
-    @apply top-0;
-    @apply -left-1;
-    @apply p-0;
-    @apply transform;
-    @apply scale-90;
-    @apply -translate-y-6;
+  30%,
+  50%,
+  70% {
+    transform: translate3d(-4px, 0, 0);
   }
+
+  40%,
+  60% {
+    transform: translate3d(4px, 0, 0);
+  }
+}
+
+.shake-enter-active,
+.shake-leave-active {
+  animation: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+}
+.shake-enter,
+.shake-leave-to {
+  opacity: 0;
 }
