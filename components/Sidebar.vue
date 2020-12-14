@@ -54,7 +54,10 @@
           </button>
         </template>
       </template>
-      <LangDropdown class="self-center normal-case"></LangDropdown>
+      <LangDropdown
+        :tabindex="!show ? '-1' : ''"
+        class="self-center normal-case"
+      ></LangDropdown>
     </ul>
   </div>
 </template>
