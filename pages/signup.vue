@@ -1,51 +1,43 @@
 <template>
-  <div
-    class="max-w-sm mt-10 mx-auto rounded-lg bg-white dark:bg-gray-700 transition shadow-md p-5 flex flex-col"
-  >
-    <h1 class="text-2xl text-center mb-6">{{ $t('signup.title') }}</h1>
-    <FormErrors
-      :errors="errors.filter((e) => e.field === 'global')"
-    ></FormErrors>
-    <form class="flex flex-col" @submit.prevent="signup">
-      <InputField
-        v-model="signupInfo.name"
-        name="name"
-        required
-        :label="$t('signup.username')"
-        :errors="errors"
-      />
-      <InputField
-        v-model="signupInfo.email"
-        name="email"
-        :label="$t('signup.email')"
-        :errors="errors"
-      />
-      <InputField
-        v-model="signupInfo.password"
-        name="password"
-        required
-        :label="$t('signup.password')"
-        :errors="errors"
-      />
-      <button
-        class="button my-2 self-center inline-flex items-center uppercase tracking-widest"
-      >
-        <span v-if="!isLoading">{{ $t('signup.signup') }}</span>
-        <template v-else>
-          <Spinner class="h-5 w-5 mr-2"></Spinner>
-          {{ $t('signup.signing_up') }}
-        </template>
-      </button>
-    </form>
-    <p class="ml-auto mt-5">
+  <Form :title="$t('signup.title')" :errors="errors" @submit="signup">
+    <InputField
+      v-model="signupInfo.name"
+      name="name"
+      required
+      :label="$t('signup.username')"
+      :errors="errors"
+    />
+    <InputField
+      v-model="signupInfo.email"
+      name="email"
+      :label="$t('signup.email')"
+      :errors="errors"
+    />
+    <InputField
+      v-model="signupInfo.password"
+      name="password"
+      required
+      :label="$t('signup.password')"
+      :errors="errors"
+    />
+    <button
+      class="button my-2 self-center inline-flex items-center uppercase tracking-widest"
+    >
+      <span v-if="!isLoading">{{ $t('signup.signup') }}</span>
+      <template v-else>
+        <Spinner class="h-5 w-5 mr-2"></Spinner>
+        {{ $t('signup.signing_up') }}
+      </template>
+    </button>
+    <template slot="bottom">
       {{ $t('signup.already') }}
       <NuxtLink
         to="/login"
         class="text-blue-600 dark:text-blue-400 hover:underline mt-5"
         >{{ $t('signup.login') }}</NuxtLink
       >
-    </p>
-  </div>
+    </template>
+  </Form>
 </template>
 
 <script lang="ts">
