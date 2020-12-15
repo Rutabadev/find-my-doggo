@@ -16,17 +16,24 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import { themeStore } from '~/store'
 export default Vue.extend({
   computed: {
     isDarkMode(): boolean {
-      return themeStore.darkMode
+      return this.$colorMode.value === 'dark'
     },
   },
 
   methods: {
-    toggleDarkMode() {
-      themeStore.setDarkMode(!themeStore.darkMode)
+    toggleDarkMode(): void {
+      if (this.$colorMode.value === 'dark') {
+        this.$colorMode.preference = 'light'
+      } else {
+        this.$colorMode.preference = 'dark'
+      }
+      console.log({
+        pref: this.$colorMode.preference,
+        value: this.$colorMode.value,
+      })
     },
   },
 })

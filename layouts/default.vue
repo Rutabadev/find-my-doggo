@@ -1,5 +1,5 @@
 <template>
-  <main :class="{ dark: isDarkMode }">
+  <main>
     <div
       class="bg-gray-100 dark:bg-gray-800 dark:text-gray-300 transition min-h-screen"
     >
@@ -13,26 +13,11 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import { themeStore } from '~/store'
 
 export default Vue.extend({
   fetch() {
     // Ping the backend to wake him up from sleep state in heroku
     this.$axios.get('/')
-  },
-
-  computed: {
-    isDarkMode(): boolean {
-      return themeStore.darkMode
-    },
-  },
-
-  mounted() {
-    const darkMode =
-      localStorage['dark-mode'] ||
-      (!('dark-mode' in localStorage) &&
-        window.matchMedia('(prefers-color-scheme: dark)').matches)
-    themeStore.setDarkModeWhithoutSaving(JSON.parse(darkMode))
   },
 })
 </script>

@@ -20,7 +20,8 @@
       "@nuxt/types",
       "@nuxtjs/axios",
       "@nuxtjs/auth-next",
-      "nuxt-i18n"
+      "nuxt-i18n",
+      "@nuxtjs/color-mode"
     ]
   },
   "exclude": ["node_modules", ".nuxt", "dist"]
