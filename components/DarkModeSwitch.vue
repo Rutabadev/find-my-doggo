@@ -1,5 +1,9 @@
 <template>
-  <button class="px-4 cursor-pointer" @click="toggleDarkMode">
+  <button
+    class="px-4 cursor-pointer"
+    @click="toggleDarkMode"
+    @contextmenu.prevent="resetPreference"
+  >
     <div
       class="rounded-full w-10 h-6 text-secondary-500 bg-gray-100 dark:text-blue-400 dark:bg-blue-900 transition shadow-inner ring-2 ring-gray-200 dark:ring-blue-900"
     >
@@ -30,10 +34,15 @@ export default Vue.extend({
       } else {
         this.$colorMode.preference = 'dark'
       }
-      console.log({
-        pref: this.$colorMode.preference,
-        value: this.$colorMode.value,
-      })
+    },
+
+    resetPreference(): void {
+      const wantToReset = confirm(
+        'Do you want to reset your theme based on system preference ?'
+      )
+      if (wantToReset) {
+        this.$colorMode.preference = 'system'
+      }
     },
   },
 })
