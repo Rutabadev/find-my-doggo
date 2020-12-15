@@ -17,17 +17,19 @@
 </template>
 
 <script lang="ts">
-import Vue, { PropOptions } from 'vue'
+import Vue, { PropType } from 'vue'
 import { FormError } from '~/types'
 
 export default Vue.extend({
   props: {
     label: {
       type: String,
+      required: true,
       default: '',
     },
     name: {
       type: String,
+      required: true,
       default: '',
     },
     type: {
@@ -43,15 +45,15 @@ export default Vue.extend({
       default: false,
     },
     errors: {
-      type: Array,
+      type: Array as PropType<FormError[]>,
       default() {
         return []
       },
-    } as PropOptions<FormError[] | undefined>,
+    },
   },
 
   computed: {
-    fieldErrors(): string[] | [] {
+    fieldErrors(): string[] {
       return (
         this.errors
           ?.filter(({ field }) => field === this.name)

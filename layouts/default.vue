@@ -23,6 +23,9 @@ export default Vue.extend({
   },
 
   mounted() {
+    // Ping the backend to wake him up from sleep state in heroku
+    this.$axios.get('/')
+
     const darkMode =
       localStorage['dark-mode'] ||
       (!('dark-mode' in localStorage) &&

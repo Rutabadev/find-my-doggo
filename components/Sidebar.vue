@@ -67,7 +67,11 @@ import Vue from 'vue'
 
 export default Vue.extend({
   props: {
-    show: Boolean,
+    show: {
+      type: Boolean,
+      required: true,
+      default: false,
+    },
   },
 
   data(): {
