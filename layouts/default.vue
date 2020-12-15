@@ -16,6 +16,11 @@ import Vue from 'vue'
 import { themeStore } from '~/store'
 
 export default Vue.extend({
+  fetch() {
+    // Ping the backend to wake him up from sleep state in heroku
+    this.$axios.get('/')
+  },
+
   computed: {
     isDarkMode(): boolean {
       return themeStore.darkMode
@@ -23,9 +28,6 @@ export default Vue.extend({
   },
 
   mounted() {
-    // Ping the backend to wake him up from sleep state in heroku
-    this.$axios.get('/')
-
     const darkMode =
       localStorage['dark-mode'] ||
       (!('dark-mode' in localStorage) &&
