@@ -9,7 +9,7 @@
     >
       <div
         class="transition-transform transform-gpu bg-white dark:bg-gray-800 h-6 w-6 rounded-full shadow"
-        :class="isDarkMode ? 'translate-x-4' : 'translate'"
+        :class="isDarkMode ? 'translate-x-4 rotate-0' : 'translate -rotate-180'"
       >
         <Moon v-if="isDarkMode"></Moon>
         <Sun v-else></Sun>
