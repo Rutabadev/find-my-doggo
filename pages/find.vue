@@ -1,5 +1,5 @@
 <template>
-  <p>{{ $t('protected') }}</p>
+  <p>{{ $t('find') }}</p>
 </template>
 
 <script>

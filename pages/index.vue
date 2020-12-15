@@ -1,16 +1,14 @@
 <template>
-  <div>
-    <h1 class="text-xl text-center mb-8">
+  <div class="flex flex-col items-center">
+    <h1 class="text-xl mb-8">
       {{ $t('index.welcome') }}
       <em>{{ $t('index.spoiler') }}</em>
     </h1>
-    <Dog class="h-64 w-64 m-auto"></Dog>
+    <Dog class="h-64 w-64"></Dog>
 
-    <NuxtLink
-      to="/protected"
-      class="text-blue-600 dark:text-blue-400 hover:underline"
-      >{{ $t('index.go_to_protected') }}</NuxtLink
-    >
+    <button class="button">
+      <NuxtLink to="/find">{{ $t('index.find') }}</NuxtLink>
+    </button>
   </div>
 </template>
 

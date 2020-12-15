@@ -3,7 +3,7 @@ export default {
     title: 'Accueil',
     welcome: 'Trouve le doggo qui te correspond le mieux',
     spoiler: '(divulgachage, tous)',
-    go_to_protected: 'Aller à une page protégée',
+    find: 'Trouver mon doggo',
   },
   login: {
     title: 'Connexion',
@@ -25,5 +25,5 @@ export default {
     login: 'login',
   },
   logout: 'Déconnexion',
-  protected: 'Ceci est une page protégée',
+  find: 'Ceci est une page protégée',
 }

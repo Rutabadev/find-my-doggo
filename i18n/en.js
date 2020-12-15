@@ -3,7 +3,7 @@ export default {
     title: 'Home',
     welcome: 'Find the doggo that bests suits you',
     spoiler: '(spoiler, all of them)',
-    go_to_protected: 'Go to a protected page',
+    find: 'Go find my doggo',
   },
   login: {
     title: 'Login',
@@ -25,5 +25,5 @@ export default {
     login: 'login',
   },
   logout: 'Log out',
-  protected: 'This is a protected page',
+  find: 'This is a protected page',
 }
