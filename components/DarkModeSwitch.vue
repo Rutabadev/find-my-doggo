@@ -37,9 +37,7 @@ export default Vue.extend({
     },
 
     resetPreference(): void {
-      const wantToReset = confirm(
-        'Do you want to reset your theme based on system preference ?'
-      )
+      const wantToReset = confirm(this.$i18n.t('dark_mode_reset').toString())
       if (wantToReset) {
         this.$colorMode.preference = 'system'
       }
