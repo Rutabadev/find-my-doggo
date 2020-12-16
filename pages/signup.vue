@@ -44,6 +44,7 @@
 
 <script lang="ts">
 import Vue from 'vue'
+import { removeEmptyAttributes } from '~/utils'
 
 export default Vue.extend({
   auth: false,
@@ -78,8 +79,9 @@ export default Vue.extend({
   methods: {
     signup() {
       this.isLoading = true
+      const newUser: any = removeEmptyAttributes(this.signupInfo)
       this.$axios
-        .$post('/users', this.signupInfo)
+        .$post('/users', newUser)
         .then(() => {
           this.$router.push('/login')
         })
