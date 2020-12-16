@@ -10,12 +10,14 @@
     <InputField
       v-model="signupInfo.email"
       name="email"
+      type="email"
       :label="$t('signup.email')"
       :errors="errors"
     />
     <InputField
       v-model="signupInfo.password"
       name="password"
+      type="password"
       required
       :label="$t('signup.password')"
       :errors="errors"
@@ -96,7 +98,7 @@ export default Vue.extend({
 })
 </script>
 
-<style>
+<style lang="scss">
 .slide-right-enter-active,
 .slide-right-leave-active {
   transition: opacity 0.25s ease-in-out, transform 0.25s ease-in-out;
@@ -116,5 +118,15 @@ input[type='email']:valid {
 
 input[type='email']:not(:placeholder-shown):invalid {
   @apply text-red-500;
+}
+
+.dark {
+  input[type='email']:valid {
+    @apply text-green-400;
+  }
+
+  input[type='email']:not(:placeholder-shown):invalid {
+    @apply text-red-400;
+  }
 }
 </style>
