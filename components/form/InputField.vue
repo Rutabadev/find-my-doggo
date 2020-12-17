@@ -1,19 +1,21 @@
 <template>
-  <div class="field relative mt-4 mb-6">
-    <input
-      v-model="inputVal"
-      class="block w-full"
-      :type="type"
-      placeholder=" "
-    />
-    <label
-      class="absolute inset-0 p-2 text-gray-400 pointer-events-none duration-200 truncate"
-      :for="name"
-      >{{ label }}
-      <span v-if="required" class="text-red-500 dark:text-red-400"
-        >*</span
-      ></label
-    >
+  <div class="field mt-4 mb-6">
+    <div class="relative">
+      <input
+        v-model="inputVal"
+        class="block w-full"
+        :type="type"
+        placeholder=" "
+      />
+      <label
+        class="absolute inset-0 p-2 border-2 border-transparent text-gray-400 pointer-events-none duration-200 truncate"
+        :for="name"
+        >{{ label }}
+        <span v-if="required" class="text-red-500 dark:text-red-400"
+          >*</span
+        ></label
+      >
+    </div>
     <transition-group name="shake">
       <div v-for="(errorMessage, index) in fieldErrors" :key="errorMessage">
         <span class="text-red-500 dark:text-red-400">{{ errorMessage }}</span>
