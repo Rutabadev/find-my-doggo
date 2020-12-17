@@ -1,4 +1,6 @@
 export default {
+  dark_mode_reset:
+    'Voulez vous remettre le thème en fonction de votre préférence système ?',
   index: {
     title: 'Accueil',
     welcome: 'Trouve le doggo qui te correspond le mieux',

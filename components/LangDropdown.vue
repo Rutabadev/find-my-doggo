@@ -34,7 +34,7 @@
     >
       <div
         v-show="langDropdownOpen"
-        class="origin-top-right absolute left-0 right-0 mt-2 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5"
+        class="origin-top-right absolute left-0 right-0 mt-2 rounded-md shadow-lg bg-white dark:bg-gray-800 ring-1 ring-black ring-opacity-5"
       >
         <div
           class="py-1"
@@ -45,7 +45,7 @@
           <a
             v-for="locale in availableLocales"
             :key="locale.code"
-            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+            class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer"
             role="menuitem"
             @click="linkClick(locale.code)"
             >{{ locale.code }}

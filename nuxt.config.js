@@ -1,4 +1,8 @@
 export default {
+  env: {
+    version: JSON.stringify(require('./package.json').version),
+  },
+
   // Global page headers (https://go.nuxtjs.dev/config-head)
   head: {
     title: 'find-my-doggo',
@@ -17,6 +21,12 @@ export default {
   // Global CSS (https://go.nuxtjs.dev/config-css)
   css: ['~/assets/css/global.scss'],
 
+  // This is to make @nuxtjs/color-mode use 'dark' class not 'dark-mode'
+  // So that it applies to tailwind
+  colorMode: {
+    classSuffix: '',
+  },
+
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
   plugins: [],
 
@@ -28,6 +38,7 @@ export default {
     // https://go.nuxtjs.dev/typescript
     '@nuxt/typescript-build',
     '@nuxtjs/tailwindcss',
+    '@nuxtjs/color-mode',
   ],
 
   // Modules (https://go.nuxtjs.dev/config-modules)

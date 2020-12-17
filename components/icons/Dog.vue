@@ -7,6 +7,7 @@
     xmlns="http://www.w3.org/2000/svg"
     stroke="black"
     stroke-width="3"
+    @contextmenu.prevent="showVersion"
   >
     <path
       id="head"
@@ -56,8 +57,15 @@
   </svg>
 </template>
 
-<script>
-export default {}
+<script lang="ts">
+import Vue from 'vue'
+export default Vue.extend({
+  methods: {
+    showVersion(): void {
+      alert(process.env.version)
+    },
+  },
+})
 </script>
 
 <style lang="scss">
