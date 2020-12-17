@@ -80,6 +80,9 @@ dist
 # IDE / Editor
 .idea
 
+# VSCode
+.vscode
+
 # Service worker
 sw.*
 
