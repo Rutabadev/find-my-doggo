@@ -3,7 +3,7 @@ export default {
     title: 'Ter ter',
     welcome: 'Trouve le doggo qui match avec oit',
     spoiler: '(spoiler, juste tous)',
-    find: 'Fait péter le doggo',
+    find: 'Fais péter le doggo',
   },
   login: {
     title: 'Connexion',
