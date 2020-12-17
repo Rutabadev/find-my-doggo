@@ -1,7 +1,14 @@
 <template>
-  <div class="field">
-    <input v-model="inputVal" :type="type" placeholder=" " />
-    <label :for="name"
+  <div class="field relative mt-4 mb-6">
+    <input
+      v-model="inputVal"
+      class="block w-full"
+      :type="type"
+      placeholder=" "
+    />
+    <label
+      class="absolute inset-0 p-2 text-gray-400 pointer-events-none duration-200 truncate"
+      :for="name"
       >{{ label }}
       <span v-if="required" class="text-red-500 dark:text-red-400"
         >*</span
@@ -74,30 +81,11 @@ export default Vue.extend({
 
 <style lang="scss">
 .field {
-  @apply relative;
-  @apply mt-4;
-  @apply mb-6;
-
-  input {
-    @apply block;
-    @apply w-full;
-  }
-
-  label {
-    @apply absolute;
-    top: 2px;
-    @apply p-2;
-    @apply text-gray-400;
-    @apply pointer-events-none;
-    @apply duration-200;
-  }
-
   input:focus-within ~ label,
   input:not(:placeholder-shown) ~ label {
-    @apply top-0;
-    @apply -left-1;
     @apply p-0;
     @apply transform;
+    @apply origin-left;
     @apply scale-90;
     @apply -translate-y-6;
   }

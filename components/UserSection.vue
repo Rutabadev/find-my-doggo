@@ -1,5 +1,5 @@
 <template>
-  <div class="user-section flex">
+  <div class="user-section flex text-sm lg:text-base">
     <template v-if="!user">
       <NuxtLink
         to="/login"

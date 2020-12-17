@@ -78,6 +78,11 @@ export default {
         iso: 'en-US',
         file: 'en.js',
       },
+      {
+        code: 'djeun',
+        iso: 'dj-DJ',
+        file: 'djeun.js',
+      },
     ],
     langDir: 'i18n/',
     defaultLocale: 'en',

@@ -4,7 +4,7 @@
     to="/"
   >
     <svg
-      class="hidden sm:block h-10"
+      class="hidden lg:block h-10"
       fill="none"
       stroke="currentColor"
       viewBox="0 0 24 24"
