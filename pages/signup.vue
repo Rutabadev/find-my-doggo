@@ -23,6 +23,7 @@
       :errors="errors"
     />
     <button
+      aria-label="sign up"
       class="button my-2 self-center inline-flex items-center uppercase tracking-widest"
     >
       <span v-if="!isLoading">{{ $t('signup.signup') }}</span>

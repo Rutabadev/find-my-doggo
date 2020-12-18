@@ -6,6 +6,7 @@
       <div class="flex items-center space-x-4">
         <button
           id="toggle-sidebar"
+          aria-label="toggle sidebar"
           class="px-4 md:hidden hover:bg-primary-700 h-full"
           @click="toggleSidebar"
         >

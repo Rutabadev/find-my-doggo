@@ -14,6 +14,7 @@
       :errors="errors"
     />
     <button
+      aria-label="log in"
       class="button my-2 self-center inline-flex items-center uppercase tracking-widest"
     >
       <span v-if="!isLoading">{{ $t('login.login') }}</span>

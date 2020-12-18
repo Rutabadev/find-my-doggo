@@ -2,7 +2,8 @@
   <div class="relative inline-block text-left">
     <div>
       <button
-        id="options-menu"
+        id="lang-options-menu"
+        aria-label="lang options menu"
         type="button"
         class="inline-flex justify-center w-full rounded-md border border-gray-300 dark:border-gray-700 shadow-sm px-4 py-2 bg-white dark:bg-gray-800 text-sm font-medium text-gray-700 dark:text-gray-100 hover:bg-gray-50"
         :tabindex="tabindex"

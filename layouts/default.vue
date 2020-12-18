@@ -19,6 +19,9 @@ export default Vue.extend({
     // Ping the backend to wake him up from sleep state in heroku
     this.$axios.get('/')
   },
+  head() {
+    return this.$nuxtI18nSeo()
+  },
 })
 </script>
 

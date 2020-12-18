@@ -1,5 +1,6 @@
 <template>
   <button
+    aria-label="toggle dark mode"
     class="px-4 cursor-pointer"
     @click="toggleDarkMode"
     @contextmenu.prevent="resetPreference"

@@ -16,6 +16,7 @@
       <div class="flex justify-between">
         <button
           id="close-sidebar"
+          aria-label="close sidebar"
           class="h-16 px-4 hover:bg-primary-700 focus:bg-primary-700"
           :tabindex="!show ? '-1' : ''"
           @click="toggleSidebar"
@@ -46,6 +47,7 @@
           <button
             v-else
             :key="link.name"
+            aria-label="log out"
             :tabindex="!show ? '-1' : ''"
             class="hover:bg-primary-700 focus:bg-primary-700 py-4 cursor-pointer uppercase"
             @click="logout"
