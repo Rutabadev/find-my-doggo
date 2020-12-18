@@ -105,7 +105,6 @@ export default Vue.extend({
   }
 
   #tongue {
-    color: red;
     animation: tongue var(--tongue-speed) ease-in-out alternate infinite;
     transform-origin: top;
     transform-box: fill-box;
