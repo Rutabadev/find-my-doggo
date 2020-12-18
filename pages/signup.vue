@@ -102,34 +102,38 @@ export default Vue.extend({
 </script>
 
 <style lang="scss">
-.slide-right-enter-active,
-.slide-right-leave-active {
-  transition: opacity 0.25s ease-in-out, transform 0.25s ease-in-out;
-}
-.slide-right-leave-to {
-  opacity: 0;
-  transform: translate3d(var(--slide-distance), 0, 0);
-}
-.slide-right-enter {
-  opacity: 0;
-  transform: translate3d(calc(var(--slide-distance) * -1), 0, 0);
-}
-
-input[type='email']:valid {
-  @apply text-green-600;
+.slide {
+  &-right-enter-active,
+  &-right-leave-active {
+    transition: opacity 0.25s ease-in-out, transform 0.25s ease-in-out;
+  }
+  &-right-leave-to {
+    opacity: 0;
+    transform: translate3d(var(--slide-distance), 0, 0);
+  }
+  &-right-enter {
+    opacity: 0;
+    transform: translate3d(calc(var(--slide-distance) * -1), 0, 0);
+  }
 }
 
-input[type='email']:not(:placeholder-shown):invalid {
-  @apply text-red-500;
-}
-
-.dark {
-  input[type='email']:valid {
-    @apply text-green-400;
+input[type='email'] {
+  &:valid {
+    @apply text-green-600;
   }
 
-  input[type='email']:not(:placeholder-shown):invalid {
-    @apply text-red-400;
+  &:not(:placeholder-shown):invalid {
+    @apply text-red-500;
+  }
+
+  .dark & {
+    &:valid {
+      @apply text-green-400;
+    }
+
+    &:not(:placeholder-shown):invalid {
+      @apply text-red-400;
+    }
   }
 }
 </style>

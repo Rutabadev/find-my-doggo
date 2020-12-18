@@ -35,10 +35,8 @@ input {
   @apply rounded;
   @apply border-2;
   @apply p-2;
-}
 
-.dark {
-  input {
+  .dark & {
     @apply bg-gray-600;
     @apply border-gray-800;
   }
