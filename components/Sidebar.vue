@@ -15,7 +15,6 @@
     >
       <div class="flex justify-between">
         <button
-          id="close-sidebar"
           aria-label="close sidebar"
           class="h-16 px-4 hover:bg-primary-700 focus:bg-primary-700"
           :tabindex="!show ? '-1' : ''"
@@ -24,7 +23,6 @@
           <Cross class="h-8"></Cross>
         </button>
         <DarkModeSwitch
-          id="dark-mode-switch-mobile"
           class="md:hidden"
           :tabindex="!show ? '-1' : ''"
         ></DarkModeSwitch>
