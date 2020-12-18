@@ -3,13 +3,15 @@
 }
 
 /* Transition fade par défault sur toutes les pages */
-.page-enter-active,
-.page-leave-active {
-  transition: opacity 0.3s;
-}
-.page-enter,
-.page-leave-active {
-  opacity: 0;
+.page {
+  &-enter-active,
+  &-leave-active {
+    transition: opacity 0.3s;
+  }
+  &-enter,
+  &-leave-active {
+    opacity: 0;
+  }
 }
 
 .button {
@@ -20,13 +22,13 @@
   @apply rounded;
   @apply px-6;
   @apply py-1;
-}
 
-.button:hover,
-.button:focus {
-  @apply border-black;
-  @apply text-black;
-  @apply bg-white;
+  &:hover,
+  &:focus {
+    @apply border-black;
+    @apply text-black;
+    @apply bg-white;
+  }
 }
 
 input {
@@ -65,11 +67,14 @@ input {
   }
 }
 
-.shake-enter-active,
-.shake-leave-active {
-  animation: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
-}
-.shake-enter,
-.shake-leave-to {
-  opacity: 0;
+.shake {
+  &-enter-active,
+  &-leave-active {
+    animation: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+  }
+
+  &-enter,
+  &-leave-to {
+    opacity: 0;
+  }
 }
