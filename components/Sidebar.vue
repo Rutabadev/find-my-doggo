@@ -5,7 +5,7 @@
       :class="[show ? 'opacity-50' : 'opacity-0 pointer-events-none']"
       @click="toggleSidebar"
     ></div>
-    <ul
+    <div
       class="absolute left-0 top-0 bottom-0 w-2/3 max-w-md bg-primary-600 shadow-lg flex flex-col text-lg uppercase text-gray-100 text-center duration-200 z-10"
       :style="
         show
@@ -60,7 +60,7 @@
         :tabindex="!show ? '-1' : ''"
         class="self-center normal-case"
       ></LangDropdown>
-    </ul>
+    </div>
   </div>
 </template>
 
