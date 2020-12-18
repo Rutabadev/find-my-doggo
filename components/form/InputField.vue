@@ -86,10 +86,11 @@ export default Vue.extend({
   input:focus-within ~ label,
   input:not(:placeholder-shown) ~ label {
     @apply p-0;
+    @apply border-none;
     @apply transform;
     @apply origin-left;
     @apply scale-90;
-    @apply -translate-y-6;
+    @apply -translate-y-7;
   }
 }
 </style>
