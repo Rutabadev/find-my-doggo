@@ -19,8 +19,17 @@ export default Vue.extend({
     // Ping the backend to wake him up from sleep state in heroku
     this.$axios.get('/')
   },
+
   head() {
-    return this.$nuxtI18nSeo()
+    return {
+      ...this.$nuxtI18nSeo(),
+      link: [
+        {
+          rel: 'canonical',
+          href: 'https://find-doggo.herokuapp.com' + this.$route.path,
+        },
+      ],
+    }
   },
 })
 </script>
