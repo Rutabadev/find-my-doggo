@@ -16,13 +16,13 @@ export default {
     no_account: "Don't have an account ? Go to",
     signup: 'sign up',
   },
-  signup: {
-    title: 'Sign up',
+  create_account: {
+    title: 'Create account',
     username: 'Username',
     email: 'Email',
     password: 'Password',
-    signup: 'Sign up',
-    signing_up: 'Signin you up...',
+    create: 'Create account',
+    creating: 'Creating account...',
     already: 'Already have an account ? Go to ',
     login: 'login',
   },

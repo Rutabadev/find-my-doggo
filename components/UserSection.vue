@@ -7,11 +7,6 @@
       >
         {{ $t('login.title') }}
       </NuxtLink>
-      <NuxtLink
-        to="/signup"
-        class="whitespace-nowrap uppercase px-4 hover:bg-primary-700 focus:bg-primary-700 hidden md:block"
-        >{{ $t('signup.title') }}</NuxtLink
-      >
     </template>
     <template v-else>
       <button

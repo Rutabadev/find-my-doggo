@@ -1,43 +1,45 @@
 <template>
-  <Form :title="$t('signup.title')" :errors="errors" @submit="signup">
+  <Form :title="$t('create_account.title')" :errors="errors" @submit="signup">
     <InputField
       v-model="signupInfo.name"
       name="name"
       required
-      :label="$t('signup.username')"
+      :label="$t('create_account.username')"
       :errors="errors"
     />
     <InputField
       v-model="signupInfo.email"
       name="email"
       type="email"
-      :label="$t('signup.email')"
+      autocomplete="email"
+      :label="$t('create_account.email')"
       :errors="errors"
     />
     <InputField
       v-model="signupInfo.password"
       name="password"
       type="password"
+      autocomplete="new-password"
       required
-      :label="$t('signup.password')"
+      :label="$t('create_account.password')"
       :errors="errors"
     />
     <button
       aria-label="sign up"
       class="button my-2 self-center inline-flex items-center uppercase tracking-widest"
     >
-      <span v-if="!isLoading">{{ $t('signup.signup') }}</span>
+      <span v-if="!isLoading">{{ $t('create_account.create') }}</span>
       <template v-else>
         <Spinner class="h-5 w-5 mr-2"></Spinner>
-        {{ $t('signup.signing_up') }}
+        {{ $t('create_account.creating') }}
       </template>
     </button>
     <template slot="bottom">
-      {{ $t('signup.already') }}
+      {{ $t('create_account.already') }}
       <NuxtLink
         to="/login"
         class="text-blue-600 dark:text-blue-400 hover:underline mt-5"
-        >{{ $t('signup.login') }}</NuxtLink
+        >{{ $t('create_account.login') }}</NuxtLink
       >
     </template>
   </Form>

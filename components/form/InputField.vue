@@ -5,6 +5,7 @@
         v-model="inputVal"
         class="block w-full"
         :type="type"
+        :autocomplete="autocomplete"
         placeholder=" "
       />
       <label
@@ -44,6 +45,10 @@ export default Vue.extend({
     type: {
       type: String,
       default: 'text',
+    },
+    autocomplete: {
+      type: String,
+      default: '',
     },
     value: {
       type: String,
