@@ -95,11 +95,6 @@ export default Vue.extend({
           user: false,
         },
         {
-          route: '/signup',
-          name: 'signup.title',
-          user: false,
-        },
-        {
           name: 'logout',
           user: true,
         },

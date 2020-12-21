@@ -26,7 +26,7 @@
     <template slot="bottom">
       {{ $t('login.no_account') }}
       <NuxtLink
-        to="/signup"
+        to="/create-account"
         class="text-blue-600 dark:text-blue-400 hover:underline"
         >{{ $t('login.signup') }}</NuxtLink
       >
@@ -40,7 +40,7 @@ import { FormError } from '~/types'
 
 export default Vue.extend({
   transition(to) {
-    if (to.name?.startsWith('signup')) {
+    if (to.name?.startsWith('create-account')) {
       return 'slide-left'
     }
     return ''

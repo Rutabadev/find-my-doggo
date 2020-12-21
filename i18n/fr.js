@@ -16,13 +16,13 @@ export default {
     no_account: 'Pas encore de compte ? aller à',
     signup: "l'enregistrement",
   },
-  signup: {
+  create_account: {
     title: 'Enregistrement',
     username: "Nom d'utilisateur",
     email: 'Email',
     password: 'Mot de passe',
-    signup: "S'enregistrer",
-    signing_up: 'Enregistrement...',
+    create: "S'enregistrer",
+    creating: 'Enregistrement...',
     already: 'Déjà un compte ? Aller au ',
     login: 'login',
   },

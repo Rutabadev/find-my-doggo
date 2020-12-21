@@ -14,13 +14,13 @@ export default {
     no_account: 'Pas encore de compte (boloss)? aller à',
     signup: "l'enregistrement",
   },
-  signup: {
+  create_account: {
     title: 'Enregistrement',
     username: "Nom d'utilisateur genre Xx_kirby♥69_xX",
     email: 'Mail (revendu aux chinois pour te spammer)',
     password: "Mot de passe que t'as déjà réutilisé 20 fois",
-    signup: "S'enregistrer",
-    signing_up: 'Enregistrement...',
+    create: "S'enregistrer",
+    creating: 'Enregistrement...',
     already: 'Déjà un compte ? Bah bouge de là alors. Aller au ',
     login: 'login',
   },
