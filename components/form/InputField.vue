@@ -3,7 +3,7 @@
     <div class="relative">
       <input
         v-model="inputVal"
-        class="block w-full"
+        class="block w-full shadow-inner"
         :type="type"
         placeholder=" "
       />
@@ -83,7 +83,7 @@ export default Vue.extend({
 
 <style lang="scss">
 .field {
-  input:focus-within ~ label,
+  input:focus ~ label,
   input:not(:placeholder-shown) ~ label {
     @apply p-0;
     @apply border-none;
