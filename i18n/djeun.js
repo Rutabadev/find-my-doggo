@@ -1,4 +1,5 @@
 export default {
+  dark_mode_reset: 'Remettre le thème ne fonction de la préférence système ?',
   index: {
     title: 'Ter ter',
     welcome: 'Trouve le doggo qui match avec oit',
