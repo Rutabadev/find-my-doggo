@@ -9,12 +9,12 @@
       </NuxtLink>
     </template>
     <template v-else>
-      <button
-        aria-label="username"
+      <NuxtLink
+        to="/user"
         class="px-4 hover:bg-primary-700 focus:bg-primary-700"
       >
         {{ user.name }}
-      </button>
+      </NuxtLink>
       <button
         aria-label="log out"
         class="cursor-pointer whitespace-nowrap uppercase px-4 hover:bg-primary-700 focus:bg-primary-700 hidden md:block"
