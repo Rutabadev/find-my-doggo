@@ -3,7 +3,7 @@ export default {
     'Do you want to reset your theme based on system preference ?',
   index: {
     title: 'Home',
-    welcome: 'Find the doggo that bests suits you',
+    welcome: 'Find the doggo wich suits you best',
     spoiler: '(spoiler, all of them)',
     find: 'Go find my doggo',
   },
