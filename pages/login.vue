@@ -79,9 +79,8 @@ export default Vue.extend({
             { field: 'global', message: err?.response?.data || err.message },
           ]
         })
-      } finally {
-        this.isLoading = false
       }
+      this.isLoading = false
     },
   },
 })
