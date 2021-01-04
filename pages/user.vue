@@ -1,31 +1,33 @@
 <template>
-  <Form title="User information" :errors="errors">
+  <Form :title="$t('edit_account.title')" :errors="errors" @submit="update">
     <InputField
       v-model="userInfo.name"
       name="username"
-      label="username"
+      :label="$t('create_account.username')"
       :errors="errors"
     />
     <InputField
       v-model="userInfo.email"
       name="email"
-      label="email"
+      type="email"
+      :label="$t('create_account.email')"
       :errors="errors"
     />
     <InputField
       v-model="userInfo.password"
       name="password"
-      label="password"
+      type="password"
+      :label="$t('create_account.password')"
       :errors="errors"
     />
     <button
       aria-label="log in"
       class="button my-2 self-center inline-flex items-center uppercase tracking-widest"
     >
-      <span v-if="!isLoading">Update</span>
+      <span v-if="!isLoading">{{ $t('edit_account.update') }}</span>
       <template v-else>
         <Spinner class="h-5 w-5 mr-2"></Spinner>
-        Updating
+        {{ $t('edit_account.updating') }}
       </template>
     </button>
   </Form>
@@ -39,6 +41,7 @@ interface UserInfo {
   name: string
   email?: string
   password?: string
+  roles?: string[]
 }
 
 export default Vue.extend({
@@ -57,7 +60,33 @@ export default Vue.extend({
   },
 
   created() {
-    this.userInfo = this.$auth.user
+    this.userInfo = {
+      ...this.$auth.user,
+      roles: this.$auth.user?.roles.map(
+        ({ value }: { value: string }) => value
+      ),
+    }
+  },
+
+  methods: {
+    async update() {
+      this.isLoading = true
+      try {
+        await this.$axios.put(`/users/${this.$auth.user.id}`, {
+          ...this.userInfo,
+        })
+      } catch (err) {
+        // Clear errors and reset them in the next tick to force transition again
+        this.errors = []
+        this.$nextTick(() => {
+          this.errors = err?.response?.data?.errors || [
+            { field: 'global', message: err?.response?.data || err.message },
+          ]
+        })
+      }
+      this.isLoading = false
+      this.$auth.fetchUser()
+    },
   },
 })
 </script>

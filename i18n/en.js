@@ -26,6 +26,11 @@ export default {
     already: 'Already have an account ? Go to ',
     login: 'login',
   },
+  edit_account: {
+    title: 'Account information',
+    update: 'Update',
+    updating: 'Updating...',
+  },
   logout: 'Log out',
   find: 'This is a protected page',
 }

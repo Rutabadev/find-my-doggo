@@ -26,6 +26,11 @@ export default {
     already: 'Déjà un compte ? Aller au ',
     login: 'login',
   },
+  edit_account: {
+    title: 'Informations du compte',
+    update: 'Mettre à jour',
+    updating: 'Mise à jour...',
+  },
   logout: 'Déconnexion',
   find: 'Ceci est une page protégée',
 }

@@ -25,6 +25,11 @@ export default {
     already: 'Déjà un compte ? Bah bouge de là alors. Aller au ',
     login: 'login',
   },
+  edit_account: {
+    title: 'Infos du compte',
+    update: 'màj',
+    updating: 'màj...',
+  },
   logout: "J'me tire",
   find: "Vla la page protégée t'as vu c'est de la bête de frappe",
 }
