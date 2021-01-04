@@ -97,5 +97,25 @@ export default Vue.extend({
     @apply scale-90;
     @apply -translate-y-7;
   }
+
+  input[type='email'] {
+    &:valid {
+      @apply text-green-600;
+    }
+
+    &:not(:placeholder-shown):invalid {
+      @apply text-red-500;
+    }
+
+    .dark & {
+      &:valid {
+        @apply text-green-400;
+      }
+
+      &:not(:placeholder-shown):invalid {
+        @apply text-red-400;
+      }
+    }
+  }
 }
 </style>

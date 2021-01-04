@@ -118,24 +118,4 @@ export default Vue.extend({
     transform: translate3d(calc(var(--slide-distance) * -1), 0, 0);
   }
 }
-
-input[type='email'] {
-  &:valid {
-    @apply text-green-600;
-  }
-
-  &:not(:placeholder-shown):invalid {
-    @apply text-red-500;
-  }
-
-  .dark & {
-    &:valid {
-      @apply text-green-400;
-    }
-
-    &:not(:placeholder-shown):invalid {
-      @apply text-red-400;
-    }
-  }
-}
 </style>
