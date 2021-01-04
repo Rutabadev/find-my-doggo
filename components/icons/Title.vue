@@ -20,9 +20,3 @@
     <span>Find my doggo</span>
   </NuxtLink>
 </template>
-
-<script>
-export default {}
-</script>
-
-<style></style>

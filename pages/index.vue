@@ -18,5 +18,3 @@ export default Vue.extend({
   auth: false,
 })
 </script>
-
-<style></style>
