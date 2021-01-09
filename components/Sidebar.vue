@@ -1,69 +1,89 @@
 <template>
   <div>
     <div
-      class="absolute inset-0 bg-black duration-500 z-10"
+      class="absolute inset-0 bg-black duration-500"
       :class="[show ? 'opacity-50' : 'opacity-0 pointer-events-none']"
       @click="toggleSidebar"
     ></div>
     <div
-      class="absolute left-0 top-0 bottom-0 w-2/3 max-w-md bg-primary-600 shadow-lg flex flex-col text-lg uppercase text-gray-100 text-center duration-200 z-10"
+      class="absolute left-0 top-0 bottom-0 w-2/3 max-w-md shadow-lg duration-200 z-10"
       :style="
         show
           ? 'transform: translate3d(0, 0, 0)'
           : 'transform: translate3d(-102%, 0, 0)'
       "
     >
-      <div class="flex justify-between">
-        <button
-          aria-label="close sidebar"
-          class="h-16 px-4 hover:bg-primary-700 focus:bg-primary-700"
-          :tabindex="!show ? '-1' : ''"
-          @click="toggleSidebar"
+      <div
+        class="relative w-full h-full flex flex-col text-lg uppercase text-gray-100 text-center"
+      >
+        <svg
+          viewBox="0 0 214 720"
+          class="absolute text-primary-600"
+          style="z-index: -1"
+          height="100%"
+          width="100%"
+          fill="currentColor"
+          preserveAspectRatio="none"
+          xmlns="http://www.w3.org/2000/svg"
         >
-          <Cross class="h-8"></Cross>
-        </button>
-        <DarkModeSwitch
-          class="md:hidden"
-          :tabindex="!show ? '-1' : ''"
-        ></DarkModeSwitch>
-      </div>
-      <template v-for="link of links">
-        <template
-          v-if="(link.user && user) || (!link.user && !user) || link.always"
-        >
-          <NuxtLink
-            v-if="link.route"
-            :key="link.name"
-            :tabindex="!show ? '-1' : ''"
-            class="hover:bg-primary-700 focus:bg-primary-700 py-4 uppercase"
-            :to="link.route"
-            @click.native="toggleSidebar"
-          >
-            {{ $t(link.name) }}
-            <Notification v-if="isRouteActive(link.route)"></Notification>
-          </NuxtLink>
+          <path
+            id="wave"
+            d="M-3 0H153C305.5 150.5 130.5 346.5 62 493C7.19999 610.2 101.833 692.667 156 720H-3V0Z"
+          />
+        </svg>
+        <div class="flex justify-between">
           <button
-            v-else
-            :key="link.name"
-            aria-label="log out"
+            aria-label="close sidebar"
+            class="h-16 px-4 hover:bg-primary-700 focus:bg-primary-700"
             :tabindex="!show ? '-1' : ''"
-            class="hover:bg-primary-700 focus:bg-primary-700 py-4 cursor-pointer uppercase"
-            @click="logout"
+            @click="toggleSidebar"
           >
-            {{ $t(link.name) }}
+            <Cross class="h-8"></Cross>
           </button>
+          <DarkModeSwitch
+            class="md:hidden"
+            :tabindex="!show ? '-1' : ''"
+          ></DarkModeSwitch>
+        </div>
+        <template v-for="link of links">
+          <template
+            v-if="(link.user && user) || (!link.user && !user) || link.always"
+          >
+            <NuxtLink
+              v-if="link.route"
+              :key="link.name"
+              :tabindex="!show ? '-1' : ''"
+              class="hover:bg-primary-700 focus:bg-primary-700 py-4 uppercase"
+              :to="link.route"
+              @click.native="toggleSidebar"
+            >
+              {{ $t(link.name) }}
+              <Notification v-if="isRouteActive(link.route)"></Notification>
+            </NuxtLink>
+            <button
+              v-else
+              :key="link.name"
+              aria-label="log out"
+              :tabindex="!show ? '-1' : ''"
+              class="hover:bg-primary-700 focus:bg-primary-700 py-4 cursor-pointer uppercase"
+              @click="logout"
+            >
+              {{ $t(link.name) }}
+            </button>
+          </template>
         </template>
-      </template>
-      <LangDropdown
-        :tabindex="!show ? '-1' : ''"
-        class="self-center normal-case"
-      ></LangDropdown>
+        <LangDropdown
+          :tabindex="!show ? '-1' : ''"
+          class="self-center normal-case"
+        ></LangDropdown>
+      </div>
     </div>
   </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
+import anime from 'animejs'
 
 export default Vue.extend({
   props: {
@@ -105,6 +125,36 @@ export default Vue.extend({
   computed: {
     user(): any {
       return this.$auth.user
+    },
+  },
+
+  watch: {
+    show(show: boolean): void {
+      const targets = document.querySelector('#wave')
+      const easing = 'spring(1, 80, 20, 0)'
+      if (show) {
+        anime({
+          targets,
+          d: [
+            {
+              value:
+                'M0 0H214.023C234.5 203 218.5 350 214 502.5C215.5 623 218 692 214.5 720H0V0Z',
+            },
+          ],
+          easing,
+        })
+      } else {
+        anime({
+          targets,
+          d: [
+            {
+              value:
+                'M-3 0H153C305.5 150.5 130.5 346.5 62 493C7.19999 610.2 101.833 692.667 156 720H-3V0Z',
+            },
+          ],
+          easing,
+        })
+      }
     },
   },
 
