@@ -14,10 +14,8 @@
         class="absolute inset-0 p-2 border-2 border-transparent text-gray-400 pointer-events-none duration-200 truncate"
         :for="name"
         >{{ label }}
-        <span v-if="required" class="text-red-500 dark:text-red-400"
-          >*</span
-        ></label
-      >
+        <span v-if="required" class="text-red-500 dark:text-red-400">*</span>
+      </label>
     </div>
     <transition-group name="shake">
       <div v-for="(errorMessage, index) in fieldErrors" :key="errorMessage">
