@@ -1,7 +1,7 @@
 <template>
   <div>
     <div
-      class="absolute inset-0 bg-black duration-500"
+      class="absolute inset-0 bg-black duration-500 z-10"
       :class="[show ? 'opacity-50' : 'opacity-0 pointer-events-none']"
       @click="toggleSidebar"
     ></div>
