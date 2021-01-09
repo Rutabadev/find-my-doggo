@@ -1,8 +1,10 @@
 <template>
   <div class="field mt-4 mb-6">
     <div class="relative">
+      <!--suppress HtmlFormInputWithoutLabel -->
       <input
         v-model="inputVal"
+        :name="name"
         class="block w-full shadow-inner"
         :type="type"
         :autocomplete="autocomplete"
@@ -86,7 +88,7 @@ export default Vue.extend({
 })
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .field {
   input:focus ~ label,
   input:not(:placeholder-shown) ~ label {

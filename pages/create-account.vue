@@ -114,8 +114,9 @@ export default Vue.extend({
     transform: translate3d(var(--slide-distance), 0, 0);
   }
   &-right-enter {
+    --inversed-slide-distance: calc(var(--slide-distance) * -1);
     opacity: 0;
-    transform: translate3d(calc(var(--slide-distance) * -1), 0, 0);
+    transform: translate3d(var(--inversed-slide-distance), 0, 0);
   }
 }
 </style>

@@ -93,8 +93,9 @@ export default Vue.extend({
     transition: opacity 0.25s ease-in-out, transform 0.25s ease-in-out;
   }
   &-left-leave-to {
+    --inversed-slide-distance: calc(var(--slide-distance) * -1);
     opacity: 0;
-    transform: translate3d(calc(var(--slide-distance) * -1), 0, 0);
+    transform: translate3d(var(--inversed-slide-distance), 0, 0);
   }
   &-left-enter {
     opacity: 0;
