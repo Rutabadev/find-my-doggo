@@ -3,8 +3,8 @@
     <div class="relative">
       <!--suppress HtmlFormInputWithoutLabel -->
       <input
+        :id="name"
         v-model="inputVal"
-        :name="name"
         class="block w-full shadow-inner"
         :type="type"
         :autocomplete="autocomplete"
