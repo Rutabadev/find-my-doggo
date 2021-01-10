@@ -13,9 +13,7 @@
           : 'transform: translate3d(-102%, 0, 0)'
       "
     >
-      <div
-        class="relative w-full h-full flex flex-col text-lg uppercase text-gray-100 text-center"
-      >
+      <div class="relative w-full h-full">
         <svg
           viewBox="0 0 214 720"
           class="absolute text-primary-600"
@@ -41,41 +39,48 @@
             <Cross class="h-8"></Cross>
           </button>
           <DarkModeSwitch
-            class="md:hidden"
+            :class="`md:hidden transform-gpu ${
+              show ? 'duration-500' : '-translate-x-full'
+            } transition-transform`"
             :tabindex="!show ? '-1' : ''"
           ></DarkModeSwitch>
         </div>
-        <template v-for="link of links">
-          <template
-            v-if="(link.user && user) || (!link.user && !user) || link.always"
-          >
-            <NuxtLink
-              v-if="link.route"
-              :key="link.name"
-              :tabindex="!show ? '-1' : ''"
-              class="hover:bg-primary-700 focus:bg-primary-700 py-4 uppercase"
-              :to="link.route"
-              @click.native="toggleSidebar"
+        <ProgressiveItems
+          :show="show"
+          class="flex flex-col text-lg uppercase text-gray-100 text-center"
+        >
+          <template v-for="link of links">
+            <template
+              v-if="(link.user && user) || (!link.user && !user) || link.always"
             >
-              {{ $t(link.name) }}
-              <Notification v-if="isRouteActive(link.route)"></Notification>
-            </NuxtLink>
-            <button
-              v-else
-              :key="link.name"
-              aria-label="log out"
-              :tabindex="!show ? '-1' : ''"
-              class="hover:bg-primary-700 focus:bg-primary-700 py-4 cursor-pointer uppercase"
-              @click="logout"
-            >
-              {{ $t(link.name) }}
-            </button>
+              <NuxtLink
+                v-if="link.route"
+                :key="link.name"
+                :tabindex="!show ? '-1' : ''"
+                class="hover:bg-primary-700 focus:bg-primary-700 py-4 uppercase"
+                :to="link.route"
+                @click.native="toggleSidebar"
+              >
+                {{ $t(link.name) }}
+                <Notification v-if="isRouteActive(link.route)"></Notification>
+              </NuxtLink>
+              <button
+                v-else
+                :key="link.name"
+                aria-label="log out"
+                :tabindex="!show ? '-1' : ''"
+                class="hover:bg-primary-700 focus:bg-primary-700 py-4 cursor-pointer uppercase"
+                @click="logout"
+              >
+                {{ $t(link.name) }}
+              </button>
+            </template>
           </template>
-        </template>
-        <LangDropdown
-          :tabindex="!show ? '-1' : ''"
-          class="self-center normal-case"
-        ></LangDropdown>
+          <LangDropdown
+            :tabindex="!show ? '-1' : ''"
+            class="self-center normal-case"
+          ></LangDropdown>
+        </ProgressiveItems>
       </div>
     </div>
   </div>
