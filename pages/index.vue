@@ -5,9 +5,12 @@
       <em>{{ $t('index.spoiler') }}</em>
     </h1>
     <Dog class="h-64 w-64"></Dog>
-    <button class="button" aria-label="go find my doggo">
-      <NuxtLink to="/find">{{ $t('index.find') }}</NuxtLink>
-    </button>
+
+    <NuxtLink to="/find">
+      <button class="button" aria-label="go find my doggo">
+        {{ $t('index.find') }}
+      </button>
+    </NuxtLink>
   </div>
 </template>
 
