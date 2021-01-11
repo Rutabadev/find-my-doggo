@@ -6,7 +6,7 @@
       @click="toggleSidebar"
     ></div>
     <div
-      class="absolute left-0 top-0 bottom-0 w-2/3 max-w-md shadow-lg duration-200 z-10"
+      class="absolute left-0 top-0 bottom-0 w-2/3 max-w-md duration-200 z-10"
       :style="
         show
           ? 'transform: translate3d(0, 0, 0)'
@@ -32,7 +32,7 @@
         <div class="flex justify-between">
           <button
             aria-label="close sidebar"
-            class="h-16 px-4 hover:bg-primary-700 focus:bg-primary-700"
+            class="h-16 px-4 hover:bg-primary-700 focus:bg-primary-700 text-gray-50"
             :tabindex="!show ? '-1' : ''"
             @click="toggleSidebar"
           >

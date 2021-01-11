@@ -1,7 +1,7 @@
 <template>
-  <div class="navbar">
+  <div>
     <nav
-      class="relative bg-primary-600 text-white flex justify-between h-16 shadow-lg"
+      class="relative bg-primary-600 text-gray-50 flex justify-between h-16 shadow-lg"
     >
       <div class="flex items-center space-x-4">
         <button

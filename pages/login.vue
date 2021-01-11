@@ -28,8 +28,9 @@
       <NuxtLink
         to="/create-account"
         class="text-blue-600 dark:text-blue-400 hover:underline"
-        >{{ $t('login.signup') }}</NuxtLink
       >
+        {{ $t('login.signup') }}
+      </NuxtLink>
     </template>
   </Form>
 </template>

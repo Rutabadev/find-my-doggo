@@ -1,11 +1,11 @@
 <template>
   <main>
     <div
-      class="bg-gray-100 dark:bg-gray-800 dark:text-gray-300 transition min-h-screen"
+      class="bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-300 transition min-h-screen"
     >
-      <Navbar></Navbar>
+      <Navbar />
       <div class="container p-5 mx-auto">
-        <Nuxt></Nuxt>
+        <Nuxt />
       </div>
     </div>
   </main>
