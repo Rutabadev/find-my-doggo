@@ -43,7 +43,7 @@
               show ? 'duration-500' : '-translate-x-full'
             } transition-transform`"
             :tabindex="!show ? '-1' : ''"
-          ></DarkModeSwitch>
+          />
         </div>
         <ProgressiveItems
           :show="show"
@@ -76,10 +76,9 @@
               </button>
             </template>
           </template>
-          <LangDropdown
-            :tabindex="!show ? '-1' : ''"
-            class="self-center normal-case"
-          ></LangDropdown>
+          <div class="py-4">
+            <LangDropdown :tabindex="!show ? '-1' : ''" class="normal-case" />
+          </div>
         </ProgressiveItems>
       </div>
     </div>
