@@ -7,7 +7,7 @@
 <script lang="ts">
 import Vue from 'vue'
 
-const classes = ['-translate-x-36', 'duration-300']
+const classes = ['-translate-x-80', 'duration-300']
 
 export default Vue.extend({
   props: {
@@ -29,10 +29,10 @@ export default Vue.extend({
   mounted() {
     this.$children.forEach((child, index) => {
       const element = child.$el as HTMLElement
-      element.style.transitionDelay = `${index * 100}ms`
+      element.style.transitionDelay = `${++index * 100}ms`
       element.classList.add(
         'transform-gpu',
-        '-translate-x-36',
+        '-translate-x-80',
         'transition-transform',
         'ease-out'
       )
