@@ -7,7 +7,12 @@
 <script lang="ts">
 import Vue from 'vue'
 
-const classes = ['-translate-x-80', 'duration-300']
+const defaultClasses = [
+  'transform-gpu',
+  'transition-transform',
+  'ease-out',
+  'duration-200',
+]
 
 export default Vue.extend({
   props: {
@@ -17,26 +22,46 @@ export default Vue.extend({
     },
   },
 
+  data(): {
+    observer: undefined | MutationObserver
+  } {
+    return {
+      observer: undefined,
+    }
+  },
+
   watch: {
     show() {
-      this.$children.forEach((child) => {
-        const element = child.$el as HTMLElement
-        classes.forEach((className) => element.classList.toggle(className))
-      })
+      this.setupAnimations()
     },
   },
 
   mounted() {
-    this.$children.forEach((child, index) => {
-      const element = child.$el as HTMLElement
-      element.style.transitionDelay = `${++index * 100}ms`
-      element.classList.add(
-        'transform-gpu',
-        '-translate-x-80',
-        'transition-transform',
-        'ease-out'
-      )
-    })
+    this.setupAnimations()
+    this.observer = new MutationObserver(this.setupAnimations)
+    this.observer.observe(this.$el, { childList: true })
+  },
+
+  beforeDestroy() {
+    this.observer?.disconnect()
+  },
+
+  methods: {
+    setupAnimations(): void {
+      Array.from(this.$el.children).forEach((child, index) => {
+        const element = child as HTMLElement
+        if (this.show) {
+          element.classList.remove('-translate-x-full')
+          element.classList.add(...defaultClasses)
+          element.classList.add('translate-x-0')
+        } else {
+          element.style.transitionDelay = `${++index * 100}ms`
+          element.classList.remove('translate-x-0')
+          element.classList.add(...defaultClasses)
+          element.classList.add('-translate-x-full')
+        }
+      })
+    },
   },
 })
 </script>
