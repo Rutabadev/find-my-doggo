@@ -1,10 +1,10 @@
 <template>
   <NuxtLink
-    class="text-xl sm:text-3xl whitespace-nowrap capitalize flex items-center sm:space-x-2"
+    class="px-4 text-xl sm:text-3xl whitespace-nowrap capitalize flex items-center"
     to="/"
   >
     <svg
-      class="hidden lg:block h-10"
+      class="hidden lg:block h-10 mr-2"
       fill="none"
       stroke="currentColor"
       viewBox="0 0 24 24"
