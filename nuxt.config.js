@@ -22,7 +22,7 @@ export default {
   css: ['~/assets/css/global.scss'],
 
   // This is to make @nuxtjs/color-mode use 'dark' class not 'dark-mode'
-  // So that it applies to tailwind
+  // so that it applies to tailwind
   colorMode: {
     classSuffix: '',
   },
