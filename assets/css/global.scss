@@ -2,6 +2,82 @@
   --slide-distance: 30px;
 }
 
+@layer base {
+  input {
+    @apply p-2;
+    @apply border-2;
+    @apply rounded;
+
+    .dark & {
+      @apply bg-gray-600;
+      @apply border-gray-800;
+    }
+
+    &:focus {
+      @apply outline-none;
+      @apply border-primary-600;
+      @apply ring-2;
+      @apply ring-primary-400;
+    }
+
+    .dark &:focus {
+      @apply border-primary-500;
+    }
+  }
+}
+
+@layer components {
+  .button {
+    @apply px-6;
+    @apply py-1;
+    @apply border-2;
+    @apply border-transparent;
+    @apply text-gray-100;
+    @apply bg-primary-600;
+    @apply rounded;
+
+    .dark & {
+      @apply bg-primary-500;
+      @apply text-gray-50;
+    }
+
+    &:hover,
+    &:focus {
+      @apply bg-indigo-800
+    }
+
+    .dark &:hover,
+    .dark &:focus {
+      @apply bg-indigo-600
+    }
+
+    &:focus {
+      @apply outline-none;
+      @apply ring-2;
+      @apply ring-primary-500;
+    }
+  }
+
+  .link {
+      @apply text-primary-600;
+
+    .dark & {
+      @apply text-secondary-500;
+    }
+
+    &:hover {
+      @apply underline;
+    }
+
+    &:focus {
+      @apply outline-none;
+      @apply ring-2;
+      @apply ring-primary-400;
+      @apply rounded;
+    }
+  }
+}
+
 /* Transition fade par défaut sur toutes les pages */
 .page {
   &-enter-active,
@@ -11,34 +87,6 @@
   &-enter,
   &-leave-active {
     opacity: 0;
-  }
-}
-
-.button {
-  @apply text-white;
-  @apply bg-black;
-  @apply border-2;
-  @apply border-transparent;
-  @apply rounded;
-  @apply px-6;
-  @apply py-1;
-
-  &:hover,
-  &:focus {
-    @apply border-black;
-    @apply text-black;
-    @apply bg-white;
-  }
-}
-
-input {
-  @apply rounded;
-  @apply border-2;
-  @apply p-2;
-
-  .dark & {
-    @apply bg-gray-600;
-    @apply border-gray-800;
   }
 }
 

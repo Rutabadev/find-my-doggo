@@ -25,10 +25,7 @@
     </button>
     <template slot="bottom">
       {{ $t('login.no_account') }}
-      <NuxtLink
-        to="/create-account"
-        class="text-blue-600 dark:text-blue-400 hover:underline"
-      >
+      <NuxtLink to="/create-account" class="link">
         {{ $t('login.signup') }}
       </NuxtLink>
     </template>

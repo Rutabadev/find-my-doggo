@@ -36,11 +36,9 @@
     </button>
     <template slot="bottom">
       {{ $t('create_account.already') }}
-      <NuxtLink
-        to="/login"
-        class="text-blue-600 dark:text-blue-400 hover:underline mt-5"
-        >{{ $t('create_account.login') }}</NuxtLink
-      >
+      <NuxtLink to="/login" class="link">
+        {{ $t('create_account.login') }}
+      </NuxtLink>
     </template>
   </Form>
 </template>
