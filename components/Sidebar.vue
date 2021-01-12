@@ -16,11 +16,7 @@
       <div class="relative w-full h-full">
         <svg
           viewBox="0 0 214 720"
-          class="absolute text-primary-600"
-          style="
-            z-index: -1;
-            filter: drop-shadow(0 0 4px hsla(0, 0%, 10%, 0.5));
-          "
+          class="sidebar-svg absolute text-primary-600"
           height="100%"
           width="100%"
           fill="currentColor"
@@ -181,3 +177,10 @@ export default Vue.extend({
   },
 })
 </script>
+
+<style lang="scss" scoped>
+.sidebar-svg {
+  z-index: -1;
+  filter: drop-shadow(0 0 4px hsla(0, 0%, 10%, 0.5));
+}
+</style>
