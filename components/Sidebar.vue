@@ -6,7 +6,7 @@
       @click="toggleSidebar"
     ></div>
     <div
-      class="absolute left-0 top-0 bottom-0 w-2/3 max-w-md duration-200 z-10"
+      class="absolute left-0 top-0 bottom-0 w-2/3 max-w-xs duration-200 z-10"
       :style="
         show
           ? 'transform: translate3d(0, 0, 0)'
