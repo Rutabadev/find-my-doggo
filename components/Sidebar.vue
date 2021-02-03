@@ -83,7 +83,6 @@
 </template>
 
 <script lang="ts">
-import { settings } from 'cluster'
 import Vue from 'vue'
 import anime from 'animejs'
 
