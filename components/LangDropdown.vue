@@ -5,7 +5,6 @@
         aria-label="lang options menu"
         type="button"
         class="inline-flex justify-center w-full rounded-md border border-gray-300 dark:border-gray-700 shadow-sm px-4 py-2 bg-white dark:bg-gray-800 text-sm font-medium text-gray-700 dark:text-gray-100 hover:bg-gray-50"
-        :tabindex="tabindex"
         @click="langDropdownOpen = !langDropdownOpen"
       >
         {{ $i18n.locale }}
@@ -61,13 +60,6 @@ import { NuxtVueI18n } from 'nuxt-i18n/types/nuxt-i18n'
 import Vue from 'vue'
 
 export default Vue.extend({
-  props: {
-    tabindex: {
-      type: String,
-      default: '',
-    },
-  },
-
   data() {
     return {
       langDropdownOpen: false,
