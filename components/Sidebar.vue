@@ -7,6 +7,7 @@
     ></div>
     <div
       class="absolute left-0 top-0 bottom-0 w-2/3 max-w-md duration-200 z-10"
+      :class="show ? 'visible' : 'invisible'"
       :style="
         show
           ? 'transform: translate3d(0, 0, 0)'
@@ -32,7 +33,6 @@
           <button
             aria-label="close sidebar"
             class="h-16 px-4 hover:bg-primary-700 focus:bg-primary-700 text-gray-50"
-            :tabindex="!show ? '-1' : ''"
             @click="toggleSidebar"
           >
             <Cross class="h-8"></Cross>
@@ -41,7 +41,6 @@
             :class="`md:hidden transform-gpu ${
               show ? 'duration-500' : '-translate-x-full'
             } transition-transform`"
-            :tabindex="!show ? '-1' : ''"
           />
         </div>
         <ProgressiveItems
@@ -55,7 +54,6 @@
               <NuxtLink
                 v-if="link.route"
                 :key="link.name"
-                :tabindex="!show ? '-1' : ''"
                 class="hover:bg-primary-700 focus:bg-primary-700 py-4 uppercase"
                 :to="link.route"
                 @click.native="toggleSidebar"
@@ -67,7 +65,6 @@
                 v-else
                 :key="link.name"
                 aria-label="log out"
-                :tabindex="!show ? '-1' : ''"
                 class="hover:bg-primary-700 focus:bg-primary-700 py-4 cursor-pointer uppercase"
                 @click="logout"
               >
@@ -76,7 +73,7 @@
             </template>
           </template>
           <div class="py-4">
-            <LangDropdown :tabindex="!show ? '-1' : ''" class="normal-case" />
+            <LangDropdown class="normal-case" />
           </div>
         </ProgressiveItems>
       </div>
