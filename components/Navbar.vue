@@ -3,6 +3,7 @@
     <nav class="grid grid-cols-3 bg-primary-600 text-gray-50 h-16 shadow-lg">
       <div class="flex items-center space-x-4">
         <button
+          ref="openSideBarButton"
           aria-label="toggle sidebar"
           class="px-4 md:hidden hover:bg-primary-700 h-full"
           @click="toggleSidebar"
@@ -31,7 +32,11 @@ export default Vue.extend({
 
   methods: {
     toggleSidebar() {
-      this.showSidebar = !this.showSidebar
+      const nextShowSidebar = !this.showSidebar
+      this.showSidebar = nextShowSidebar
+      if (!nextShowSidebar) {
+        ;(this.$refs.openSideBarButton as HTMLElement).focus()
+      }
     },
   },
 })

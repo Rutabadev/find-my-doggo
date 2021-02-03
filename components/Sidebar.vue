@@ -31,6 +31,7 @@
         </svg>
         <div class="flex justify-between">
           <button
+            ref="closeSideBarButton"
             aria-label="close sidebar"
             class="h-16 px-4 hover:bg-primary-700 focus:bg-primary-700 text-gray-50"
             @click="toggleSidebar"
@@ -82,6 +83,7 @@
 </template>
 
 <script lang="ts">
+import { settings } from 'cluster'
 import Vue from 'vue'
 import anime from 'animejs'
 
@@ -133,6 +135,10 @@ export default Vue.extend({
       const targets = document.querySelector('#wave')
       const easing = 'spring(1, 80, 20, 0)'
       if (show) {
+        setTimeout(() => {
+          ;(this.$refs.closeSideBarButton as HTMLElement).focus()
+        }, 100)
+
         anime({
           targets,
           d: [
