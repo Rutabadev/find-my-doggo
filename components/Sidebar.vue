@@ -8,11 +8,10 @@
     <div
       class="absolute left-0 top-0 bottom-0 w-2/3 max-w-xs duration-200 z-10"
       :class="show ? 'visible' : 'invisible'"
-      :style="
-        show
-          ? 'transform: translate3d(0, 0, 0)'
-          : 'transform: translate3d(-102%, 0, 0)'
-      "
+      :style="{
+        transform: show ? 'translate3d(0, 0, 0)' : 'translate3d(-102%, 0, 0)',
+        'will-change': 'transform',
+      }"
     >
       <div class="relative w-full h-full">
         <svg
