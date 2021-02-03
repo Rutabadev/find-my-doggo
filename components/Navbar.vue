@@ -1,8 +1,6 @@
 <template>
   <div>
-    <nav
-      class="relative bg-primary-600 text-gray-50 flex justify-between h-16 shadow-lg"
-    >
+    <nav class="grid grid-cols-3 bg-primary-600 text-gray-50 h-16 shadow-lg">
       <div class="flex items-center space-x-4">
         <button
           aria-label="toggle sidebar"
@@ -14,10 +12,8 @@
         <LangDropdown class="hidden md:block"></LangDropdown>
         <DarkModeSwitch class="hidden md:block h-full"></DarkModeSwitch>
       </div>
-      <Title
-        class="absolute inset-y-0 left-1/2 transform-gpu -translate-x-1/2"
-      />
-      <UserSection />
+      <Title class="place-self-center" />
+      <UserSection class="place-self-end" />
     </nav>
     <Sidebar :show="showSidebar" @onToggleSidebar="toggleSidebar"></Sidebar>
   </div>

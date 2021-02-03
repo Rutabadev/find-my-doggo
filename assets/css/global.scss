@@ -4,76 +4,55 @@
 
 @layer base {
   input {
-    @apply p-2;
+    @apply focus:outline-none;
+    @apply focus:ring-2;
+    @apply focus:ring-primary-400;
     @apply border-2;
+    @apply focus:border-primary-600;
     @apply rounded;
+    @apply p-2;
 
     .dark & {
       @apply bg-gray-600;
       @apply border-gray-800;
-    }
-
-    &:focus {
-      @apply outline-none;
-      @apply border-primary-600;
-      @apply ring-2;
-      @apply ring-primary-400;
-    }
-
-    .dark &:focus {
-      @apply border-primary-500;
+      @apply focus:border-primary-500;
     }
   }
 }
 
 @layer components {
   .button {
-    @apply px-6;
-    @apply py-1;
+    @apply rounded;
+    @apply focus:outline-none;
+    @apply focus:ring-2;
+    @apply focus:ring-primary-500;
     @apply border-2;
     @apply border-transparent;
-    @apply text-gray-100;
+    @apply px-6;
+    @apply py-1;
     @apply bg-primary-600;
-    @apply rounded;
+    @apply hover:bg-indigo-800;
+    @apply focus:bg-indigo-800;
+    @apply text-gray-100;
 
     .dark & {
       @apply bg-primary-500;
+      @apply hover:bg-indigo-600;
+      @apply focus:bg-indigo-600;
       @apply text-gray-50;
-    }
-
-    &:hover,
-    &:focus {
-      @apply bg-indigo-800
-    }
-
-    .dark &:hover,
-    .dark &:focus {
-      @apply bg-indigo-600
-    }
-
-    &:focus {
-      @apply outline-none;
-      @apply ring-2;
-      @apply ring-primary-500;
     }
   }
 
   .link {
-      @apply text-primary-600;
+    @apply focus:outline-none;
+    @apply focus:ring-2;
+    @apply focus:ring-primary-400;
+    @apply rounded;
+    @apply text-primary-600;
+    @apply hover:underline;
 
     .dark & {
       @apply text-secondary-500;
-    }
-
-    &:hover {
-      @apply underline;
-    }
-
-    &:focus {
-      @apply outline-none;
-      @apply ring-2;
-      @apply ring-primary-400;
-      @apply rounded;
     }
   }
 }
@@ -84,6 +63,7 @@
   &-leave-active {
     transition: opacity 0.3s;
   }
+
   &-enter,
   &-leave-active {
     opacity: 0;

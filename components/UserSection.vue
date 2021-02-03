@@ -1,5 +1,5 @@
 <template>
-  <div class="user-section flex text-sm lg:text-base">
+  <div class="user-section flex text-sm lg:text-base max-w-full">
     <template v-if="!user">
       <NuxtLink
         to="/login"
@@ -11,7 +11,7 @@
     <template v-else>
       <NuxtLink
         to="/user"
-        class="px-4 hover:bg-primary-700 focus:bg-primary-700"
+        class="px-4 hover:bg-primary-700 focus:bg-primary-700 truncate"
       >
         {{ user.name }}
       </NuxtLink>
