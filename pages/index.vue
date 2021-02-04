@@ -6,10 +6,8 @@
     </h1>
     <Dog class="h-64 w-64"></Dog>
 
-    <NuxtLink to="/find">
-      <button class="button" aria-label="go find my doggo">
-        {{ $t('index.find') }}
-      </button>
+    <NuxtLink class="button" to="/find">
+      {{ $t('index.find') }}
     </NuxtLink>
   </div>
 </template>
