@@ -44,5 +44,19 @@ export default Vue.extend({
       }
     },
   },
+
+  head() {
+    return this.$colorMode.value === 'dark'
+      ? {
+          meta: [
+            {
+              hid: 'color-scheme',
+              name: 'color-scheme',
+              content: 'dark light',
+            },
+          ],
+        }
+      : {}
+  },
 })
 </script>

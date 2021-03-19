@@ -5,7 +5,7 @@ export default {
 
   // Global page headers (https://go.nuxtjs.dev/config-head)
   head: {
-    title: 'find-my-doggo',
+    title: 'Find My Doggo',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -56,6 +56,7 @@ export default {
   },
 
   auth: {
+    scopeKey: 'roles',
     strategies: {
       local: {
         token: {

@@ -4,6 +4,16 @@ Find the doggo that suits you (spoiler, all of them).
 
 Made with Nuxt.
 
+## Todo
+
+* User pages
+  * Set own tags
+  * Page to find your doggo based on your tags
+
+* Admin pages
+  * Manage users
+
+
 ## Build Setup
 
 ```bash
