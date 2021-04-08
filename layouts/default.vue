@@ -1,12 +1,13 @@
 <template>
   <main>
     <div
-      class="bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-300 transition min-h-screen"
+      class="relative bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-300 transition min-h-screen"
     >
       <Navbar />
       <div class="container p-5 mx-auto">
         <Nuxt />
       </div>
+      <Signature class="absolute bottom-0 right-0 p-8 w-52" />
     </div>
   </main>
 </template>
