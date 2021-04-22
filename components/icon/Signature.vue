@@ -2,7 +2,6 @@
   <svg viewBox="0 0 466 213" fill="none" xmlns="http://www.w3.org/2000/svg">
     <mask
       id="mask0"
-      mask-type="alpha"
       maskUnits="userSpaceOnUse"
       x="3"
       y="-2"
@@ -68,7 +67,7 @@
         gradientUnits="userSpaceOnUse"
         gradientTransform="translate(-0.481543 188.145) rotate(-23.2981) scale(415.914 924.368)"
       >
-        <stop stop-color="#B842FF" stop-opacity="0.5" />
+        <stop offset="0" stop-color="#B842FF" stop-opacity="0.5" />
         <stop offset="1" stop-color="#F5B73E" stop-opacity="0.9" />
       </radialGradient>
     </defs>
