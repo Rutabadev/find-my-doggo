@@ -35,7 +35,7 @@
             class="h-16 px-4 hover:bg-primary-700 focus:bg-primary-700 text-gray-50"
             @click="toggleSidebar"
           >
-            <Cross class="h-8"></Cross>
+            <IconCross class="h-8"></IconCross>
           </button>
           <DarkModeSwitch
             :class="`md:hidden transform-gpu ${

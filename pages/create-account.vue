@@ -1,13 +1,13 @@
 <template>
   <Form :title="$t('create_account.title')" :errors="errors" @submit="signup">
-    <InputField
+    <FormInputField
       v-model="signupInfo.name"
       name="name"
       required
       :label="$t('create_account.username')"
       :errors="errors"
     />
-    <InputField
+    <FormInputField
       v-model="signupInfo.email"
       name="email"
       type="email"
@@ -15,7 +15,7 @@
       :label="$t('create_account.email')"
       :errors="errors"
     />
-    <InputField
+    <FormInputField
       v-model="signupInfo.password"
       name="password"
       type="password"
@@ -30,7 +30,7 @@
     >
       <span v-if="!isLoading">{{ $t('create_account.create') }}</span>
       <template v-else>
-        <Spinner class="h-5 w-5 mr-2"></Spinner>
+        <IconSpinner class="h-5 w-5 mr-2"></IconSpinner>
         {{ $t('create_account.creating') }}
       </template>
     </button>

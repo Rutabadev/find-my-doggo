@@ -1,12 +1,12 @@
 <template>
   <Form :title="$t('login.title')" :errors="errors" @submit="login">
-    <InputField
+    <FormInputField
       v-model="loginInfo.usernameOrEmail"
       name="usernameOrEmail"
       :label="$t('login.username_or_email')"
       :errors="errors"
     />
-    <InputField
+    <FormInputField
       v-model="loginInfo.password"
       name="password"
       type="password"

@@ -1,19 +1,19 @@
 <template>
   <Form :title="$t('edit_account.title')" :errors="errors" @submit="update">
-    <InputField
+    <FormInputField
       v-model="userInfo.name"
       name="username"
       :label="$t('create_account.username')"
       :errors="errors"
     />
-    <InputField
+    <FormInputField
       v-model="userInfo.email"
       name="email"
       type="email"
       :label="$t('create_account.email')"
       :errors="errors"
     />
-    <InputField
+    <FormInputField
       v-model="userInfo.password"
       name="password"
       type="password"
@@ -35,7 +35,7 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import { FormError } from '~/types'
+import { FormError, User } from '~/types'
 
 interface UserInfo {
   name: string
@@ -61,8 +61,8 @@ export default Vue.extend({
 
   created() {
     this.userInfo = {
-      ...this.$auth.user,
-      roles: this.$auth.user?.roles.map(
+      ...(this.$auth.user as User),
+      roles: (this.$auth.user as User).roles.map(
         ({ value }: { value: string }) => value
       ),
     }
@@ -72,7 +72,7 @@ export default Vue.extend({
     async update() {
       this.isLoading = true
       try {
-        await this.$axios.put(`/users/${this.$auth.user.id}`, {
+        await this.$axios.put(`/users/${this.$auth?.user?.id}`, {
           ...this.userInfo,
         })
       } catch (err) {

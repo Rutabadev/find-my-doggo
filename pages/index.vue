@@ -4,7 +4,7 @@
       {{ $t('index.welcome') }}
       <em>{{ $t('index.spoiler') }}</em>
     </h1>
-    <Dog class="h-64 w-64"></Dog>
+    <IconDog class="h-64 w-64"></IconDog>
 
     <NuxtLink class="button" to="/find">
       {{ $t('index.find') }}

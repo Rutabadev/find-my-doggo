@@ -56,7 +56,7 @@
 </template>
 
 <script lang="ts">
-import { NuxtVueI18n } from 'nuxt-i18n/types/nuxt-i18n'
+import { LocaleObject } from 'nuxt-i18n'
 import Vue from 'vue'
 
 export default Vue.extend({
@@ -67,11 +67,9 @@ export default Vue.extend({
   },
 
   computed: {
-    availableLocales(): (string | NuxtVueI18n.Options.LocaleObject)[] {
-      return (
-        this.$i18n.locales?.filter((i) =>
-          typeof i !== 'string' ? i.code !== this.$i18n.locale : false
-        ) || []
+    availableLocales(): LocaleObject[] {
+      return (this.$i18n.locales as LocaleObject[]).filter(
+        (locale) => locale.code !== this.$i18n.locale
       )
     },
   },

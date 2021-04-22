@@ -7,7 +7,7 @@
       <div class="container p-5 mx-auto">
         <Nuxt />
       </div>
-      <Signature class="absolute bottom-0 right-0 p-8 w-52" />
+      <IconSignature class="absolute bottom-0 right-0 p-8 w-52" />
     </div>
   </main>
 </template>

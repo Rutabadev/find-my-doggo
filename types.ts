@@ -1,6 +1,11 @@
+export type Role = {
+  value: string
+}
+
 export type User = {
   name: string
-  email: string | null
+  email?: string
+  roles: Role[]
 }
 
 export type FormError = {

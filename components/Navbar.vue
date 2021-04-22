@@ -8,12 +8,12 @@
           class="px-4 md:hidden hover:bg-primary-700 h-full"
           @click="toggleSidebar"
         >
-          <BurgerMenu class="h-8"></BurgerMenu>
+          <IconBurgerMenu class="h-8"></IconBurgerMenu>
         </button>
         <LangDropdown class="hidden md:block"></LangDropdown>
         <DarkModeSwitch class="hidden md:block h-full"></DarkModeSwitch>
       </div>
-      <Title class="place-self-center" />
+      <IconTitle class="place-self-center" />
       <UserSection class="place-self-end" />
     </nav>
     <Sidebar :show="showSidebar" @onToggleSidebar="toggleSidebar"></Sidebar>
