@@ -9,7 +9,7 @@ export default {
   },
   login: {
     title: 'Connexion',
-    username_or_email: "Nom d'utilisateur ou email",
+    email: 'Email',
     password: 'Mot de passe',
     login: 'Connexion',
     logging_in: 'Connexion en cours...',

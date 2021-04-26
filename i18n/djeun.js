@@ -8,7 +8,7 @@ export default {
   },
   login: {
     title: 'Connexion',
-    username_or_email: "Blaze ou email (pas ton insta j'm'en balek)",
+    email: "Email (pas ton insta j'm'en balek)",
     password: 'Fdp. Mdp* pardon',
     login: 'Connexion',
     logging_in: 'Connexion en cours...',

@@ -1,17 +1,17 @@
 <template>
-  <Form :title="$t('login.title')" :errors="errors" @submit="login">
+  <Form :title="$t('login.title')" :errors="globalErrors" @submit="login">
     <FormInputField
-      v-model="loginInfo.usernameOrEmail"
+      v-model="loginInfo.email"
       name="usernameOrEmail"
-      :label="$t('login.username_or_email')"
-      :errors="errors"
+      :label="$t('login.email')"
+      :errors="fieldErrors"
     />
     <FormInputField
       v-model="loginInfo.password"
       name="password"
       type="password"
       :label="$t('login.password')"
-      :errors="errors"
+      :errors="fieldErrors"
     />
     <button
       aria-label="log in"
@@ -19,7 +19,7 @@
     >
       <span v-if="!isLoading">{{ $t('login.login') }}</span>
       <template v-else>
-        <Spinner class="h-5 w-5 mr-2"></Spinner>
+        <IconSpinner class="h-5 w-5 mr-2"></IconSpinner>
         {{ $t('login.logging_in') }}
       </template>
     </button>
@@ -34,7 +34,6 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import { FormError } from '~/types'
 
 export default Vue.extend({
   transition(to) {
@@ -47,18 +46,20 @@ export default Vue.extend({
   data(): {
     isLoading: boolean
     loginInfo: {
-      usernameOrEmail: string
+      email: string
       password: string
     }
-    errors: FormError[]
+    fieldErrors: string[]
+    globalErrors: string[]
   } {
     return {
       isLoading: false,
       loginInfo: {
-        usernameOrEmail: '',
+        email: '',
         password: '',
       },
-      errors: [],
+      fieldErrors: [],
+      globalErrors: [],
     }
   },
 
@@ -71,11 +72,12 @@ export default Vue.extend({
         })
       } catch (err) {
         // Clear errors and reset them in the next tick to force transition again
-        this.errors = []
+        this.fieldErrors = []
+        this.globalErrors = []
         this.$nextTick(() => {
-          this.errors = err?.response?.data?.errors || [
-            { field: 'global', message: err?.response?.data || err.message },
-          ]
+          Array.isArray(err.response.data.message)
+            ? (this.fieldErrors = err.response.data.message)
+            : (this.globalErrors = [err.response.data.message])
         })
       }
       this.isLoading = false

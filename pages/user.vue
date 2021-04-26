@@ -1,24 +1,28 @@
 <template>
-  <Form :title="$t('edit_account.title')" :errors="errors" @submit="update">
+  <Form
+    :title="$t('edit_account.title')"
+    :errors="globalErrors"
+    @submit="update"
+  >
     <FormInputField
       v-model="userInfo.name"
       name="username"
       :label="$t('create_account.username')"
-      :errors="errors"
+      :errors="fieldErrors"
     />
     <FormInputField
       v-model="userInfo.email"
       name="email"
       type="email"
       :label="$t('create_account.email')"
-      :errors="errors"
+      :errors="fieldErrors"
     />
     <FormInputField
       v-model="userInfo.password"
       name="password"
       type="password"
       :label="$t('create_account.password')"
-      :errors="errors"
+      :errors="fieldErrors"
     />
     <button
       aria-label="log in"
@@ -26,7 +30,7 @@
     >
       <span v-if="!isLoading">{{ $t('edit_account.update') }}</span>
       <template v-else>
-        <Spinner class="h-5 w-5 mr-2"></Spinner>
+        <IconSpinner class="h-5 w-5 mr-2"></IconSpinner>
         {{ $t('edit_account.updating') }}
       </template>
     </button>
@@ -35,27 +39,22 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import { FormError, User } from '~/types'
-
-interface UserInfo {
-  name: string
-  email?: string
-  password?: string
-  roles?: string[]
-}
+import { User } from '~/types'
+import { UpdateUserDto } from '~/api/@types'
+import { removeEmptyAttributes } from '~/utils'
 
 export default Vue.extend({
   data(): {
-    errors: FormError[]
+    fieldErrors: string[]
+    globalErrors: string[]
     isLoading: boolean
-    userInfo: UserInfo
+    userInfo: UpdateUserDto
   } {
     return {
-      errors: [],
+      fieldErrors: [],
+      globalErrors: [],
       isLoading: false,
-      userInfo: {
-        name: '',
-      },
+      userInfo: {},
     }
   },
 
@@ -72,16 +71,20 @@ export default Vue.extend({
     async update() {
       this.isLoading = true
       try {
-        await this.$axios.put(`/users/${this.$auth?.user?.id}`, {
-          ...this.userInfo,
-        })
+        // await this.$axios.put(`/users/${this.$auth?.user?.id}`, {
+        //   ...this.userInfo,
+        // })
+        await this.$api.users
+          ._id(this.$auth.user!.id as string)
+          .$patch({ body: removeEmptyAttributes(this.userInfo) })
       } catch (err) {
         // Clear errors and reset them in the next tick to force transition again
-        this.errors = []
+        this.fieldErrors = []
+        this.globalErrors = []
         this.$nextTick(() => {
-          this.errors = err?.response?.data?.errors || [
-            { field: 'global', message: err?.response?.data || err.message },
-          ]
+          Array.isArray(err.response.data.message)
+            ? (this.fieldErrors = err.response.data.message)
+            : (this.globalErrors = [err.response.data.message])
         })
       }
       this.isLoading = false

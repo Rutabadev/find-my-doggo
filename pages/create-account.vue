@@ -1,19 +1,23 @@
 <template>
-  <Form :title="$t('create_account.title')" :errors="errors" @submit="signup">
+  <Form
+    :title="$t('create_account.title')"
+    :errors="globalErrors"
+    @submit="signup"
+  >
     <FormInputField
       v-model="signupInfo.name"
       name="name"
-      required
       :label="$t('create_account.username')"
-      :errors="errors"
+      :errors="fieldErrors"
     />
     <FormInputField
       v-model="signupInfo.email"
       name="email"
       type="email"
+      required
       autocomplete="email"
       :label="$t('create_account.email')"
-      :errors="errors"
+      :errors="fieldErrors"
     />
     <FormInputField
       v-model="signupInfo.password"
@@ -22,7 +26,7 @@
       autocomplete="new-password"
       required
       :label="$t('create_account.password')"
-      :errors="errors"
+      :errors="fieldErrors"
     />
     <button
       aria-label="sign up"
@@ -45,7 +49,7 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import { removeEmptyAttributes } from '~/utils'
+import { CreateUserDto } from '~/api/@types'
 
 export default Vue.extend({
   auth: false,
@@ -59,12 +63,9 @@ export default Vue.extend({
 
   data(): {
     isLoading: boolean
-    signupInfo: {
-      name: string
-      email: string
-      password: string
-    }
-    errors: string[]
+    signupInfo: CreateUserDto
+    fieldErrors: string[]
+    globalErrors: string[]
   } {
     return {
       isLoading: false,
@@ -72,27 +73,32 @@ export default Vue.extend({
         name: '',
         email: '',
         password: '',
+        roles: [],
       },
-      errors: [],
+      fieldErrors: [],
+      globalErrors: [],
     }
   },
 
   methods: {
     signup() {
       this.isLoading = true
-      const newUser: any = removeEmptyAttributes(this.signupInfo)
-      this.$axios
-        .$post('/users', newUser)
+      this.$api.users.signup
+        .$post({ body: this.signupInfo })
+        // const newUser: any = removeEmptyAttributes(this.signupInfo)
+        // this.$axios
+        //   .$post('/users', newUser)
         .then(() => {
           this.$router.push('/login')
         })
-        .catch((err) => {
+        .catch((err: any) => {
           // Clear errors and reset them in the next tick to force transition again
-          this.errors = []
+          this.fieldErrors = []
+          this.globalErrors = []
           this.$nextTick(() => {
-            this.errors = err?.response?.data?.errors || [
-              { field: 'global', message: err.message },
-            ]
+            Array.isArray(err.response.data.message)
+              ? (this.fieldErrors = err.response.data.message)
+              : (this.globalErrors = [err.response.data.message])
           })
         })
         .finally(() => (this.isLoading = false))

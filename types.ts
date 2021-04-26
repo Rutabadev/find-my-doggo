@@ -7,8 +7,3 @@ export type User = {
   email?: string
   roles: Role[]
 }
-
-export type FormError = {
-  field: string
-  message: string
-}

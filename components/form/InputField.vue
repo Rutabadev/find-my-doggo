@@ -28,7 +28,6 @@
 
 <script lang="ts">
 import Vue, { PropType } from 'vue'
-import { FormError } from '~/types'
 
 export default Vue.extend({
   props: {
@@ -59,7 +58,7 @@ export default Vue.extend({
       default: false,
     },
     errors: {
-      type: Array as PropType<FormError[]>,
+      type: Array as PropType<string[]>,
       default() {
         return []
       },
@@ -68,11 +67,7 @@ export default Vue.extend({
 
   computed: {
     fieldErrors(): string[] {
-      return (
-        this.errors
-          ?.filter(({ field }) => field === this.name)
-          ?.map(({ message }) => message) || []
-      )
+      return this.errors?.filter((message) => message.includes(this.name))
     },
     inputVal: {
       get(): string {

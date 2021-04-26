@@ -3,13 +3,13 @@ export default {
     'Do you want to reset your theme based on system preference ?',
   index: {
     title: 'Home',
-    welcome: 'Find the doggo wich suits you best',
+    welcome: 'Find the doggo which suits you best',
     spoiler: '(spoiler, all of them)',
     find: 'Go find my doggo',
   },
   login: {
     title: 'Login',
-    username_or_email: 'Username or email',
+    email: 'Email',
     password: 'Password',
     login: 'Login',
     logging_in: 'Logging you in...',

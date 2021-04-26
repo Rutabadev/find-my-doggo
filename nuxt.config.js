@@ -28,7 +28,7 @@ export default {
   },
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
-  plugins: [],
+  plugins: [{ src: '~/plugins/api' }],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)
   components: true,
@@ -51,8 +51,8 @@ export default {
 
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)
   axios: {
-    baseURL: 'https://find-my-doggo-api.herokuapp.com/', // Deployed version
-    // baseURL: 'http://localhost:3001', // Used as fallback if no runtime config is provided (API_URL)
+    // baseURL: 'https://find-my-doggo-api.herokuapp.com/', // Deployed version
+    baseURL: 'http://localhost:3001', // Used as fallback if no runtime config is provided (API_URL)
   },
 
   auth: {
@@ -60,14 +60,14 @@ export default {
     strategies: {
       local: {
         token: {
-          property: 'jwt',
+          property: 'access_token',
         },
         user: {
           property: false,
         },
         endpoints: {
-          login: { url: '/users/login', method: 'post' },
-          user: { url: '/users/me', method: 'get' },
+          login: { url: '/auth/login', method: 'post' },
+          user: { url: '/auth/me', method: 'get' },
           logout: false,
         },
       },
