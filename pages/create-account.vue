@@ -73,7 +73,6 @@ export default Vue.extend({
         name: '',
         email: '',
         password: '',
-        roles: [],
       },
       fieldErrors: [],
       globalErrors: [],
@@ -85,9 +84,6 @@ export default Vue.extend({
       this.isLoading = true
       this.$api.users.signup
         .$post({ body: this.signupInfo })
-        // const newUser: any = removeEmptyAttributes(this.signupInfo)
-        // this.$axios
-        //   .$post('/users', newUser)
         .then(() => {
           this.$router.push('/login')
         })

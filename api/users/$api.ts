@@ -10,7 +10,7 @@ import { Methods as Methods2 } from './signup'
 
 // prettier-ignore
 const api = <T>({ baseURL, fetch }: AspidaClient<T>) => {
-  const prefix = (baseURL === undefined ? 'http://localhost:3001' : baseURL).replace(/\/$/, '')
+  const prefix = (baseURL === undefined ? 'http://localhost:53352' : baseURL).replace(/\/$/, '')
   const PATH0 = '/users'
   const PATH1 = '/users/signup'
   const GET = 'GET'

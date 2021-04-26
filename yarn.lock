@@ -8917,10 +8917,9 @@ openapi-types@^8.0.0:
   resolved "https://registry.yarnpkg.com/openapi-types/-/openapi-types-8.0.0.tgz#7e1979538798d31a3c3bfed667e5e9295402f9bc"
   integrity sha512-dcHYyCDOAy4QQTrur5Sn1L3lPVspB7rd04Rw/Q7AsMvfV797IiWgmKziFCbq8VhnBoREU/SPPSBDxtK9Biwa1g==
 
-openapi2aspida@^0.16.3:
+"openapi2aspida@https://github.com/Rutabadev/openapi2aspida.git":
   version "0.16.3"
-  resolved "https://registry.yarnpkg.com/openapi2aspida/-/openapi2aspida-0.16.3.tgz#70d339a8271909812d84096990946b10ca7ce808"
-  integrity sha512-i3CGX+fGtc7jYR3Rj5E0Xkb5FfAaD9wrIfXVS6FUEI6/jQUiNZdb19Kc/GCd1RmIEu4EgJDhgWBY827/01UY9Q==
+  resolved "https://github.com/Rutabadev/openapi2aspida.git#182453a4e3db189347ed5d25bc3f7aed43d3f4f1"
   dependencies:
     aspida "^1.6.3"
     js-yaml "^4.1.0"

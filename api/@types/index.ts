@@ -1,21 +1,20 @@
 /* eslint-disable */
-export type Role = {
-  id: number
-  name: string
-}
-
 export type CreateUserDto = {
   email: string
   password: string
   name: string
-  roles?: Role[]
+}
+
+export type Role = {
+  id: number
+  name: string
 }
 
 export type User = {
   email: string
   id: number
   name: string
-  roles?: Role[]
+  roles: Role[]
 }
 
 export type UpdateUserDto = {

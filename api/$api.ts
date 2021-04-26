@@ -8,20 +8,23 @@ import { Methods as Methods1 } from './auth/me'
 // prettier-ignore
 import { Methods as Methods2 } from './ping'
 // prettier-ignore
-import { Methods as Methods3 } from './users'
+import { Methods as Methods3 } from './roles'
 // prettier-ignore
-import { Methods as Methods4 } from './users/_id@string'
+import { Methods as Methods4 } from './users'
 // prettier-ignore
-import { Methods as Methods5 } from './users/signup'
+import { Methods as Methods5 } from './users/_id@string'
+// prettier-ignore
+import { Methods as Methods6 } from './users/signup'
 
 // prettier-ignore
 const api = <T>({ baseURL, fetch }: AspidaClient<T>) => {
-  const prefix = (baseURL === undefined ? 'http://localhost:3001' : baseURL).replace(/\/$/, '')
+  const prefix = (baseURL === undefined ? 'http://localhost:53352' : baseURL).replace(/\/$/, '')
   const PATH0 = '/auth/login'
   const PATH1 = '/auth/me'
   const PATH2 = '/ping'
-  const PATH3 = '/users'
-  const PATH4 = '/users/signup'
+  const PATH3 = '/roles'
+  const PATH4 = '/users'
+  const PATH5 = '/users/signup'
   const GET = 'GET'
   const POST = 'POST'
   const DELETE = 'DELETE'
@@ -57,23 +60,30 @@ const api = <T>({ baseURL, fetch }: AspidaClient<T>) => {
         fetch<void, BasicHeaders, Methods2['get']['status']>(prefix, PATH2, GET, option).send().then(r => r.body),
       $path: () => `${prefix}${PATH2}`
     },
+    roles: {
+      get: (option?: { config?: T }) =>
+        fetch<Methods3['get']['resBody'], BasicHeaders, Methods3['get']['status']>(prefix, PATH3, GET, option).json(),
+      $get: (option?: { config?: T }) =>
+        fetch<Methods3['get']['resBody'], BasicHeaders, Methods3['get']['status']>(prefix, PATH3, GET, option).json().then(r => r.body),
+      $path: () => `${prefix}${PATH3}`
+    },
     users: {
       _id: (val1: string) => {
-        const prefix1 = `${PATH3}/${val1}`
+        const prefix1 = `${PATH4}/${val1}`
 
         return {
           get: (option?: { config?: T }) =>
-            fetch<Methods4['get']['resBody'], BasicHeaders, Methods4['get']['status']>(prefix, prefix1, GET, option).json(),
+            fetch<Methods5['get']['resBody'], BasicHeaders, Methods5['get']['status']>(prefix, prefix1, GET, option).json(),
           $get: (option?: { config?: T }) =>
-            fetch<Methods4['get']['resBody'], BasicHeaders, Methods4['get']['status']>(prefix, prefix1, GET, option).json().then(r => r.body),
-          patch: (option: { body: Methods4['patch']['reqBody'], config?: T }) =>
-            fetch<Methods4['patch']['resBody'], BasicHeaders, Methods4['patch']['status']>(prefix, prefix1, PATCH, option).json(),
-          $patch: (option: { body: Methods4['patch']['reqBody'], config?: T }) =>
-            fetch<Methods4['patch']['resBody'], BasicHeaders, Methods4['patch']['status']>(prefix, prefix1, PATCH, option).json().then(r => r.body),
+            fetch<Methods5['get']['resBody'], BasicHeaders, Methods5['get']['status']>(prefix, prefix1, GET, option).json().then(r => r.body),
+          patch: (option: { body: Methods5['patch']['reqBody'], config?: T }) =>
+            fetch<Methods5['patch']['resBody'], BasicHeaders, Methods5['patch']['status']>(prefix, prefix1, PATCH, option).json(),
+          $patch: (option: { body: Methods5['patch']['reqBody'], config?: T }) =>
+            fetch<Methods5['patch']['resBody'], BasicHeaders, Methods5['patch']['status']>(prefix, prefix1, PATCH, option).json().then(r => r.body),
           delete: (option?: { config?: T }) =>
-            fetch<void, BasicHeaders, Methods4['delete']['status']>(prefix, prefix1, DELETE, option).send(),
+            fetch<void, BasicHeaders, Methods5['delete']['status']>(prefix, prefix1, DELETE, option).send(),
           $delete: (option?: { config?: T }) =>
-            fetch<void, BasicHeaders, Methods4['delete']['status']>(prefix, prefix1, DELETE, option).send().then(r => r.body),
+            fetch<void, BasicHeaders, Methods5['delete']['status']>(prefix, prefix1, DELETE, option).send().then(r => r.body),
           $path: () => `${prefix}${prefix1}`
         }
       },
@@ -81,24 +91,24 @@ const api = <T>({ baseURL, fetch }: AspidaClient<T>) => {
         /**
          * Sign up a new user.
          */
-        post: (option: { body: Methods5['post']['reqBody'], config?: T }) =>
-          fetch<Methods5['post']['resBody'], BasicHeaders, Methods5['post']['status']>(prefix, PATH4, POST, option).json(),
+        post: (option: { body: Methods6['post']['reqBody'], config?: T }) =>
+          fetch<Methods6['post']['resBody'], BasicHeaders, Methods6['post']['status']>(prefix, PATH5, POST, option).json(),
         /**
          * Sign up a new user.
          */
-        $post: (option: { body: Methods5['post']['reqBody'], config?: T }) =>
-          fetch<Methods5['post']['resBody'], BasicHeaders, Methods5['post']['status']>(prefix, PATH4, POST, option).json().then(r => r.body),
-        $path: () => `${prefix}${PATH4}`
+        $post: (option: { body: Methods6['post']['reqBody'], config?: T }) =>
+          fetch<Methods6['post']['resBody'], BasicHeaders, Methods6['post']['status']>(prefix, PATH5, POST, option).json().then(r => r.body),
+        $path: () => `${prefix}${PATH5}`
       },
-      post: (option: { body: Methods3['post']['reqBody'], config?: T }) =>
-        fetch<Methods3['post']['resBody'], BasicHeaders, Methods3['post']['status']>(prefix, PATH3, POST, option).json(),
-      $post: (option: { body: Methods3['post']['reqBody'], config?: T }) =>
-        fetch<Methods3['post']['resBody'], BasicHeaders, Methods3['post']['status']>(prefix, PATH3, POST, option).json().then(r => r.body),
+      post: (option: { body: Methods4['post']['reqBody'], config?: T }) =>
+        fetch<Methods4['post']['resBody'], BasicHeaders, Methods4['post']['status']>(prefix, PATH4, POST, option).json(),
+      $post: (option: { body: Methods4['post']['reqBody'], config?: T }) =>
+        fetch<Methods4['post']['resBody'], BasicHeaders, Methods4['post']['status']>(prefix, PATH4, POST, option).json().then(r => r.body),
       get: (option?: { config?: T }) =>
-        fetch<Methods3['get']['resBody'], BasicHeaders, Methods3['get']['status']>(prefix, PATH3, GET, option).json(),
+        fetch<Methods4['get']['resBody'], BasicHeaders, Methods4['get']['status']>(prefix, PATH4, GET, option).json(),
       $get: (option?: { config?: T }) =>
-        fetch<Methods3['get']['resBody'], BasicHeaders, Methods3['get']['status']>(prefix, PATH3, GET, option).json().then(r => r.body),
-      $path: () => `${prefix}${PATH3}`
+        fetch<Methods4['get']['resBody'], BasicHeaders, Methods4['get']['status']>(prefix, PATH4, GET, option).json().then(r => r.body),
+      $path: () => `${prefix}${PATH4}`
     }
   }
 }

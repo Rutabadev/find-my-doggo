@@ -10,7 +10,8 @@
     "lint:js": "eslint --ext .js,.vue --ignore-path .gitignore .",
     "lint": "yarn lint:js",
     "test": "jest",
-    "gen-api": "rimraf ./api && openapi2aspida -i http://localhost:3001/api-json"
+    "gen-api:local": "rimraf ./api && openapi2aspida -i http://localhost:3001/api-json",
+    "gen-api:prod": "rimraf ./api && openapi2aspida -i https://find-my-doggo-api.herokuapp.com/api-json"
   },
   "dependencies": {
     "@aspida/axios": "^1.7.0",
@@ -43,7 +44,7 @@
     "eslint-plugin-nuxt": "^1.0.0",
     "eslint-plugin-prettier": "^3.1.4",
     "jest": "^26.4.2",
-    "openapi2aspida": "^0.16.3",
+    "openapi2aspida": "https://github.com/Rutabadev/openapi2aspida.git",
     "postcss": "^8.2.12",
     "prettier": "^2.1.2",
     "qawolf": "1.6.0",
