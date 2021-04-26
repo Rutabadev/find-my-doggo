@@ -86,7 +86,7 @@ export default Vue.extend({
 })
 </script>
 
-<style lang="scss">
+<style>
 .slide {
   &-left-enter-active,
   &-left-leave-active {

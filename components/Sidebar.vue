@@ -179,7 +179,7 @@ export default Vue.extend({
 })
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
 .sidebar-svg {
   z-index: -1;
   filter: drop-shadow(0 0 4px hsla(0, 0%, 10%, 0.5));

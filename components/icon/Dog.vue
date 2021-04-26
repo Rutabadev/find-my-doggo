@@ -68,7 +68,7 @@ export default Vue.extend({
 })
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
 #dog {
   --ear-speed: 1s;
   --tongue-speed: 200ms;

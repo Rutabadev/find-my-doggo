@@ -18,8 +18,10 @@ export default {
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
   },
 
-  // Global CSS (https://go.nuxtjs.dev/config-css)
-  css: ['~/assets/css/global.scss'],
+  tailwindcss: {
+    cssPath: '~/assets/css/tailwind.pcss',
+    jit: true,
+  },
 
   // This is to make @nuxtjs/color-mode use 'dark' class not 'dark-mode'
   // so that it applies to tailwind

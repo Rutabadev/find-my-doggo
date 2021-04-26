@@ -74,7 +74,7 @@
   </svg>
 </template>
 
-<style lang="scss" scoped>
+<style scoped>
 path {
   animation: draw var(--duration, 0.7s) linear forwards;
   animation-delay: calc(2s + var(--delay, 0s));

@@ -81,7 +81,7 @@ export default Vue.extend({
 })
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
 .field {
   input:focus ~ label,
   input:not(:placeholder-shown) ~ label {
