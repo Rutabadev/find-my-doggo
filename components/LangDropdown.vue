@@ -43,11 +43,11 @@
         >
           <a
             v-for="locale in availableLocales"
-            :key="locale.code"
+            :key="locale"
             class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer"
             role="menuitem"
-            @click="linkClick(locale.code)"
-            >{{ locale.code }}
+            @click="linkClick(locale)"
+            >{{ locale }}
           </a>
         </div>
       </div>
@@ -56,7 +56,6 @@
 </template>
 
 <script lang="ts">
-import { LocaleObject } from 'nuxt-i18n'
 import Vue from 'vue'
 
 export default Vue.extend({
@@ -67,10 +66,10 @@ export default Vue.extend({
   },
 
   computed: {
-    availableLocales(): LocaleObject[] {
-      return (this.$i18n.locales as LocaleObject[]).filter(
-        (locale) => locale.code !== this.$i18n.locale
-      )
+    availableLocales(): string[] {
+      return (this.$i18n.locales as { code: string }[])
+        .filter((locale) => locale.code !== this.$i18n.locale)
+        .map(({ code }) => code)
     },
   },
 
