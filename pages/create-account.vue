@@ -7,6 +7,7 @@
     <FormInputField
       v-model="signupInfo.name"
       name="name"
+      required
       :label="$t('create_account.username')"
       :errors="fieldErrors"
     />
