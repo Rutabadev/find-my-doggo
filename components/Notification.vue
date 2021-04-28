@@ -4,7 +4,7 @@
     style="margin-bottom: 1px"
   >
     <span
-      class="w-3 h-3 absolute inset-0 rounded-full bg-secondary-500 animate-ping"
+      class="w-3 h-3 absolute inset-0 rounded-full bg-secondary-500 motion-safe:animate-ping"
     ></span>
   </span>
 </template>

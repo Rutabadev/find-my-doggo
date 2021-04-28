@@ -68,72 +68,74 @@ export default Vue.extend({
 })
 </script>
 
-<style scoped>
-#dog {
-  --ear-speed: 1s;
-  --tongue-speed: 200ms;
-  transition: transform 200ms;
+<style lang="postcss" scoped>
+@media (prefers-reduced-motion: no-preference) {
+  #dog {
+    --ear-speed: 1s;
+    --tongue-speed: 200ms;
+    transition: transform 200ms;
 
-  #left-ear {
-    animation: left-ear var(--ear-speed) ease-in-out alternate infinite;
-    transform-origin: top right;
-    transform-box: fill-box;
-  }
-
-  @keyframes left-ear {
-    from {
-      transform: rotate(0deg);
+    #left-ear {
+      animation: left-ear var(--ear-speed) ease-in-out alternate infinite;
+      transform-origin: top right;
+      transform-box: fill-box;
     }
-    to {
-      transform: rotate(-6deg);
+
+    @keyframes left-ear {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(-6deg);
+      }
     }
-  }
 
-  #right-ear {
-    animation: right-ear var(--ear-speed) ease-in-out alternate infinite;
-    transform-origin: top left;
-    transform-box: fill-box;
-  }
-
-  @keyframes right-ear {
-    from {
-      transform: rotate(0deg);
+    #right-ear {
+      animation: right-ear var(--ear-speed) ease-in-out alternate infinite;
+      transform-origin: top left;
+      transform-box: fill-box;
     }
-    to {
-      transform: rotate(6deg);
-    }
-  }
 
-  #tongue {
-    animation: tongue var(--tongue-speed) ease-in-out alternate infinite;
-    transform-origin: top;
-    transform-box: fill-box;
-  }
-
-  @keyframes tongue {
-    from {
-      transform: scaleY(1.4);
-    }
-    to {
-      transform: scaleY(1.7);
-    }
-  }
-
-  &:hover {
-    transform: rotate(-15deg);
-
-    #left-ear,
-    #right-ear,
-    #tongue {
-      animation: none;
+    @keyframes right-ear {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(6deg);
+      }
     }
 
     #tongue {
-      display: none;
+      animation: tongue var(--tongue-speed) ease-in-out alternate infinite;
+      transform-origin: top;
+      transform-box: fill-box;
     }
 
-    #mouth {
-      clip-path: polygon(0 0, 100% 0, 100% 10%, 0 10%);
+    @keyframes tongue {
+      from {
+        transform: scaleY(1.4);
+      }
+      to {
+        transform: scaleY(1.7);
+      }
+    }
+
+    &:hover {
+      transform: rotate(-15deg);
+
+      #left-ear,
+      #right-ear,
+      #tongue {
+        animation: none;
+      }
+
+      #tongue {
+        display: none;
+      }
+
+      #mouth {
+        clip-path: polygon(0 0, 100% 0, 100% 10%, 0 10%);
+      }
     }
   }
 }

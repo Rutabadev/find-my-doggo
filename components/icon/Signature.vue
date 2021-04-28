@@ -84,4 +84,11 @@ path {
     stroke-dashoffset: 0;
   }
 }
+
+@media (prefers-reduced-motion: reduce) {
+  path {
+    animation-duration: 0ms;
+    animation-delay: 0ms;
+  }
+}
 </style>

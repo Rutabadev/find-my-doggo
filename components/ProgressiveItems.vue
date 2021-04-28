@@ -7,12 +7,7 @@
 <script lang="ts">
 import Vue from 'vue'
 
-const defaultClasses = [
-  'transform-gpu',
-  'transition-transform',
-  'ease-out',
-  'duration-200',
-]
+const defaultClasses = ['transform-gpu', 'transition-transform', 'ease-out']
 
 export default Vue.extend({
   props: {
@@ -48,6 +43,8 @@ export default Vue.extend({
 
   methods: {
     setupAnimations(): void {
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)')
+        .matches
       Array.from(this.$el.children).forEach((child, index) => {
         const element = child as HTMLElement
         if (this.show) {
@@ -55,7 +52,10 @@ export default Vue.extend({
           element.classList.add(...defaultClasses)
           element.classList.add('translate-x-0')
         } else {
-          element.style.transitionDelay = `${++index * 100}ms`
+          element.style.transitionDelay = reduceMotion
+            ? '0ms'
+            : `${++index * 100}ms`
+          element.style.transitionDuration = reduceMotion ? '0ms' : '200ms'
           element.classList.remove('translate-x-0')
           element.classList.add(...defaultClasses)
           element.classList.add('-translate-x-full')

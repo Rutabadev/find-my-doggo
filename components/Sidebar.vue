@@ -1,12 +1,12 @@
 <template>
   <div>
     <div
-      class="absolute inset-0 bg-black duration-500 z-10"
+      class="absolute inset-0 bg-black motion-safe:duration-500 z-10"
       :class="[show ? 'opacity-50' : 'opacity-0 pointer-events-none']"
       @click="toggleSidebar"
     ></div>
     <div
-      class="absolute left-0 top-0 bottom-0 w-2/3 max-w-xs duration-200 z-10"
+      class="absolute left-0 top-0 bottom-0 w-2/3 max-w-xs motion-safe:duration-200 z-10"
       :class="show ? 'visible' : 'invisible'"
       :style="{
         transform: show ? 'translate3d(0, 0, 0)' : 'translate3d(-102%, 0, 0)',
@@ -39,8 +39,8 @@
           </button>
           <DarkModeSwitch
             :class="`md:hidden transform-gpu ${
-              show ? 'duration-500' : '-translate-x-full'
-            } transition-transform`"
+              show ? 'motion-safe:duration-500' : '-translate-x-full'
+            }`"
           />
         </div>
         <ProgressiveItems
@@ -131,7 +131,15 @@ export default Vue.extend({
   watch: {
     show(show: boolean): void {
       const targets = document.querySelector('#wave')
-      const easing = 'spring(1, 80, 20, 0)'
+      const paths = {
+        closed:
+          'M0 0H214.023C234.5 203 218.5 350 214 502.5C215.5 623 218 692 214.5 720H0V0Z',
+        opened:
+          'M-3 0H153C305.5 150.5 130.5 346.5 62 493C7.19999 610.2 101.833 692.667 156 720H-3V0Z',
+      }
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)')
+        .matches
+      const easing = reduceMotion ? 'steps(1)' : 'spring(1, 80, 20, 0)'
       if (show) {
         setTimeout(() => {
           ;(this.$refs.closeSideBarButton as HTMLElement).focus()
@@ -141,8 +149,7 @@ export default Vue.extend({
           targets,
           d: [
             {
-              value:
-                'M0 0H214.023C234.5 203 218.5 350 214 502.5C215.5 623 218 692 214.5 720H0V0Z',
+              value: paths.closed,
             },
           ],
           easing,
@@ -152,8 +159,7 @@ export default Vue.extend({
           targets,
           d: [
             {
-              value:
-                'M-3 0H153C305.5 150.5 130.5 346.5 62 493C7.19999 610.2 101.833 692.667 156 720H-3V0Z',
+              value: paths[reduceMotion ? 'closed' : 'opened'],
             },
           ],
           easing,
