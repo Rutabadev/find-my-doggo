@@ -15,6 +15,7 @@ export default {
     logging_in: 'Logging you in...',
     no_account: "Don't have an account ? Go to",
     signup: 'sign up',
+    forgot: 'Forgot your password ?',
   },
   create_account: {
     title: 'Create account',
@@ -33,4 +34,16 @@ export default {
   },
   logout: 'Log out',
   find: 'This is a protected page',
+  forgot_password: {
+    title: 'Request a password reset',
+    send: 'send email',
+    sending: 'sending email',
+    check_email:
+      'check your email to get your password reset link (it is probably in spams).',
+  },
+  reset_password: {
+    title: 'Reset password',
+    reset: 'reset',
+    resetting: 'resetting',
+  },
 }

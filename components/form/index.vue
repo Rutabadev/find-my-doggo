@@ -7,9 +7,9 @@
     <form class="flex flex-col" @submit.prevent="$emit('submit')">
       <slot></slot>
     </form>
-    <p class="ml-auto mt-5">
+    <div class="ml-auto mt-5 text-right">
       <slot name="bottom"></slot>
-    </p>
+    </div>
   </div>
 </template>
 

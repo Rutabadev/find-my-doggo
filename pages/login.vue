@@ -2,7 +2,7 @@
   <Form :title="$t('login.title')" :errors="globalErrors" @submit="login">
     <FormInputField
       v-model="loginInfo.email"
-      name="usernameOrEmail"
+      name="email"
       :label="$t('login.email')"
       :errors="fieldErrors"
     />
@@ -24,16 +24,25 @@
       </template>
     </button>
     <template slot="bottom">
-      {{ $t('login.no_account') }}
-      <NuxtLink to="/create-account" class="link">
-        {{ $t('login.signup') }}
-      </NuxtLink>
+      <p>
+        <NuxtLink to="/forgot-password" class="link">
+          {{ $t('login.forgot') }}
+        </NuxtLink>
+      </p>
+
+      <p class="mt-4">
+        {{ $t('login.no_account') }}
+        <NuxtLink to="/create-account" class="link">
+          {{ $t('login.signup') }}
+        </NuxtLink>
+      </p>
     </template>
   </Form>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
+import { LoginUserDto } from '~/api/@types'
 
 export default Vue.extend({
   transition(to) {
@@ -45,10 +54,7 @@ export default Vue.extend({
 
   data(): {
     isLoading: boolean
-    loginInfo: {
-      email: string
-      password: string
-    }
+    loginInfo: LoginUserDto
     fieldErrors: string[]
     globalErrors: string[]
   } {
@@ -66,19 +72,16 @@ export default Vue.extend({
   methods: {
     async login() {
       this.isLoading = true
+      this.fieldErrors = []
+      this.globalErrors = []
       try {
         await this.$auth.loginWith('local', {
           data: this.loginInfo,
         })
       } catch (err) {
-        // Clear errors and reset them in the next tick to force transition again
-        this.fieldErrors = []
-        this.globalErrors = []
-        this.$nextTick(() => {
-          Array.isArray(err.response.data.message)
-            ? (this.fieldErrors = err.response.data.message)
-            : (this.globalErrors = [err.response.data.message])
-        })
+        Array.isArray(err.response.data.message)
+          ? (this.fieldErrors = err.response.data.message)
+          : (this.globalErrors = [err.response.data.message])
       }
       this.isLoading = false
     },

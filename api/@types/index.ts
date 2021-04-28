@@ -1,8 +1,11 @@
 /* eslint-disable */
-export type CreateUserDto = {
+export type LoginUserDto = {
   email: string
   password: string
-  name: string
+}
+
+export type LoggedInUserDto = {
+  access_token: string
 }
 
 export type Role = {
@@ -17,19 +20,25 @@ export type User = {
   roles: Role[]
 }
 
+export type CreateUserDto = {
+  email: string
+  password: string
+  name: string
+}
+
+export type ForgotPasswordDto = {
+  email: string
+}
+
+export type ChangePasswordDto = {
+  password: string
+  uuid: string
+}
+
 export type UpdateUserDto = {
   email?: string
   password?: string
   roles?: string[]
   id?: number
   name?: string
-}
-
-export type LoginUserDto = {
-  email: string
-  password: string
-}
-
-export type LoggedInUserDto = {
-  access_token: string
 }

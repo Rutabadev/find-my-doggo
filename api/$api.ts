@@ -14,17 +14,23 @@ import { Methods as Methods4 } from './users'
 // prettier-ignore
 import { Methods as Methods5 } from './users/_id@string'
 // prettier-ignore
-import { Methods as Methods6 } from './users/signup'
+import { Methods as Methods6 } from './users/forgot-password'
+// prettier-ignore
+import { Methods as Methods7 } from './users/reset-password'
+// prettier-ignore
+import { Methods as Methods8 } from './users/signup'
 
 // prettier-ignore
 const api = <T>({ baseURL, fetch }: AspidaClient<T>) => {
-  const prefix = (baseURL === undefined ? 'http://localhost:53352' : baseURL).replace(/\/$/, '')
+  const prefix = (baseURL === undefined ? 'http://localhost:3001' : baseURL).replace(/\/$/, '')
   const PATH0 = '/auth/login'
   const PATH1 = '/auth/me'
   const PATH2 = '/ping'
   const PATH3 = '/roles'
   const PATH4 = '/users'
-  const PATH5 = '/users/signup'
+  const PATH5 = '/users/forgot-password'
+  const PATH6 = '/users/reset-password'
+  const PATH7 = '/users/signup'
   const GET = 'GET'
   const POST = 'POST'
   const DELETE = 'DELETE'
@@ -87,18 +93,38 @@ const api = <T>({ baseURL, fetch }: AspidaClient<T>) => {
           $path: () => `${prefix}${prefix1}`
         }
       },
+      forgot_password: {
+        /**
+         * Send an email to the user to reset password.
+         */
+        post: (option: { body: Methods6['post']['reqBody'], config?: T }) =>
+          fetch<void, BasicHeaders, Methods6['post']['status']>(prefix, PATH5, POST, option).send(),
+        /**
+         * Send an email to the user to reset password.
+         */
+        $post: (option: { body: Methods6['post']['reqBody'], config?: T }) =>
+          fetch<void, BasicHeaders, Methods6['post']['status']>(prefix, PATH5, POST, option).send().then(r => r.body),
+        $path: () => `${prefix}${PATH5}`
+      },
+      reset_password: {
+        post: (option: { body: Methods7['post']['reqBody'], config?: T }) =>
+          fetch<void, BasicHeaders, Methods7['post']['status']>(prefix, PATH6, POST, option).send(),
+        $post: (option: { body: Methods7['post']['reqBody'], config?: T }) =>
+          fetch<void, BasicHeaders, Methods7['post']['status']>(prefix, PATH6, POST, option).send().then(r => r.body),
+        $path: () => `${prefix}${PATH6}`
+      },
       signup: {
         /**
          * Sign up a new user.
          */
-        post: (option: { body: Methods6['post']['reqBody'], config?: T }) =>
-          fetch<Methods6['post']['resBody'], BasicHeaders, Methods6['post']['status']>(prefix, PATH5, POST, option).json(),
+        post: (option: { body: Methods8['post']['reqBody'], config?: T }) =>
+          fetch<Methods8['post']['resBody'], BasicHeaders, Methods8['post']['status']>(prefix, PATH7, POST, option).json(),
         /**
          * Sign up a new user.
          */
-        $post: (option: { body: Methods6['post']['reqBody'], config?: T }) =>
-          fetch<Methods6['post']['resBody'], BasicHeaders, Methods6['post']['status']>(prefix, PATH5, POST, option).json().then(r => r.body),
-        $path: () => `${prefix}${PATH5}`
+        $post: (option: { body: Methods8['post']['reqBody'], config?: T }) =>
+          fetch<Methods8['post']['resBody'], BasicHeaders, Methods8['post']['status']>(prefix, PATH7, POST, option).json().then(r => r.body),
+        $path: () => `${prefix}${PATH7}`
       },
       post: (option: { body: Methods4['post']['reqBody'], config?: T }) =>
         fetch<Methods4['post']['resBody'], BasicHeaders, Methods4['post']['status']>(prefix, PATH4, POST, option).json(),
