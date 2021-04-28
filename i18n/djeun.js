@@ -14,6 +14,7 @@ export default {
     logging_in: 'Connexion en cours...',
     no_account: 'Pas encore de compte (boloss)? aller à',
     signup: "l'enregistrement",
+    forgot: 'Total forget le mdp ?',
   },
   create_account: {
     title: 'Enregistrement',
@@ -32,4 +33,16 @@ export default {
   },
   logout: "J'me tire",
   find: "Vla la page protégée t'as vu c'est de la bête de frappe",
+  forgot_password: {
+    title: 'Bah bravo je te félicite pas en fait',
+    send: 'envoyer un email',
+    sending: 'envoi',
+    check_email:
+      'Vérifie ton mail pour réinitialiser ton mdp (dans les spams).',
+  },
+  reset_password: {
+    title: 'Réinitialiser mot de passe',
+    reset: 'Réinitialiser',
+    resetting: 'En cours',
+  },
 }

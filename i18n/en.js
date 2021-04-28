@@ -39,7 +39,7 @@ export default {
     send: 'send email',
     sending: 'sending email',
     check_email:
-      'check your email to get your password reset link (it is probably in spams).',
+      'Check your email to get your password reset link (it is probably in spams).',
   },
   reset_password: {
     title: 'Reset password',

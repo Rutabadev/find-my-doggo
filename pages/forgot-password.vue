@@ -21,7 +21,9 @@
         {{ $t('forgot_password.sending') }}
       </template>
     </button>
-    <p class="mt-4 text-center">{{ $t('forgot_password.check_email') }}</p>
+    <p v-if="showCheckEmail" class="mt-4 text-center">
+      {{ $t('forgot_password.check_email') }}
+    </p>
   </Form>
 </template>
 

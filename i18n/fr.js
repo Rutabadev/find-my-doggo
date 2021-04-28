@@ -15,6 +15,7 @@ export default {
     logging_in: 'Connexion en cours...',
     no_account: 'Pas encore de compte ? aller à',
     signup: "l'enregistrement",
+    forgot: 'Mot de passe oublié ?',
   },
   create_account: {
     title: 'Enregistrement',
@@ -33,4 +34,16 @@ export default {
   },
   logout: 'Déconnexion',
   find: 'Ceci est une page protégée',
+  forgot_password: {
+    title: 'Demande de réinitialisation de votre mot de passe',
+    send: 'envoyer un email',
+    sending: 'envoi',
+    check_email:
+      "Vérifier votre boite mail pour réinitialiser votre mot de passe (c'est probablement dans les spams).",
+  },
+  reset_password: {
+    title: 'Réinitialiser mot de passe',
+    reset: 'Réinitialiser',
+    resetting: 'En cours',
+  },
 }
