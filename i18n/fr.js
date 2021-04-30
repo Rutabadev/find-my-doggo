@@ -31,6 +31,10 @@ export default {
     title: 'Informations du compte',
     update: 'Mettre à jour',
     updating: 'Mise à jour...',
+    delete: 'Supprimer mon compte',
+    sure_delete: 'Etes vous sûr ?',
+    cancel_delete: 'Annuler',
+    confirm_delete: 'Supprimer',
   },
   logout: 'Déconnexion',
   find: 'Ceci est une page protégée',
@@ -45,5 +49,8 @@ export default {
     title: 'Réinitialiser mot de passe',
     reset: 'Réinitialiser',
     resetting: 'En cours',
+  },
+  validate_email: {
+    ok: 'Email validé.',
   },
 }

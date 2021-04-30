@@ -30,7 +30,7 @@ export default Vue.extend({
   mounted(): void {
     this.$api.users.validate_email
       .$post({ body: this.validateEmailInfo })
-      .then(() => (this.message = 'Email validated.'))
+      .then(() => (this.message = this.$t('validate_email.ok').toString()))
       .catch((err) => (this.message = err.response.data.message))
   },
 })

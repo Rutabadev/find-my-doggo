@@ -46,5 +46,4 @@ export type UpdateUserDto = {
   roles?: string[]
   id?: number
   name?: string
-  emailValid?: boolean
 }

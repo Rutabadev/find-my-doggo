@@ -13,7 +13,7 @@
     />
     <button
       aria-label="reset password"
-      class="button my-2 self-center inline-flex items-center uppercase tracking-widest"
+      class="button my-2 self-center inline-flex items-center uppercase tracking-wide"
     >
       <span v-if="!isLoading">{{ $t('reset_password.reset') }}</span>
       <template v-else>

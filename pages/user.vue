@@ -1,40 +1,84 @@
 <template>
-  <Form
-    :title="$t('edit_account.title')"
-    :errors="globalErrors"
-    @submit="update"
-  >
-    <FormInputField
-      v-model="userInfo.name"
-      name="username"
-      :label="$t('create_account.username')"
-      :errors="fieldErrors"
-    />
-    <FormInputField
-      v-model="userInfo.email"
-      name="email"
-      type="email"
-      :label="$t('create_account.email')"
-      :errors="fieldErrors"
-    />
-    <FormInputField
-      v-model="userInfo.password"
-      name="password"
-      type="password"
-      :label="$t('create_account.password')"
-      :errors="fieldErrors"
-    />
-    <button
-      aria-label="log in"
-      class="button my-2 self-center inline-flex items-center uppercase tracking-widest"
+  <div>
+    <Form
+      :title="$t('edit_account.title')"
+      :errors="globalErrors"
+      @submit="update"
     >
-      <span v-if="!isLoading">{{ $t('edit_account.update') }}</span>
-      <template v-else>
-        <IconSpinner class="h-5 w-5 mr-2"></IconSpinner>
-        {{ $t('edit_account.updating') }}
-      </template>
-    </button>
-  </Form>
+      <FormInputField
+        v-model="userInfo.name"
+        name="username"
+        :label="$t('create_account.username')"
+        :errors="fieldErrors"
+      />
+      <FormInputField
+        v-model="userInfo.email"
+        name="email"
+        type="email"
+        :label="$t('create_account.email')"
+        :errors="fieldErrors"
+      />
+      <FormInputField
+        v-model="userInfo.password"
+        name="password"
+        type="password"
+        :label="$t('create_account.password')"
+        :errors="fieldErrors"
+      />
+      <button
+        aria-label="log in"
+        class="button my-2 self-center inline-flex items-center uppercase tracking-wide"
+      >
+        <span v-if="!isLoading">{{ $t('edit_account.update') }}</span>
+        <template v-else>
+          <IconSpinner class="h-5 w-5 mr-2"></IconSpinner>
+          {{ $t('edit_account.updating') }}
+        </template>
+      </button>
+      <button
+        aria-label="delete"
+        class="mt-4 button red self-center"
+        @click.prevent="openDeleteDialog = true"
+      >
+        {{ $t('edit_account.delete') }}
+      </button>
+    </Form>
+
+    <div
+      class="fixed z-10 inset-0 bg-black transition-opacity duration-200"
+      :class="openDeleteDialog ? 'opacity-50' : 'opacity-0 pointer-events-none'"
+    />
+    <transition
+      enter-active-class="transition duration-100 ease-out"
+      enter-class="transform scale-95 opacity-0"
+      enter-to-class="transform scale-100 opacity-100"
+      leave-active-class="transition duration-75 ease-in"
+      leave-class="transform scale-100 opacity-100"
+      leave-to-class="transform scale-95 opacity-0"
+    >
+      <div
+        v-if="openDeleteDialog"
+        class="fixed z-10 inset-0 grid place-content-center"
+        @click="openDeleteDialog = false"
+      >
+        <div
+          class="p-8 bg-gray-50 dark:bg-gray-700 rounded-lg flex flex-col shadow-xl"
+        >
+          <h3 class="text-lg font-semibold mb-6">
+            {{ $t('edit_account.sure_delete') }}
+          </h3>
+          <div class="self-end">
+            <button class="button" @click="openDeleteDialog = false">
+              {{ $t('edit_account.cancel_delete') }}
+            </button>
+            <button class="button red" @click="deleteUser">
+              {{ $t('edit_account.confirm_delete') }}
+            </button>
+          </div>
+        </div>
+      </div>
+    </transition>
+  </div>
 </template>
 
 <script lang="ts">
@@ -49,12 +93,14 @@ export default Vue.extend({
     globalErrors: string[]
     isLoading: boolean
     userInfo: UpdateUserDto
+    openDeleteDialog: boolean
   } {
     return {
       fieldErrors: [],
       globalErrors: [],
       isLoading: false,
       userInfo: {},
+      openDeleteDialog: false,
     }
   },
 
@@ -71,9 +117,6 @@ export default Vue.extend({
     async update() {
       this.isLoading = true
       try {
-        // await this.$axios.put(`/users/${this.$auth?.user?.id}`, {
-        //   ...this.userInfo,
-        // })
         await this.$api.users
           ._id(this.$auth.user!.id as string)
           .$patch({ body: removeEmptyAttributes(this.userInfo) })
@@ -89,6 +132,17 @@ export default Vue.extend({
       }
       this.isLoading = false
       this.$auth.fetchUser()
+    },
+
+    deleteUser() {
+      this.$api.users
+        ._id(this.$auth.user!.id as string)
+        .$delete()
+        .then(() => {
+          this.openDeleteDialog = false
+          this.$auth.logout()
+        })
+        .catch((err) => alert(err.response.data.message))
     },
   },
 })

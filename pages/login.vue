@@ -15,7 +15,7 @@
     />
     <button
       aria-label="log in"
-      class="button my-2 self-center inline-flex items-center uppercase tracking-widest"
+      class="button my-2 self-center inline-flex items-center uppercase tracking-wide"
     >
       <span v-if="!isLoading">{{ $t('login.login') }}</span>
       <template v-else>

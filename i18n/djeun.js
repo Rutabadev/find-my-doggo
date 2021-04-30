@@ -30,6 +30,10 @@ export default {
     title: 'Infos du compte',
     update: 'màj',
     updating: 'màj...',
+    delete: 'Dead mon compte',
+    sure_delete: "Fais pas l'con gros",
+    cancel_delete: "J'assume ap",
+    confirm_delete: 'Tej moi ce compte',
   },
   logout: "J'me tire",
   find: "Vla la page protégée t'as vu c'est de la bête de frappe",
@@ -44,5 +48,8 @@ export default {
     title: 'Réinitialiser mot de passe',
     reset: 'Réinitialiser',
     resetting: 'En cours',
+  },
+  validate_email: {
+    ok: 'Email validé par la street.',
   },
 }

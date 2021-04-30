@@ -31,6 +31,10 @@ export default {
     title: 'Account information',
     update: 'Update',
     updating: 'Updating...',
+    delete: 'Delete my account',
+    sure_delete: 'Are you sure',
+    cancel_delete: 'Cancel',
+    confirm_delete: 'Delete',
   },
   logout: 'Log out',
   find: 'This is a protected page',
@@ -45,5 +49,8 @@ export default {
     title: 'Reset password',
     reset: 'reset',
     resetting: 'resetting',
+  },
+  validate_email: {
+    ok: 'Email validated.',
   },
 }

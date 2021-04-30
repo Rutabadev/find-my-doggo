@@ -13,7 +13,7 @@
     />
     <button
       aria-label="send mail"
-      class="button my-2 self-center inline-flex items-center uppercase tracking-widest"
+      class="button my-2 self-center inline-flex items-center uppercase tracking-wide"
     >
       <span v-if="!isLoading">{{ $t('forgot_password.send') }}</span>
       <template v-else>
