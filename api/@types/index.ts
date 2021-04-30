@@ -17,6 +17,7 @@ export type User = {
   email: string
   id: number
   name: string
+  emailValid: boolean
   roles: Role[]
 }
 
@@ -31,7 +32,11 @@ export type ForgotPasswordDto = {
 }
 
 export type ChangePasswordDto = {
+  uuid: string
   password: string
+}
+
+export type ValidateEmailDto = {
   uuid: string
 }
 
@@ -41,4 +46,5 @@ export type UpdateUserDto = {
   roles?: string[]
   id?: number
   name?: string
+  emailValid?: boolean
 }

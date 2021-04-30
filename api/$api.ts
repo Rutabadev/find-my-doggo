@@ -19,6 +19,8 @@ import { Methods as Methods6 } from './users/forgot-password'
 import { Methods as Methods7 } from './users/reset-password'
 // prettier-ignore
 import { Methods as Methods8 } from './users/signup'
+// prettier-ignore
+import { Methods as Methods9 } from './users/validate-email'
 
 // prettier-ignore
 const api = <T>({ baseURL, fetch }: AspidaClient<T>) => {
@@ -31,6 +33,7 @@ const api = <T>({ baseURL, fetch }: AspidaClient<T>) => {
   const PATH5 = '/users/forgot-password'
   const PATH6 = '/users/reset-password'
   const PATH7 = '/users/signup'
+  const PATH8 = '/users/validate-email'
   const GET = 'GET'
   const POST = 'POST'
   const DELETE = 'DELETE'
@@ -125,6 +128,13 @@ const api = <T>({ baseURL, fetch }: AspidaClient<T>) => {
         $post: (option: { body: Methods8['post']['reqBody'], config?: T }) =>
           fetch<Methods8['post']['resBody'], BasicHeaders, Methods8['post']['status']>(prefix, PATH7, POST, option).json().then(r => r.body),
         $path: () => `${prefix}${PATH7}`
+      },
+      validate_email: {
+        post: (option: { body: Methods9['post']['reqBody'], config?: T }) =>
+          fetch<void, BasicHeaders, Methods9['post']['status']>(prefix, PATH8, POST, option).send(),
+        $post: (option: { body: Methods9['post']['reqBody'], config?: T }) =>
+          fetch<void, BasicHeaders, Methods9['post']['status']>(prefix, PATH8, POST, option).send().then(r => r.body),
+        $path: () => `${prefix}${PATH8}`
       },
       post: (option: { body: Methods4['post']['reqBody'], config?: T }) =>
         fetch<Methods4['post']['resBody'], BasicHeaders, Methods4['post']['status']>(prefix, PATH4, POST, option).json(),
