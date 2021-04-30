@@ -45,14 +45,14 @@
     </Form>
 
     <div
-      class="fixed z-10 inset-0 bg-black transition-opacity duration-200"
+      class="fixed z-10 inset-0 bg-black transition-opacity duration-200 motion-reduce:transition-none"
       :class="openDeleteDialog ? 'opacity-50' : 'opacity-0 pointer-events-none'"
     />
     <transition
-      enter-active-class="transition duration-100 ease-out"
+      enter-active-class="transition duration-100 ease-out motion-reduce:transition-none"
       enter-class="transform scale-95 opacity-0"
       enter-to-class="transform scale-100 opacity-100"
-      leave-active-class="transition duration-75 ease-in"
+      leave-active-class="transition duration-75 ease-in motion-reduce:transition-none"
       leave-class="transform scale-100 opacity-100"
       leave-to-class="transform scale-95 opacity-0"
     >
