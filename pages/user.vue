@@ -38,46 +38,25 @@
       <button
         aria-label="delete"
         class="mt-4 button red self-center"
-        @click.prevent="openDeleteDialog = true"
+        @click.prevent="openDeleteModal = true"
       >
         {{ $t('edit_account.delete') }}
       </button>
     </Form>
 
-    <div
-      class="fixed z-10 inset-0 bg-black transition-opacity duration-200 motion-reduce:transition-none"
-      :class="openDeleteDialog ? 'opacity-50' : 'opacity-0 pointer-events-none'"
-    />
-    <transition
-      enter-active-class="transition duration-100 ease-out motion-reduce:transition-none"
-      enter-class="transform scale-95 opacity-0"
-      enter-to-class="transform scale-100 opacity-100"
-      leave-active-class="transition duration-75 ease-in motion-reduce:transition-none"
-      leave-class="transform scale-100 opacity-100"
-      leave-to-class="transform scale-95 opacity-0"
-    >
-      <div
-        v-if="openDeleteDialog"
-        class="fixed z-10 inset-0 grid place-content-center"
-        @click="openDeleteDialog = false"
-      >
-        <div
-          class="p-8 bg-gray-50 dark:bg-gray-700 rounded-lg flex flex-col shadow-xl"
-        >
-          <h3 class="text-lg font-semibold mb-6">
-            {{ $t('edit_account.sure_delete') }}
-          </h3>
-          <div class="self-end">
-            <button class="button" @click="openDeleteDialog = false">
-              {{ $t('edit_account.cancel_delete') }}
-            </button>
-            <button class="button red" @click="deleteUser">
-              {{ $t('edit_account.confirm_delete') }}
-            </button>
-          </div>
-        </div>
+    <Modal :show="openDeleteModal" @close="() => (openDeleteModal = false)">
+      <h3 class="text-lg font-semibold mb-6">
+        {{ $t('edit_account.sure_delete') }}
+      </h3>
+      <div class="self-end">
+        <button class="button" @click="openDeleteModal = false">
+          {{ $t('edit_account.cancel_delete') }}
+        </button>
+        <button class="button red" @click="deleteUser">
+          {{ $t('edit_account.confirm_delete') }}
+        </button>
       </div>
-    </transition>
+    </Modal>
   </div>
 </template>
 
@@ -93,14 +72,14 @@ export default Vue.extend({
     globalErrors: string[]
     isLoading: boolean
     userInfo: UpdateUserDto
-    openDeleteDialog: boolean
+    openDeleteModal: boolean
   } {
     return {
       fieldErrors: [],
       globalErrors: [],
       isLoading: false,
       userInfo: {},
-      openDeleteDialog: false,
+      openDeleteModal: false,
     }
   },
 
@@ -139,7 +118,7 @@ export default Vue.extend({
         ._id(this.$auth.user!.id as string)
         .$delete()
         .then(() => {
-          this.openDeleteDialog = false
+          this.openDeleteModal = false
           this.$auth.logout()
         })
         .catch((err) => alert(err.response.data.message))
