@@ -34,6 +34,7 @@ export default {
     sure_delete: "Fais pas l'con gros",
     cancel_delete: "J'assume ap",
     confirm_delete: 'Tej moi ce compte',
+    delete_success: 'Allez hop ça dégage.',
   },
   logout: "J'me tire",
   find: "Vla la page protégée t'as vu c'est de la bête de frappe",

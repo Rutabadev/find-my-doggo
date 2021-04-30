@@ -65,6 +65,7 @@ import Vue from 'vue'
 import { User } from '~/types'
 import { UpdateUserDto } from '~/api/@types'
 import { removeEmptyAttributes } from '~/utils'
+import { snackbarStore } from '~/store'
 
 export default Vue.extend({
   data(): {
@@ -120,8 +121,11 @@ export default Vue.extend({
         .then(() => {
           this.openDeleteModal = false
           this.$auth.logout()
+          snackbarStore.showMessage(
+            this.$t('edit_account.delete_success').toString()
+          )
         })
-        .catch((err) => alert(err.response.data.message))
+        .catch((err) => snackbarStore.showMessage(err.response.data.message))
     },
   },
 })

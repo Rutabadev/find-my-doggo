@@ -35,6 +35,7 @@ export default {
     sure_delete: 'Are you sure',
     cancel_delete: 'Cancel',
     confirm_delete: 'Delete',
+    delete_success: 'Account deleted.',
   },
   logout: 'Log out',
   find: 'This is a protected page',

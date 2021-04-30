@@ -1,14 +1,13 @@
 <template>
-  <main>
-    <div
-      class="relative bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-300 transition min-h-screen"
-    >
-      <Navbar />
-      <div class="container p-5 mx-auto">
-        <Nuxt />
-      </div>
-      <IconSignature class="absolute bottom-0 right-0 p-8 w-52" />
+  <main
+    class="relative bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-300 transition min-h-screen"
+  >
+    <Navbar />
+    <div class="container p-5 mx-auto">
+      <Nuxt />
     </div>
+    <IconSignature class="absolute bottom-0 right-0 p-8 w-52" />
+    <Snackbar />
   </main>
 </template>
 
@@ -23,7 +22,7 @@ export default Vue.extend({
 
   head() {
     return {
-      ...this.$nuxtI18nSeo(),
+      ...this.$nuxtI18nHead(),
       link: [
         {
           rel: 'canonical',

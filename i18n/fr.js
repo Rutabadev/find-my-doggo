@@ -35,6 +35,7 @@ export default {
     sure_delete: 'Etes vous sûr ?',
     cancel_delete: 'Annuler',
     confirm_delete: 'Supprimer',
+    delete_success: 'Compte supprimé.',
   },
   logout: 'Déconnexion',
   find: 'Ceci est une page protégée',
