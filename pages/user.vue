@@ -121,9 +121,9 @@ export default Vue.extend({
         .then(() => {
           this.openDeleteModal = false
           this.$auth.logout()
-          snackbarStore.showMessage(
-            this.$t('edit_account.delete_success').toString()
-          )
+          snackbarStore.showMessage({
+            message: this.$t('edit_account.delete_success').toString(),
+          })
         })
         .catch((err) => snackbarStore.showMessage(err.response.data.message))
     },

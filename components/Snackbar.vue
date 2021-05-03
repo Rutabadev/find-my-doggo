@@ -8,13 +8,13 @@
     leave-to-class="transform translate-y-5 opacity-0"
   >
     <div
-      v-show="internalContent"
+      v-if="internalContent"
       class="fixed inset-0 px-1 pb-8 grid justify-center content-end pointer-events-none"
     >
       <div
         class="max-w-2xl px-8 py-4 bg-white dark:bg-gray-900 rounded-md shadow-md flex items-center space-between pointer-events-auto"
       >
-        <p>{{ content }}</p>
+        <p>{{ notification.message }}</p>
         <button class="ml-10 button px-2 py-1" @click="close">Close</button>
       </div>
     </div>
@@ -26,22 +26,27 @@ import Vue from 'vue'
 import { snackbarStore } from '~/store'
 
 export default Vue.extend({
-  data() {
+  data(): { timeout: any; internalContent: string } {
     return {
+      timeout: undefined,
       internalContent: '',
     }
   },
 
   computed: {
-    content() {
-      return snackbarStore.content
+    notification() {
+      return snackbarStore.notification
     },
   },
 
   watch: {
-    content: {
-      handler(newValue) {
-        this.internalContent = newValue
+    notification: {
+      handler({ message, duration }) {
+        clearTimeout(this.timeout)
+        this.internalContent = message
+        if (message) {
+          this.timeout = setTimeout(this.close, duration)
+        }
       },
     },
   },
@@ -49,7 +54,7 @@ export default Vue.extend({
   methods: {
     close() {
       this.internalContent = ''
-      setTimeout(() => snackbarStore.showMessage(''), 200)
+      setTimeout(() => snackbarStore.showMessage({ message: '' }), 200)
     },
   },
 })

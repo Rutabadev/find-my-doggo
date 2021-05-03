@@ -9,13 +9,22 @@
     <NuxtLink class="button" to="/find">
       {{ $t('index.find') }}
     </NuxtLink>
+
+    <button class="mt-6 button" @click="snack">Snack</button>
   </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
+import { snackbarStore } from '~/store'
 export default Vue.extend({
   name: 'Index',
   auth: false,
+
+  methods: {
+    snack() {
+      snackbarStore.showMessage({ message: 'test' })
+    },
+  },
 })
 </script>
