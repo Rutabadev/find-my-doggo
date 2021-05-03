@@ -23,7 +23,9 @@ export default Vue.extend({
 
   methods: {
     snack() {
-      snackbarStore.showMessage({ message: 'test' })
+      snackbarStore.showMessage({
+        message: Math.random() > 0.5 ? 'miam' : 'nom nom',
+      })
     },
   },
 })

@@ -12,10 +12,12 @@
       class="fixed inset-0 px-1 pb-8 grid justify-center content-end pointer-events-none"
     >
       <div
-        class="max-w-2xl px-8 py-4 bg-white dark:bg-gray-900 rounded-md shadow-md flex items-center space-between pointer-events-auto"
+        class="md:min-w-[37ch] max-w-2xl px-8 py-4 bg-white dark:bg-gray-900 rounded-md shadow-md flex items-center justify-between pointer-events-auto"
       >
         <p>{{ notification.message }}</p>
-        <button class="ml-10 button px-2 py-1" @click="close">Close</button>
+        <button class="ml-10" @click="close">
+          <IconCross class="w-6 h-6" />
+        </button>
       </div>
     </div>
   </transition>
