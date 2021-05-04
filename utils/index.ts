@@ -27,10 +27,10 @@ export const handleFormErrors = (
 }
 
 export const debounce = (fn: (...params: any) => void, delay: number) => {
-  let timeout: NodeJS.Timeout
+  let timeout: number
   return (...args: any) => {
     clearTimeout(timeout)
-    timeout = setTimeout(() => {
+    timeout = window.setTimeout(() => {
       fn(...args)
     }, delay)
   }
