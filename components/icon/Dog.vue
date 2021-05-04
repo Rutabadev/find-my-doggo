@@ -14,8 +14,8 @@
       id="head"
       d="M68.1235 82.9264L149.5 55.7012L230.877 82.9264L216.615 212.77L149.5 256.749L82.3854 212.77L68.1235 82.9264Z"
       fill="#F3D69E"
-      @mouseover="debouncedToggleHover(true)"
-      @mouseout="debouncedToggleHover(false)"
+      @mouseover="toggleHover(true)"
+      @mouseout="toggleHover(false)"
     />
     <path
       id="left-ear"
@@ -66,7 +66,7 @@ import { debounce } from '~/utils'
 export default Vue.extend({
   data(): {
     headHovered: boolean
-    debouncedToggleHover?: (value: boolean) => void
+    toggleHover?: (value: boolean) => void
   } {
     return {
       headHovered: false,
@@ -74,16 +74,13 @@ export default Vue.extend({
   },
 
   created() {
-    this.debouncedToggleHover = debounce(
+    this.toggleHover = debounce(
       (value: boolean) => (this.headHovered = value),
       200
     )
   },
 
   methods: {
-    toggleHover(value: boolean): void {
-      this.headHovered = value
-    },
     showVersion(): void {
       alert(process.env.version)
     },
