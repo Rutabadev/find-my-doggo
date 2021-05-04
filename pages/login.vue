@@ -43,6 +43,7 @@
 <script lang="ts">
 import Vue from 'vue'
 import { LoginUserDto } from '~/api/@types'
+import { handleFormErrors } from '~/utils'
 
 export default Vue.extend({
   transition(to) {
@@ -78,10 +79,8 @@ export default Vue.extend({
         await this.$auth.loginWith('local', {
           data: this.loginInfo,
         })
-      } catch (err) {
-        Array.isArray(err.response.data.message)
-          ? (this.fieldErrors = err.response.data.message)
-          : (this.globalErrors = [err.response.data.message])
+      } catch (error) {
+        handleFormErrors(this, error)
       }
       this.isLoading = false
     },

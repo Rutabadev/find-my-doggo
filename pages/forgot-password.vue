@@ -30,6 +30,7 @@
 <script lang="ts">
 import Vue from 'vue'
 import { ForgotPasswordDto } from '~/api/@types'
+import { handleFormErrors } from '~/utils'
 
 export default Vue.extend({
   auth: false,
@@ -67,14 +68,7 @@ export default Vue.extend({
         })
       } catch (error) {
         ok = false
-        // Clear errors and reset them in the next tick to force transition again
-        this.fieldErrors = []
-        this.globalErrors = []
-        this.$nextTick(() => {
-          Array.isArray(error.response.data.message)
-            ? (this.fieldErrors = error.response.data.message)
-            : (this.globalErrors = [error.response.data.message])
-        })
+        handleFormErrors(this, error)
       }
       this.isLoading = false
       if (ok) {

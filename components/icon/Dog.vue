@@ -2,17 +2,20 @@
   <svg
     id="dog"
     class="h-64 w-64"
+    :class="headHovered ? 'hovered' : undefined"
     viewBox="0 0 300 300"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
     stroke="black"
     stroke-width="3"
-    @contextmenu.prevent="showVersion"
+    @click.right="showVersion"
   >
     <path
       id="head"
       d="M68.1235 82.9264L149.5 55.7012L230.877 82.9264L216.615 212.77L149.5 256.749L82.3854 212.77L68.1235 82.9264Z"
       fill="#F3D69E"
+      @mouseover="debouncedToggleHover(true)"
+      @mouseout="debouncedToggleHover(false)"
     />
     <path
       id="left-ear"
@@ -59,8 +62,28 @@
 
 <script lang="ts">
 import Vue from 'vue'
+import { debounce } from '~/utils'
 export default Vue.extend({
+  data(): {
+    headHovered: boolean
+    debouncedToggleHover?: (value: boolean) => void
+  } {
+    return {
+      headHovered: false,
+    }
+  },
+
+  created() {
+    this.debouncedToggleHover = debounce(
+      (value: boolean) => (this.headHovered = value),
+      200
+    )
+  },
+
   methods: {
+    toggleHover(value: boolean): void {
+      this.headHovered = value
+    },
     showVersion(): void {
       alert(process.env.version)
     },
@@ -120,7 +143,7 @@ export default Vue.extend({
       }
     }
 
-    &:hover {
+    &.hovered {
       transform: rotate(-15deg);
 
       #left-ear,
@@ -137,6 +160,9 @@ export default Vue.extend({
         clip-path: polygon(0 0, 100% 0, 100% 10%, 0 10%);
       }
     }
+  }
+  :not(:is(#dog, #head)) {
+    pointer-events: none;
   }
 }
 </style>

@@ -51,6 +51,7 @@
 <script lang="ts">
 import Vue from 'vue'
 import { CreateUserDto } from '~/api/@types'
+import { handleFormErrors } from '~/utils'
 
 export default Vue.extend({
   auth: false,
@@ -88,15 +89,8 @@ export default Vue.extend({
         .then(() => {
           this.$router.push('/login')
         })
-        .catch((err: any) => {
-          // Clear errors and reset them in the next tick to force transition again
-          this.fieldErrors = []
-          this.globalErrors = []
-          this.$nextTick(() => {
-            Array.isArray(err.response.data.message)
-              ? (this.fieldErrors = err.response.data.message)
-              : (this.globalErrors = [err.response.data.message])
-          })
+        .catch((error) => {
+          handleFormErrors(this, error)
         })
         .finally(() => (this.isLoading = false))
     },
