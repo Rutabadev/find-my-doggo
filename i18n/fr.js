@@ -32,6 +32,7 @@ export default {
     update: 'Mettre à jour',
     updating: 'Mise à jour...',
     delete: 'Supprimer mon compte',
+    deleting: 'Suppression...',
     sure_delete: 'Etes vous sûr ?',
     cancel_delete: 'Annuler',
     confirm_delete: 'Supprimer',

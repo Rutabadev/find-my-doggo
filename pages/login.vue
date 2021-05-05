@@ -15,7 +15,7 @@
     />
     <button
       aria-label="log in"
-      class="button my-2 self-center inline-flex items-center uppercase tracking-wide"
+      class="button flex justify-center items-center uppercase tracking-wide"
     >
       <span v-if="!isLoading">{{ $t('login.login') }}</span>
       <template v-else>
@@ -88,7 +88,7 @@ export default Vue.extend({
 })
 </script>
 
-<style>
+<style lang="postcss">
 .slide {
   &-left-enter-active,
   &-left-leave-active {

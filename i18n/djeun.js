@@ -31,6 +31,7 @@ export default {
     update: 'màj',
     updating: 'màj...',
     delete: 'Dead mon compte',
+    deleting: 'Dead ça...',
     sure_delete: "Fais pas l'con gros",
     cancel_delete: "J'assume ap",
     confirm_delete: 'Tej moi ce compte',

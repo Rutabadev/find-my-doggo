@@ -27,9 +27,9 @@
       />
       <button
         aria-label="log in"
-        class="button my-2 self-center inline-flex items-center uppercase tracking-wide"
+        class="button flex justify-center items-center uppercase tracking-wide"
       >
-        <span v-if="!isLoading">{{ $t('edit_account.update') }}</span>
+        <span v-if="!loading.edit">{{ $t('edit_account.update') }}</span>
         <template v-else>
           <IconSpinner class="h-5 w-5 mr-2"></IconSpinner>
           {{ $t('edit_account.updating') }}
@@ -37,7 +37,7 @@
       </button>
       <button
         aria-label="delete"
-        class="mt-4 button red self-center"
+        class="button red uppercase tracking-wide"
         @click.prevent="openDeleteModal = true"
       >
         {{ $t('edit_account.delete') }}
@@ -48,12 +48,21 @@
       <h3 class="text-lg font-semibold mb-6">
         {{ $t('edit_account.sure_delete') }}
       </h3>
-      <div class="self-end">
-        <button class="button" @click="openDeleteModal = false">
+      <div class="self-end flex gap-4">
+        <button class="button uppercase" @click="openDeleteModal = false">
           {{ $t('edit_account.cancel_delete') }}
         </button>
-        <button class="button red" @click="deleteUser">
-          {{ $t('edit_account.confirm_delete') }}
+        <button
+          aria-label="delete"
+          class="button red flex justify-center items-center uppercase"
+        >
+          <span v-if="!loading.delete">{{
+            $t('edit_account.confirm_delete')
+          }}</span>
+          <template v-else>
+            <IconSpinner class="h-5 w-5 mr-2"></IconSpinner>
+            {{ $t('edit_account.deleting') }}
+          </template>
         </button>
       </div>
     </Modal>
@@ -64,21 +73,27 @@
 import Vue from 'vue'
 import { User } from '~/types'
 import { UpdateUserDto } from '~/api/@types'
-import { removeEmptyAttributes } from '~/utils'
+import { handleFormErrors, removeEmptyAttributes } from '~/utils'
 import { snackbarStore } from '~/store'
 
 export default Vue.extend({
   data(): {
     fieldErrors: string[]
     globalErrors: string[]
-    isLoading: boolean
+    loading: {
+      edit: boolean
+      delete: boolean
+    }
     userInfo: UpdateUserDto
     openDeleteModal: boolean
   } {
     return {
       fieldErrors: [],
       globalErrors: [],
-      isLoading: false,
+      loading: {
+        edit: false,
+        delete: false,
+      },
       userInfo: {},
       openDeleteModal: false,
     }
@@ -95,26 +110,20 @@ export default Vue.extend({
 
   methods: {
     async update() {
-      this.isLoading = true
+      this.loading.edit = true
       try {
         await this.$api.users
           ._id(this.$auth.user!.id as string)
           .$patch({ body: removeEmptyAttributes(this.userInfo) })
-      } catch (err) {
-        // Clear errors and reset them in the next tick to force transition again
-        this.fieldErrors = []
-        this.globalErrors = []
-        this.$nextTick(() => {
-          Array.isArray(err.response.data.message)
-            ? (this.fieldErrors = err.response.data.message)
-            : (this.globalErrors = [err.response.data.message])
-        })
+      } catch (error) {
+        handleFormErrors(this, error)
       }
-      this.isLoading = false
+      this.loading.edit = false
       this.$auth.fetchUser()
     },
 
     deleteUser() {
+      this.loading.delete = true
       this.$api.users
         ._id(this.$auth.user!.id as string)
         .$delete()
@@ -126,6 +135,7 @@ export default Vue.extend({
           })
         })
         .catch((err) => snackbarStore.showMessage(err.response.data.message))
+        .finally(() => (this.loading.delete = false))
     },
   },
 })

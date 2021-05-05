@@ -31,7 +31,7 @@
     />
     <button
       aria-label="sign up"
-      class="button my-2 self-center inline-flex items-center uppercase tracking-wide"
+      class="button flex justify-center items-center uppercase tracking-wide"
     >
       <span v-if="!isLoading">{{ $t('create_account.create') }}</span>
       <template v-else>
@@ -98,7 +98,7 @@ export default Vue.extend({
 })
 </script>
 
-<style>
+<style lang="postcss">
 .slide {
   &-right-enter-active,
   &-right-leave-active {

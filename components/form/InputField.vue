@@ -1,5 +1,5 @@
 <template>
-  <div class="field mt-4 mb-6">
+  <div class="field">
     <div class="relative">
       <!--suppress HtmlFormInputWithoutLabel -->
       <input
