@@ -51,6 +51,7 @@ export default {
     title: 'Reset password',
     reset: 'reset',
     resetting: 'resetting',
+    success: 'Password successfully changed.',
   },
   validate_email: {
     ok: 'Email validated.',

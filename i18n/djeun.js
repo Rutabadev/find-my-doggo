@@ -50,6 +50,7 @@ export default {
     title: 'Réinitialiser mot de passe',
     reset: 'Réinitialiser',
     resetting: 'En cours',
+    success: 'Nouveau password validé.',
   },
   validate_email: {
     ok: 'Email validé par la street.',

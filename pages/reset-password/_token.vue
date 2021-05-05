@@ -28,6 +28,7 @@
 import Vue from 'vue'
 import { ChangePasswordDto } from '~/api/@types'
 import { handleFormErrors } from '~/utils'
+import { snackbarStore } from '~/store'
 
 export default Vue.extend({
   auth: false,
@@ -70,6 +71,9 @@ export default Vue.extend({
       }
       this.isLoading = false
       if (ok) {
+        snackbarStore.showMessage({
+          message: this.$t('reset_password.success').toString(),
+        })
         this.$router.push({ path: '/login' })
       }
     },
