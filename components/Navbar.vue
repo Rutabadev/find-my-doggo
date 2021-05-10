@@ -22,6 +22,7 @@
 
 <script lang="ts">
 import Vue from 'vue'
+import { sidebarStore } from '~/store'
 
 export default Vue.extend({
   data() {
@@ -33,6 +34,7 @@ export default Vue.extend({
   methods: {
     toggleSidebar() {
       const nextShowSidebar = !this.showSidebar
+      sidebarStore.setOpen(nextShowSidebar)
       this.showSidebar = nextShowSidebar
       if (!nextShowSidebar) {
         ;(this.$refs.openSideBarButton as HTMLElement).focus()

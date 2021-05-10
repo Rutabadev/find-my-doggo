@@ -20,7 +20,6 @@ export default {
 
   tailwindcss: {
     cssPath: '~/assets/css/tailwind.pcss',
-    jit: true,
   },
 
   // This is to make @nuxtjs/color-mode use 'dark' class not 'dark-mode'

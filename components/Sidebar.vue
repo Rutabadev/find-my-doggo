@@ -16,7 +16,7 @@
       <div class="relative w-full h-full">
         <svg
           viewBox="0 0 214 720"
-          class="sidebar-svg absolute text-primary-600"
+          class="absolute z-[-1] filter drop-shadow-md text-primary-600"
           height="100%"
           width="100%"
           fill="currentColor"
@@ -84,6 +84,7 @@
 <script lang="ts">
 import Vue from 'vue'
 import anime from 'animejs'
+import { sidebarStore } from '~/store'
 
 export default Vue.extend({
   props: {
@@ -182,12 +183,15 @@ export default Vue.extend({
       this.toggleSidebar()
     },
   },
+
+  head() {
+    return sidebarStore.open
+      ? {
+          bodyAttrs: {
+            class: 'overflow-y-hidden',
+          },
+        }
+      : {}
+  },
 })
 </script>
-
-<style scoped>
-.sidebar-svg {
-  z-index: -1;
-  filter: drop-shadow(0 0 4px hsla(0, 0%, 10%, 0.5));
-}
-</style>
