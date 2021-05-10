@@ -13,12 +13,10 @@
         'will-change': 'transform',
       }"
     >
-      <div class="relative w-full h-full">
+      <div class="relative w-full h-screen">
         <svg
           viewBox="0 0 214 720"
-          class="absolute z-[-1] filter drop-shadow-md text-primary-600"
-          height="100%"
-          width="100%"
+          class="absolute z-[-1] filter drop-shadow-md text-primary-600 w-full h-full"
           fill="currentColor"
           preserveAspectRatio="none"
           xmlns="http://www.w3.org/2000/svg"
