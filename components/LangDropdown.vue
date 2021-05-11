@@ -77,10 +77,12 @@ export default Vue.extend({
         window.addEventListener('keydown', this.downHandler)
         window.addEventListener('keydown', this.upHandler)
         window.addEventListener('keydown', this.spaceHandler)
+        window.addEventListener('click', this.outsideClickHandler)
       } else {
         window.removeEventListener('keydown', this.downHandler)
         window.removeEventListener('keydown', this.upHandler)
-        window.removeEventListener('keydown', this.spaceHandler)
+        window.removeEventListener('keydown', this.upHandler)
+        window.removeEventListener('click', this.outsideClickHandler)
       }
     },
   },
@@ -126,6 +128,14 @@ export default Vue.extend({
         e.preventDefault()
         this.langDropdownOpen = false
         ;(this.$refs.dropdownButton as HTMLElement).focus()
+      }
+    },
+
+    outsideClickHandler({ target }: MouseEvent) {
+      if (
+        !(this.$refs.dropdownButton as HTMLElement).contains(target as Node)
+      ) {
+        this.langDropdownOpen = false
       }
     },
   },
