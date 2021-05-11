@@ -2,8 +2,7 @@
   <div class="relative inline-block text-left">
     <div>
       <button
-        aria-label="lang options menu"
-        type="button"
+        ref="dropdownButton"
         class="inline-flex justify-center w-full rounded-md border border-gray-300 dark:border-gray-700 shadow-sm px-4 py-2 bg-white dark:bg-gray-800 text-sm font-medium text-gray-700 dark:text-gray-100 hover:bg-gray-50"
         @click="langDropdownOpen = !langDropdownOpen"
       >
@@ -35,17 +34,12 @@
         v-show="langDropdownOpen"
         class="origin-top-right absolute left-0 right-0 mt-2 rounded-md shadow-lg bg-white dark:bg-gray-800 ring-1 ring-black ring-opacity-5"
       >
-        <div
-          class="py-1"
-          role="menu"
-          aria-orientation="vertical"
-          aria-labelledby="options-menu"
-        >
+        <div ref="menuItemsContainer" class="py-1">
           <a
             v-for="locale in availableLocales"
             :key="locale"
-            class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer"
-            role="menuitem"
+            class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-100 hover:bg-gray-100 focus:bg-gray-100 dark:hover:bg-gray-700 dark:focus:bg-gray-700 cursor-pointer"
+            href="#"
             @click="linkClick(locale)"
             >{{ locale }}
           </a>
@@ -59,9 +53,13 @@
 import Vue from 'vue'
 
 export default Vue.extend({
-  data() {
+  data(): {
+    langDropdownOpen: boolean
+    selectedItem: undefined | number
+  } {
     return {
       langDropdownOpen: false,
+      selectedItem: undefined,
     }
   },
 
@@ -73,10 +71,62 @@ export default Vue.extend({
     },
   },
 
+  watch: {
+    langDropdownOpen(langDropdownOpen: boolean) {
+      if (langDropdownOpen) {
+        window.addEventListener('keydown', this.downHandler)
+        window.addEventListener('keydown', this.upHandler)
+        window.addEventListener('keydown', this.spaceHandler)
+      } else {
+        window.removeEventListener('keydown', this.downHandler)
+        window.removeEventListener('keydown', this.upHandler)
+        window.removeEventListener('keydown', this.spaceHandler)
+      }
+    },
+  },
+
   methods: {
     linkClick(localeCode: string) {
       this.langDropdownOpen = !this.langDropdownOpen
       this.$i18n.setLocale(localeCode)
+      ;(this.$refs.dropdownButton as HTMLElement).focus()
+    },
+
+    downHandler({ code }: KeyboardEvent) {
+      if (code === 'ArrowDown') {
+        this.selectedItem =
+          this.selectedItem !== undefined
+            ? Math.min(
+                this.selectedItem + 1,
+                (this.$refs.menuItemsContainer as HTMLElement)
+                  .childElementCount - 1
+              )
+            : 0
+        ;((this.$refs.menuItemsContainer as HTMLElement).children[
+          this.selectedItem
+        ] as HTMLElement).focus()
+      }
+    },
+
+    upHandler({ code }: KeyboardEvent) {
+      if (code === 'ArrowUp') {
+        this.selectedItem =
+          this.selectedItem !== undefined
+            ? Math.max(this.selectedItem - 1, 0)
+            : (this.$refs.menuItemsContainer as HTMLElement).childElementCount -
+              1
+        ;((this.$refs.menuItemsContainer as HTMLElement).children[
+          this.selectedItem
+        ] as HTMLElement).focus()
+      }
+    },
+
+    spaceHandler(e: KeyboardEvent) {
+      if (e.code === 'Space') {
+        e.preventDefault()
+        this.langDropdownOpen = false
+        ;(this.$refs.dropdownButton as HTMLElement).focus()
+      }
     },
   },
 })
