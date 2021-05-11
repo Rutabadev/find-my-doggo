@@ -83,6 +83,7 @@ export default Vue.extend({
         window.removeEventListener('keydown', this.upHandler)
         window.removeEventListener('keydown', this.spaceHandler)
         window.removeEventListener('click', this.outsideClickHandler)
+        this.selectedItem = undefined
       }
     },
   },
