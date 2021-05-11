@@ -81,7 +81,7 @@ export default Vue.extend({
       } else {
         window.removeEventListener('keydown', this.downHandler)
         window.removeEventListener('keydown', this.upHandler)
-        window.removeEventListener('keydown', this.upHandler)
+        window.removeEventListener('keydown', this.spaceHandler)
         window.removeEventListener('click', this.outsideClickHandler)
       }
     },
