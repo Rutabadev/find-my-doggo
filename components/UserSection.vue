@@ -10,6 +10,13 @@
     </template>
     <template v-else>
       <NuxtLink
+        v-if="user.roles.includes('admin')"
+        to="/admin"
+        class="px-4 hover:bg-primary-700 focus:bg-primary-700 truncate"
+      >
+        {{ $t('admin.title') }}
+      </NuxtLink>
+      <NuxtLink
         to="/user"
         class="px-4 hover:bg-primary-700 focus:bg-primary-700 truncate"
       >
@@ -34,6 +41,10 @@ export default Vue.extend({
     user(): any {
       return this.$auth.user
     },
+  },
+
+  mounted() {
+    console.log(this.user)
   },
 
   methods: {

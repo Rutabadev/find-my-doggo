@@ -8,17 +8,12 @@ export type LoggedInUserDto = {
   access_token: string
 }
 
-export type Role = {
-  id: number
-  name: string
-}
-
 export type User = {
   email: string
+  roles: string[]
   id: number
   name: string
   emailValid: boolean
-  roles: Role[]
 }
 
 export type CreateUserDto = {
@@ -46,4 +41,9 @@ export type UpdateUserDto = {
   roles?: string[]
   id?: number
   name?: string
+}
+
+export type Role = {
+  id: number
+  name: string
 }

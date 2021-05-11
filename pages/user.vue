@@ -71,8 +71,7 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import { User } from '~/types'
-import { UpdateUserDto } from '~/api/@types'
+import { UpdateUserDto, User } from '~/api/@types'
 import { handleFormErrors, removeEmptyAttributes } from '~/utils'
 import { snackbarStore } from '~/store'
 
@@ -102,14 +101,12 @@ export default Vue.extend({
   created() {
     this.userInfo = {
       ...(this.$auth.user as User),
-      roles: (this.$auth.user as User).roles.map(
-        ({ value }: { value: string }) => value
-      ),
     }
   },
 
   methods: {
     async update() {
+      console.log(this.userInfo)
       this.loading.edit = true
       try {
         await this.$api.users
