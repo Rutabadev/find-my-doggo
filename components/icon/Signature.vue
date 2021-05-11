@@ -1,10 +1,5 @@
 <template>
-  <svg
-    viewBox="0 0 466 213"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-    class="filter drop-shadow"
-  >
+  <svg viewBox="0 0 466 213" fill="none" xmlns="http://www.w3.org/2000/svg">
     <mask
       id="mask0"
       maskUnits="userSpaceOnUse"

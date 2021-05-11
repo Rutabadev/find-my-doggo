@@ -1,12 +1,12 @@
 <template>
   <div>
     <div
-      class="absolute inset-0 bg-black motion-safe:duration-500 z-10"
+      class="absolute inset-0 h-screen bg-black motion-safe:duration-500 z-10"
       :class="[show ? 'opacity-50' : 'opacity-0 pointer-events-none']"
       @click="toggleSidebar"
     ></div>
     <div
-      class="absolute left-0 top-0 bottom-0 w-2/3 max-w-xs motion-safe:duration-200 z-10"
+      class="absolute inset-0 w-2/3 max-w-xs motion-safe:duration-200 z-10"
       :class="show ? 'visible' : 'invisible'"
       :style="{
         transform: show ? 'translate3d(0, 0, 0)' : 'translate3d(-102%, 0, 0)',
@@ -16,7 +16,7 @@
       <div class="relative w-full h-screen">
         <svg
           viewBox="0 0 214 720"
-          class="absolute z-[-1] filter drop-shadow-md text-primary-600 w-full h-full"
+          class="sidebar-svg absolute z-[-1] text-primary-600 w-full h-full"
           fill="currentColor"
           preserveAspectRatio="none"
           xmlns="http://www.w3.org/2000/svg"
@@ -193,3 +193,9 @@ export default Vue.extend({
   },
 })
 </script>
+
+<style scoped>
+.sidebar-svg {
+  filter: drop-shadow(0 0 4px hsla(0, 0%, 10%, 0.5));
+}
+</style>
