@@ -36,7 +36,7 @@
             <IconCross class="h-8"></IconCross>
           </button>
           <DarkModeSwitch
-            :class="`md:hidden transform-gpu ${
+            :class="`transform-gpu ${
               show ? 'motion-safe:duration-500' : '-translate-x-full'
             }`"
           />
@@ -47,7 +47,17 @@
         >
           <template v-for="link of links">
             <template
-              v-if="(link.user && user) || (!link.user && !user) || link.always"
+              v-if="
+                (link.user &&
+                  $auth.user &&
+                  (!link.roles
+                    ? true
+                    : $auth.user.roles.some((role) =>
+                        link.roles.includes(role)
+                      ))) ||
+                (!link.user && !$auth.user) ||
+                link.always
+              "
             >
               <NuxtLink
                 v-if="link.route"
@@ -99,6 +109,7 @@ export default Vue.extend({
       name: string
       user?: boolean
       always?: boolean
+      roles?: string[]
     }[]
   } {
     return {
@@ -114,17 +125,17 @@ export default Vue.extend({
           user: false,
         },
         {
+          route: '/admin',
+          name: 'admin.title',
+          user: true,
+          roles: ['admin'],
+        },
+        {
           name: 'logout',
           user: true,
         },
       ],
     }
-  },
-
-  computed: {
-    user(): any {
-      return this.$auth.user
-    },
   },
 
   watch: {

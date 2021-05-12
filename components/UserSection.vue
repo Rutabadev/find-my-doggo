@@ -1,6 +1,6 @@
 <template>
   <div class="user-section flex text-sm lg:text-base max-w-full">
-    <template v-if="!user">
+    <template v-if="!$auth.user">
       <NuxtLink
         to="/login"
         class="uppercase px-4 hover:bg-primary-700 focus:bg-primary-700 hidden md:block"
@@ -10,9 +10,9 @@
     </template>
     <template v-else>
       <NuxtLink
-        v-if="user.roles.includes('admin')"
+        v-if="$auth.user.roles.includes('admin')"
         to="/admin"
-        class="px-4 hover:bg-primary-700 focus:bg-primary-700 truncate"
+        class="hidden md:block px-4 hover:bg-primary-700 focus:bg-primary-700 truncate"
       >
         {{ $t('admin.title') }}
       </NuxtLink>
@@ -20,7 +20,7 @@
         to="/user"
         class="px-4 hover:bg-primary-700 focus:bg-primary-700 truncate"
       >
-        {{ user.name }}
+        {{ $auth.user.name }}
       </NuxtLink>
       <button
         aria-label="log out"
@@ -37,16 +37,6 @@
 import Vue from 'vue'
 
 export default Vue.extend({
-  computed: {
-    user(): any {
-      return this.$auth.user
-    },
-  },
-
-  mounted() {
-    console.log(this.user)
-  },
-
   methods: {
     logout() {
       this.$auth.logout()
