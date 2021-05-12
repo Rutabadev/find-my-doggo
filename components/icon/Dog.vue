@@ -8,7 +8,7 @@
     xmlns="http://www.w3.org/2000/svg"
     stroke="black"
     stroke-width="3"
-    @click.right="showVersion"
+    @click.right.prevent="showVersion"
   >
     <path
       id="head"

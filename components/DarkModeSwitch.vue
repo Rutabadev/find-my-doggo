@@ -3,7 +3,7 @@
     aria-label="toggle dark mode"
     class="px-4 cursor-pointer"
     @click="toggleDarkMode"
-    @click.right="resetPreference"
+    @click.right.prevent="resetPreference"
   >
     <div
       class="rounded-full w-10 h-6 text-secondary-500 bg-gray-100 dark:text-blue-400 dark:bg-blue-900 transition shadow-inner ring-2 ring-gray-200 dark:ring-blue-900"
