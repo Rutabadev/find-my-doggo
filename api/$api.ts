@@ -12,7 +12,7 @@ import { Methods as Methods3 } from './roles'
 // prettier-ignore
 import { Methods as Methods4 } from './users'
 // prettier-ignore
-import { Methods as Methods5 } from './users/_id@string'
+import { Methods as Methods5 } from './users/_id@number'
 // prettier-ignore
 import { Methods as Methods6 } from './users/forgot-password'
 // prettier-ignore
@@ -77,14 +77,14 @@ const api = <T>({ baseURL, fetch }: AspidaClient<T>) => {
       $path: () => `${prefix}${PATH3}`
     },
     users: {
-      _id: (val1: string) => {
+      _id: (val1: number) => {
         const prefix1 = `${PATH4}/${val1}`
 
         return {
           get: (option?: { config?: T }) =>
-            fetch<Methods5['get']['resBody'], BasicHeaders, Methods5['get']['status']>(prefix, prefix1, GET, option).json(),
+            fetch<void, BasicHeaders, Methods5['get']['status']>(prefix, prefix1, GET, option).send(),
           $get: (option?: { config?: T }) =>
-            fetch<Methods5['get']['resBody'], BasicHeaders, Methods5['get']['status']>(prefix, prefix1, GET, option).json().then(r => r.body),
+            fetch<void, BasicHeaders, Methods5['get']['status']>(prefix, prefix1, GET, option).send().then(r => r.body),
           patch: (option: { body: Methods5['patch']['reqBody'], config?: T }) =>
             fetch<Methods5['patch']['resBody'], BasicHeaders, Methods5['patch']['status']>(prefix, prefix1, PATCH, option).json(),
           $patch: (option: { body: Methods5['patch']['reqBody'], config?: T }) =>

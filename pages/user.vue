@@ -106,11 +106,10 @@ export default Vue.extend({
 
   methods: {
     async update() {
-      console.log(this.userInfo)
       this.loading.edit = true
       try {
         await this.$api.users
-          ._id(this.$auth.user!.id as string)
+          ._id(this.$auth.user!.id as number)
           .$patch({ body: removeEmptyAttributes(this.userInfo) })
       } catch (error) {
         handleFormErrors(this, error)
@@ -122,7 +121,7 @@ export default Vue.extend({
     deleteUser() {
       this.loading.delete = true
       this.$api.users
-        ._id(this.$auth.user!.id as string)
+        ._id(this.$auth.user!.id as number)
         .$delete()
         .then(() => {
           this.openDeleteModal = false

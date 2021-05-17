@@ -4,7 +4,7 @@ import { AspidaClient, BasicHeaders } from 'aspida'
 // prettier-ignore
 import { Methods as Methods0 } from '.'
 // prettier-ignore
-import { Methods as Methods1 } from './_id@string'
+import { Methods as Methods1 } from './_id@number'
 // prettier-ignore
 import { Methods as Methods2 } from './forgot-password'
 // prettier-ignore
@@ -28,14 +28,14 @@ const api = <T>({ baseURL, fetch }: AspidaClient<T>) => {
   const PATCH = 'PATCH'
 
   return {
-    _id: (val0: string) => {
+    _id: (val0: number) => {
       const prefix0 = `${PATH0}/${val0}`
 
       return {
         get: (option?: { config?: T }) =>
-          fetch<Methods1['get']['resBody'], BasicHeaders, Methods1['get']['status']>(prefix, prefix0, GET, option).json(),
+          fetch<void, BasicHeaders, Methods1['get']['status']>(prefix, prefix0, GET, option).send(),
         $get: (option?: { config?: T }) =>
-          fetch<Methods1['get']['resBody'], BasicHeaders, Methods1['get']['status']>(prefix, prefix0, GET, option).json().then(r => r.body),
+          fetch<void, BasicHeaders, Methods1['get']['status']>(prefix, prefix0, GET, option).send().then(r => r.body),
         patch: (option: { body: Methods1['patch']['reqBody'], config?: T }) =>
           fetch<Methods1['patch']['resBody'], BasicHeaders, Methods1['patch']['status']>(prefix, prefix0, PATCH, option).json(),
         $patch: (option: { body: Methods1['patch']['reqBody'], config?: T }) =>

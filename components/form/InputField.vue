@@ -5,7 +5,7 @@
       <input
         :id="name"
         v-model="inputVal"
-        class="block w-full shadow-inner"
+        class="input block w-full shadow-inner"
         :type="type"
         :autocomplete="autocomplete"
         placeholder=" "

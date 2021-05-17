@@ -8,6 +8,12 @@
 
 @layer base {
   input {
+    @apply bg-transparent;
+  }
+}
+
+@layer components {
+  .input {
     @apply focus:outline-none;
     @apply focus:ring-2;
     @apply focus:ring-primary-400;
@@ -22,9 +28,7 @@
       @apply focus:border-primary-500;
     }
   }
-}
 
-@layer components {
   .button {
     @apply rounded;
     @apply focus:outline-none;

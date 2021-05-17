@@ -52,8 +52,8 @@ export default {
 
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)
   axios: {
-    baseURL: 'https://find-my-doggo-api.herokuapp.com/', // Deployed version
-    // baseURL: 'http://localhost:3001', // Used as fallback if no runtime config is provided (API_URL)
+    // baseURL: 'https://find-my-doggo-api.herokuapp.com/', // Deployed version
+    baseURL: 'http://localhost:3001', // Used as fallback if no runtime config is provided (API_URL)
   },
 
   auth: {
