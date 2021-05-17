@@ -1,7 +1,7 @@
 <template>
   <div class="mx-auto max-w-6xl space-y-8">
-    <h2 class="text-4xl font-medium">Admin</h2>
-    <button class="button w-full sm:w-auto" @click="updateUsers">
+    <h2 class="text-4xl font-medium">{{ $t('admin.title') }}</h2>
+    <button class="button w-full sm:w-auto uppercase" @click="updateUsers">
       {{ $t('admin.update') }}
     </button>
     <div
@@ -13,7 +13,7 @@
         :key="user.name + index"
         class="rounded-lg shadow p-4 bg-gray-50 dark:bg-gray-700 divide-y-2 divide-gray-200 dark:divide-gray-500"
       >
-        <div class="flex gap-4">
+        <div class="mb-2 flex gap-4">
           <h3 class="flex-1 flex gap-2 text-lg font-medium">
             <span
               class="rounded-full px-2.5 bg-secondary-500 text-white inline-grid place-content-center"
@@ -37,9 +37,10 @@
             /></label>
           </div>
         </div>
-        <div class="pt-2">
+        <div class="pt-4 space-y-2">
           <label
-            >{{ $t('admin.mail') }} : <input v-model="user.email" type="text" />
+            >{{ $t('admin.email') }} :
+            <input v-model="user.email" type="text" />
           </label>
           <div>
             {{ $t('admin.roles') }} :
