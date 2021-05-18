@@ -26,7 +26,7 @@
         :errors="fieldErrors"
       />
       <button
-        aria-label="log in"
+        aria-label="update"
         class="button flex justify-center items-center uppercase tracking-wide"
       >
         <span v-if="!loading.edit">{{ $t('edit_account.update') }}</span>
@@ -55,6 +55,7 @@
         <button
           aria-label="delete"
           class="button red flex justify-center items-center uppercase"
+          @click="deleteUser"
         >
           <span v-if="!loading.delete">{{
             $t('edit_account.confirm_delete')
