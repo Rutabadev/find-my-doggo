@@ -84,10 +84,9 @@ export default Vue.extend({
     showVersion(): void {
       alert(
         [
-          `App version : ${process.env.version}`,
-          `Started at : ${new Date(
-            process.env.startTime || 0
-          ).toLocaleString()}`,
+          'App version : ' + process.env.version,
+          'Started at : ' +
+            new Date(process.env.startTime || 0).toLocaleString(),
         ].join('\n')
       )
     },
