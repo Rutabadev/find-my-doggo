@@ -1,6 +1,7 @@
 export default {
   env: {
     version: JSON.stringify(require('./package.json').version),
+    startTime: Date.now(),
   },
 
   // Global page headers (https://go.nuxtjs.dev/config-head)
