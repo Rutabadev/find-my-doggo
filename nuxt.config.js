@@ -20,7 +20,7 @@ export default {
   },
 
   tailwindcss: {
-    cssPath: '~/assets/css/tailwind.pcss',
+    cssPath: '~/assets/css/tailwind.css',
   },
 
   // This is to make @nuxtjs/color-mode use 'dark' class not 'dark-mode'

@@ -5,7 +5,7 @@
       <input
         :id="name"
         v-model="inputVal"
-        class="input block w-full shadow-inner"
+        class="block border-2 border-gray-300 w-full shadow-inner focus:outline-none focus:ring-2 focus:ring-primary-400 focus:border-primary-600; rounded p-2 dark:bg-gray-600 dark:border-gray-800 dark:focus:border-primary-500"
         :type="type"
         :autocomplete="autocomplete"
         placeholder=" "

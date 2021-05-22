@@ -6,29 +6,7 @@
   --slide-distance: 37px;
 }
 
-@layer base {
-  input {
-    @apply bg-transparent;
-  }
-}
-
 @layer components {
-  .input {
-    @apply focus:outline-none;
-    @apply focus:ring-2;
-    @apply focus:ring-primary-400;
-    @apply border-2;
-    @apply focus:border-primary-600;
-    @apply rounded;
-    @apply p-2;
-
-    .dark & {
-      @apply bg-gray-600;
-      @apply border-gray-800;
-      @apply focus:border-primary-500;
-    }
-  }
-
   .button {
     @apply rounded;
     @apply focus:outline-none;

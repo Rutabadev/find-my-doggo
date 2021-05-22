@@ -16,42 +16,47 @@
         <div class="mb-2 flex gap-4">
           <h3 class="flex-1 flex gap-2 text-lg font-medium">
             <span
-              class="rounded-full px-2.5 bg-secondary-500 text-white inline-grid place-content-center"
+              class="self-center rounded-full px-2.5 bg-secondary-500 text-white inline-grid place-content-center"
               >{{ user.id }}</span
             >
             <input
               v-model="user.name"
               :title="user.name"
               type="text"
-              class="flex-1 w-full min-w-0 truncate"
+              class="flex-1 w-full min-w-0 truncate bg-transparent border-none focus:ring-2 focus:ring-primary-400 rounded"
             />
           </h3>
-          <div>
-            <label class="whitespace-nowrap" :for="'emailValid' + index"
-              >{{ $t('admin.email_valid') }}
-              <input
-                :id="'emailValid' + index"
-                v-model="user.emailValid"
-                class="ml-2 transform-gpu translate-y-px"
-                type="checkbox"
-            /></label>
-          </div>
+          <label class="flex items-center gap-2" :for="'emailValid' + index">
+            <input
+              :id="'emailValid' + index"
+              v-model="user.emailValid"
+              class="ml-2 transform-gpu translate-y-px rounded-full bg-transparent text-primary-500 focus:ring-primary-400 dark:focus:ring-offset-gray-700"
+              type="checkbox"
+            />
+            {{ $t('admin.email_valid') }}
+          </label>
         </div>
         <div class="pt-4 space-y-2">
           <label
             >{{ $t('admin.email') }} :
-            <input v-model="user.email" type="text" />
+            <input
+              v-model="user.email"
+              type="text"
+              class="bg-transparent border-none focus:ring-2 focus:ring-primary-400 rounded"
+            />
           </label>
           <div>
             {{ $t('admin.roles') }} :
             <label
               v-for="role of availableRoles"
               :key="role + user.id"
+              class="ml-3"
               :for="role + user.id"
             >
               <input
                 :id="role + user.id"
                 type="checkbox"
+                class="rounded-full text-primary-500 bg-transparent focus:ring-primary-400 dark:focus:ring-offset-gray-700"
                 :value="role"
                 :checked="user.roles.includes(role.name)"
                 @input="
