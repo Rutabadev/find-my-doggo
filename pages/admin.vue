@@ -30,7 +30,7 @@
             <input
               :id="'emailValid' + index"
               v-model="user.emailValid"
-              class="ml-2 transform-gpu translate-y-px rounded-full bg-transparent text-primary-500 focus:ring-primary-400 dark:focus:ring-offset-gray-700"
+              class="transform-gpu translate-y-px rounded-full bg-transparent text-primary-500 focus:ring-primary-400 dark:focus:ring-offset-gray-700"
               type="checkbox"
             />
             {{ $t('admin.email_valid') }}
@@ -50,7 +50,7 @@
             <label
               v-for="role of availableRoles"
               :key="role + user.id"
-              class="ml-3"
+              class="ml-3 inline-flex items-center gap-2 transform translate-y-0.5"
               :for="role + user.id"
             >
               <input
