@@ -49,12 +49,12 @@
             {{ $t('admin.roles') }} :
             <label
               v-for="role of availableRoles"
-              :key="role + user.id"
+              :key="role.name + user.id"
               class="ml-3 inline-flex items-center gap-2 transform translate-y-0.5"
-              :for="role + user.id"
+              :for="role.name + user.id"
             >
               <input
-                :id="role + user.id"
+                :id="role.name + user.id"
                 type="checkbox"
                 class="rounded-full text-primary-500 bg-transparent focus:ring-primary-400 dark:focus:ring-offset-gray-700"
                 :value="role"
