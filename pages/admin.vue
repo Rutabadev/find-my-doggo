@@ -16,9 +16,10 @@
         <div class="mb-2 flex gap-4">
           <h3 class="flex-1 flex gap-2 text-lg font-medium">
             <span
-              class="self-center rounded-full px-2.5 bg-secondary-500 text-white inline-grid place-content-center"
-              >{{ user.id }}</span
+              class="self-center rounded-full px-2.5 bg-secondary-500 text-white"
             >
+              {{ user.id }}
+            </span>
             <input
               v-model="user.name"
               :title="user.name"
