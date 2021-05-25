@@ -5,13 +5,13 @@
         <button
           ref="openSideBarButton"
           aria-label="toggle sidebar"
-          class="px-4 md:hidden hover:bg-primary-700 h-full"
+          class="px-4 lg:hidden hover:bg-primary-700 h-full"
           @click="toggleSidebar"
         >
           <IconBurgerMenu class="h-8"></IconBurgerMenu>
         </button>
-        <LangDropdown class="hidden md:block"></LangDropdown>
-        <DarkModeSwitch class="hidden md:block h-full"></DarkModeSwitch>
+        <LangDropdown class="hidden lg:block"></LangDropdown>
+        <DarkModeSwitch class="hidden lg:block h-full"></DarkModeSwitch>
       </div>
       <IconTitle class="place-self-center" />
       <UserSection class="place-self-end" />
