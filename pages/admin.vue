@@ -81,6 +81,7 @@
 <script lang="ts">
 import Vue from 'vue'
 import { Role, User } from '~/api/@types'
+import { snackbarStore } from '~/store'
 
 export default Vue.extend({
   async fetch() {
@@ -107,6 +108,8 @@ export default Vue.extend({
           this.$api.users._id(user.id).patch({ body: user })
         )
       )
+        .then(() => snackbarStore.showMessage({ message: 'Users updated.' }))
+        .catch(() => snackbarStore.showMessage({ message: 'Update failed.' }))
     },
   },
 })
