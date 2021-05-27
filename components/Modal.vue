@@ -3,6 +3,7 @@
     <div
       class="fixed z-10 inset-0 bg-black transition-opacity duration-200 motion-reduce:transition-none"
       :class="show ? 'opacity-50' : 'opacity-0 pointer-events-none'"
+      @click="$emit('close')"
     />
     <transition
       enter-active-class="transition duration-100 ease-out motion-reduce:transition-none"
@@ -14,8 +15,7 @@
     >
       <div
         v-if="show"
-        class="fixed z-10 inset-0 grid place-content-center"
-        @click="$emit('close')"
+        class="fixed z-10 left-1/2 top-1/2 transform-gpu -translate-x-1/2 -translate-y-1/2 grid place-content-center"
       >
         <div
           class="p-8 bg-gray-50 dark:bg-gray-700 rounded-lg flex flex-col shadow-xl"
@@ -34,6 +34,24 @@ export default Vue.extend({
     show: {
       type: Boolean,
       default: false,
+    },
+  },
+
+  watch: {
+    show(show: boolean) {
+      if (show) {
+        window.addEventListener('keydown', this.closeKeyListener)
+      } else {
+        window.removeEventListener('keydown', this.closeKeyListener)
+      }
+    },
+  },
+
+  methods: {
+    closeKeyListener(e: KeyboardEvent) {
+      if (e.code === 'Escape') {
+        this.$emit('close')
+      }
     },
   },
 })
