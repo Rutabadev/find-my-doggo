@@ -1,11 +1,11 @@
 <template>
   <div>
-    <nav class="grid grid-cols-3 bg-primary-600 text-gray-50 h-16 shadow-lg">
+    <nav class="h-16 shadow-lg grid grid-cols-3 bg-primary-600 text-gray-50">
       <div class="flex items-center space-x-4">
         <button
           ref="openSideBarButton"
           aria-label="toggle sidebar"
-          class="px-4 lg:hidden hover:bg-primary-700 h-full"
+          class="lg:hidden h-full px-4 hover:bg-primary-700"
           @click="toggleSidebar"
         >
           <IconBurgerMenu class="h-8"></IconBurgerMenu>
