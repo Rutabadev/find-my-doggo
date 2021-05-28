@@ -1,7 +1,16 @@
 <template>
   <div>
     <div
-      class="fixed z-10 inset-0 bg-black transition-opacity duration-200 motion-reduce:transition-none"
+      class="
+        fixed
+        z-10
+        inset-0
+        bg-black
+        transition-opacity
+        duration-200
+        motion-reduce:transition-none
+        overscroll-y-contain
+      "
       :class="show ? 'opacity-50' : 'opacity-0 pointer-events-none'"
       @click="$emit('close')"
     />
@@ -15,13 +24,33 @@
     >
       <div
         v-if="show"
-        class="fixed z-10 left-1/2 top-1/2 transform-gpu -translate-x-1/2 -translate-y-1/2 grid place-content-center"
+        class="
+          fixed
+          z-10
+          left-1/2
+          top-1/2
+          transform-gpu
+          -translate-x-1/2 -translate-y-1/2
+          grid
+          place-content-center
+        "
       >
-        <div
-          class="p-8 bg-gray-50 dark:bg-gray-700 rounded-lg flex flex-col shadow-xl"
-        >
-          <slot />
-        </div>
+        <FocusTrap :active="show">
+          <div
+            ref="childrenWrapper"
+            class="
+              p-8
+              bg-gray-50
+              dark:bg-gray-700
+              rounded-lg
+              flex flex-col
+              shadow-xl
+            "
+            tabindex="-1"
+          >
+            <slot />
+          </div>
+        </FocusTrap>
       </div>
     </transition>
   </div>
@@ -29,7 +58,13 @@
 
 <script lang="ts">
 import Vue from 'vue'
+import { FocusTrap } from 'focus-trap-vue'
+
 export default Vue.extend({
+  components: {
+    FocusTrap,
+  },
+
   props: {
     show: {
       type: Boolean,

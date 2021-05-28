@@ -20,6 +20,8 @@
     "@tailwindcss/forms": "^0.3.2",
     "animejs": "^3.2.1",
     "core-js": "^3.6.5",
+    "focus-trap": "^6.4.0",
+    "focus-trap-vue": "^1.1.1",
     "nuxt": "^2.15.4",
     "nuxt-i18n": "^6.16.0"
   },
@@ -47,7 +49,7 @@
     "jest": "^26.4.2",
     "openapi2aspida": "https://github.com/Rutabadev/openapi2aspida.git",
     "postcss": "^8.2.12",
-    "prettier": "^2.1.2",
+    "prettier": "^2.3.0",
     "qawolf": "1.6.0",
     "rimraf": "^3.0.2",
     "ts-jest": "^26.4.0",
