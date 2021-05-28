@@ -3,7 +3,14 @@
     <template v-if="!$auth.user">
       <NuxtLink
         to="/login"
-        class="uppercase px-4 hover:bg-primary-700 focus:bg-primary-700 hidden md:block"
+        class="
+          uppercase
+          px-4
+          hover:bg-primary-700
+          focus:bg-primary-700
+          hidden
+          md:block
+        "
       >
         {{ $t('login.title') }}
       </NuxtLink>
@@ -12,7 +19,14 @@
       <NuxtLink
         v-if="$auth.user.roles.includes('admin')"
         to="/admin"
-        class="hidden md:block px-4 hover:bg-primary-700 focus:bg-primary-700 truncate"
+        class="
+          hidden
+          md:block
+          px-4
+          hover:bg-primary-700
+          focus:bg-primary-700
+          truncate
+        "
       >
         {{ $t('admin.title') }}
       </NuxtLink>
@@ -24,7 +38,16 @@
       </NuxtLink>
       <button
         aria-label="log out"
-        class="cursor-pointer whitespace-nowrap uppercase px-4 hover:bg-primary-700 focus:bg-primary-700 hidden md:block"
+        class="
+          cursor-pointer
+          whitespace-nowrap
+          uppercase
+          px-4
+          hover:bg-primary-700
+          focus:bg-primary-700
+          hidden
+          md:block
+        "
         @click="logout"
       >
         {{ $t('logout') }}

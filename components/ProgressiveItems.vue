@@ -43,8 +43,9 @@ export default Vue.extend({
 
   methods: {
     setupAnimations(): void {
-      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)')
-        .matches
+      const reduceMotion = window.matchMedia(
+        '(prefers-reduced-motion: reduce)'
+      ).matches
       Array.from(this.$el.children).forEach((child, index) => {
         const element = child as HTMLElement
         if (this.show) {

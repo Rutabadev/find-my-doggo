@@ -1,10 +1,27 @@
 <template>
   <span
-    class="w-3 h-3 inline-block relative rounded-full bg-secondary-500 ml-4 -mr-8"
+    class="
+      w-3
+      h-3
+      inline-block
+      relative
+      rounded-full
+      bg-secondary-500
+      ml-4
+      -mr-8
+    "
     style="margin-bottom: 1px"
   >
     <span
-      class="w-3 h-3 absolute inset-0 rounded-full bg-secondary-500 motion-safe:animate-ping"
+      class="
+        w-3
+        h-3
+        absolute
+        inset-0
+        rounded-full
+        bg-secondary-500
+        motion-safe:animate-ping
+      "
     ></span>
   </span>
 </template>

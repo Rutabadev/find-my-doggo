@@ -2,7 +2,15 @@
   <transition name="shake">
     <div
       v-if="errors.length"
-      class="bg-red-200 dark:bg-red-500 dark:text-gray-50 p-2 rounded-lg font-semibold shake"
+      class="
+        bg-red-200
+        dark:bg-red-500
+        dark:text-gray-50
+        p-2
+        rounded-lg
+        font-semibold
+        shake
+      "
     >
       <ul>
         <li v-for="error in errors" :key="error">

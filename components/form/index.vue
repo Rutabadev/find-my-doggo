@@ -1,6 +1,18 @@
 <template>
   <div
-    class="max-w-sm mt-10 mx-auto rounded-lg bg-white dark:bg-gray-700 transition shadow-md p-5 flex flex-col gap-5"
+    class="
+      max-w-sm
+      mt-10
+      mx-auto
+      rounded-lg
+      bg-white
+      dark:bg-gray-700
+      transition
+      shadow-md
+      p-5
+      flex flex-col
+      gap-5
+    "
   >
     <h1 class="text-2xl text-center">{{ title }}</h1>
     <FormErrors :errors="errors"></FormErrors>

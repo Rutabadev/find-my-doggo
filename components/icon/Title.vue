@@ -1,6 +1,17 @@
 <template>
   <NuxtLink
-    class="hover:bg-primary-700 focus:bg-primary-700 h-full px-4 flex items-center text-xl sm:text-3xl whitespace-nowrap capitalize"
+    class="
+      hover:bg-primary-700
+      focus:bg-primary-700
+      h-full
+      px-4
+      flex
+      items-center
+      text-xl
+      sm:text-3xl
+      whitespace-nowrap
+      capitalize
+    "
     to="/"
   >
     <svg

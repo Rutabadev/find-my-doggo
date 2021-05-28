@@ -30,7 +30,13 @@
           <button
             ref="closeSideBarButton"
             aria-label="close sidebar"
-            class="h-16 px-4 hover:bg-primary-700 focus:bg-primary-700 text-gray-50"
+            class="
+              h-16
+              px-4
+              hover:bg-primary-700
+              focus:bg-primary-700
+              text-gray-50
+            "
             @click="toggleSidebar"
           >
             <IconCross class="h-8"></IconCross>
@@ -73,7 +79,13 @@
                 v-else
                 :key="link.name"
                 aria-label="log out"
-                class="hover:bg-primary-700 focus:bg-primary-700 py-4 cursor-pointer uppercase"
+                class="
+                  hover:bg-primary-700
+                  focus:bg-primary-700
+                  py-4
+                  cursor-pointer
+                  uppercase
+                "
                 @click="logout"
               >
                 {{ $t(link.name) }}
@@ -147,8 +159,9 @@ export default Vue.extend({
         opened:
           'M-3 0H153C305.5 150.5 130.5 346.5 62 493C7.19999 610.2 101.833 692.667 156 720H-3V0Z',
       }
-      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)')
-        .matches
+      const reduceMotion = window.matchMedia(
+        '(prefers-reduced-motion: reduce)'
+      ).matches
       const easing = reduceMotion ? 'steps(1)' : 'spring(1, 80, 20, 0)'
       if (show) {
         setTimeout(() => {

@@ -9,10 +9,30 @@
   >
     <div
       v-if="internalContent"
-      class="fixed inset-0 px-1 pb-8 grid justify-center content-end pointer-events-none"
+      class="
+        fixed
+        inset-0
+        px-1
+        pb-8
+        grid
+        justify-center
+        content-end
+        pointer-events-none
+      "
     >
       <div
-        class="md:min-w-[37ch] max-w-2xl pl-4 bg-white dark:bg-gray-900 rounded-md shadow-md flex justify-between pointer-events-auto"
+        class="
+          md:min-w-[37ch]
+          max-w-2xl
+          pl-4
+          bg-white
+          dark:bg-gray-900
+          rounded-md
+          shadow-md
+          flex
+          justify-between
+          pointer-events-auto
+        "
       >
         <p class="flex items-center py-4">{{ notification.message }}</p>
         <button class="ml-10 px-4" @click="close">

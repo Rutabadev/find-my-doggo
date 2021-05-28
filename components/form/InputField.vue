@@ -5,13 +5,35 @@
       <input
         :id="name"
         v-model="inputVal"
-        class="block border-2 border-gray-300 w-full shadow-inner focus:outline-none focus:ring-2 focus:ring-primary-400 focus:border-primary-600; rounded p-2 dark:bg-gray-600 dark:border-gray-800 dark:focus:border-primary-500"
+        class="
+          block
+          border-2 border-gray-300
+          w-full
+          shadow-inner
+          focus:outline-none
+          focus:ring-2 focus:ring-primary-400
+          focus:border-primary-600;
+          rounded
+          p-2
+          dark:bg-gray-600
+          dark:border-gray-800
+          dark:focus:border-primary-500
+        "
         :type="type"
         :autocomplete="autocomplete"
         placeholder=" "
       />
       <label
-        class="absolute inset-0 p-2 border-2 border-transparent text-gray-400 pointer-events-none duration-200 truncate"
+        class="
+          absolute
+          inset-0
+          p-2
+          border-2 border-transparent
+          text-gray-400
+          pointer-events-none
+          duration-200
+          truncate
+        "
         :for="name"
         >{{ label }}
         <span v-if="required" class="text-red-500 dark:text-red-400">*</span>

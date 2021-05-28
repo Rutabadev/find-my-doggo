@@ -8,7 +8,9 @@
     "start": "nuxt start",
     "generate": "nuxt generate",
     "lint:js": "eslint --ext .js,.vue --ignore-path .gitignore .",
+    "lint:js:fix": "eslint --ext .js,.vue --ignore-path .gitignore . --fix",
     "lint": "yarn lint:js",
+    "lint:fix": "yarn lint:js:fix",
     "test": "jest",
     "gen-api:local": "rimraf ./api && openapi2aspida -i http://localhost:3001/api-json",
     "gen-api:prod": "rimraf ./api && openapi2aspida -i https://find-my-doggo-api.herokuapp.com/api-json"

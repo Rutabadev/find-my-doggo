@@ -6,10 +6,31 @@
     @click.right.prevent="resetPreference"
   >
     <div
-      class="rounded-full w-10 h-6 text-secondary-500 bg-gray-100 dark:text-blue-400 dark:bg-blue-900 transition shadow-inner ring-2 ring-gray-200 dark:ring-blue-900"
+      class="
+        rounded-full
+        w-10
+        h-6
+        text-secondary-500
+        dark:text-blue-400
+        bg-gray-100
+        dark:bg-blue-900
+        transition
+        shadow-inner
+        ring-2 ring-gray-200
+        dark:ring-blue-900
+      "
     >
       <div
-        class="transition-transform transform-gpu bg-white dark:bg-gray-800 h-6 w-6 rounded-full shadow"
+        class="
+          h-6
+          w-6
+          bg-white
+          dark:bg-gray-800
+          rounded-full
+          shadow
+          transform-gpu
+          transition-transform
+        "
         :class="isDarkMode ? 'translate-x-4 rotate-0' : 'translate -rotate-180'"
       >
         <IconMoon v-if="isDarkMode"></IconMoon>

@@ -1,6 +1,14 @@
 <template>
   <main
-    class="flex flex-col bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-300 transition min-h-screen"
+    class="
+      flex flex-col
+      bg-gray-100
+      dark:bg-gray-800
+      text-gray-800
+      dark:text-gray-300
+      transition
+      min-h-screen
+    "
   >
     <Navbar />
     <div class="container p-5 mx-auto">
