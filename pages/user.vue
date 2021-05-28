@@ -44,12 +44,20 @@
       </button>
     </Form>
 
-    <Modal :show="openDeleteModal" @close="() => (openDeleteModal = false)">
+    <Modal
+      :show="openDeleteModal"
+      :initial-focus="() => $refs.initialFocus"
+      @close="() => (openDeleteModal = false)"
+    >
       <h3 class="text-lg font-semibold mb-6">
         {{ $t('edit_account.sure_delete') }}
       </h3>
       <div class="self-end flex gap-4">
-        <button class="button uppercase" @click="openDeleteModal = false">
+        <button
+          ref="initialFocus"
+          class="button uppercase"
+          @click="openDeleteModal = false"
+        >
           {{ $t('edit_account.cancel_delete') }}
         </button>
         <button

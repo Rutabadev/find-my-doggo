@@ -35,9 +35,8 @@
           place-content-center
         "
       >
-        <FocusTrap :active="show">
+        <FocusTrap :active="show" :initial-focus="initialFocus">
           <div
-            ref="childrenWrapper"
             class="
               p-8
               bg-gray-50
@@ -69,6 +68,10 @@ export default Vue.extend({
     show: {
       type: Boolean,
       default: false,
+    },
+    initialFocus: {
+      type: Function,
+      default: undefined,
     },
   },
 

@@ -12,20 +12,49 @@
         <div
           v-for="(user, index) of users"
           :key="user.id"
-          class="relative rounded-lg shadow px-6 py-7 bg-gray-50 dark:bg-gray-700"
+          class="
+            relative
+            rounded-lg
+            shadow
+            px-6
+            py-7
+            bg-gray-50
+            dark:bg-gray-700
+          "
         >
           <button
-            class="absolute top-0 right-0 rounded-full p-2 text-red-500 focus:ring-1 focus:ring-red-400 focus:outline-none"
+            class="
+              absolute
+              top-0
+              right-0
+              rounded-full
+              p-2
+              text-red-500
+              focus:ring-1 focus:ring-red-400
+              focus:outline-none
+            "
             @click="handleOpenDeleteModal(user.id)"
           >
             <IconCross class="w-5 h-5" />
           </button>
           <div
-            class="pb-2 flex gap-4 border-b-2 border-gray-200 dark:border-gray-400"
+            class="
+              pb-2
+              flex
+              gap-4
+              border-b-2 border-gray-200
+              dark:border-gray-400
+            "
           >
             <h3 class="flex-1 flex gap-2 text-lg font-medium">
               <span
-                class="self-center rounded-full px-2.5 bg-secondary-500 text-white"
+                class="
+                  self-center
+                  rounded-full
+                  px-2.5
+                  bg-secondary-500
+                  text-white
+                "
               >
                 {{ user.id }}
               </span>
@@ -40,7 +69,15 @@
               <input
                 :id="'emailValid' + index"
                 v-model="user.emailValid"
-                class="transform-gpu translate-y-px rounded-full bg-transparent text-primary-500 focus:ring-primary-400 dark:focus:ring-offset-gray-700"
+                class="
+                  transform-gpu
+                  translate-y-px
+                  rounded-full
+                  bg-transparent
+                  text-primary-500
+                  focus:ring-primary-400
+                  dark:focus:ring-offset-gray-700
+                "
                 type="checkbox"
               />
               {{ $t('admin.email_valid') }}
@@ -54,13 +91,26 @@
               <label
                 v-for="role of availableRoles"
                 :key="role.name + user.id"
-                class="ml-3 inline-flex items-center gap-2 transform translate-y-0.5"
+                class="
+                  ml-3
+                  inline-flex
+                  items-center
+                  gap-2
+                  transform
+                  translate-y-0.5
+                "
                 :for="role.name + user.id"
               >
                 <input
                   :id="role.name + user.id"
                   type="checkbox"
-                  class="rounded-full text-primary-500 bg-transparent focus:ring-primary-400 dark:focus:ring-offset-gray-700"
+                  class="
+                    rounded-full
+                    text-primary-500
+                    bg-transparent
+                    focus:ring-primary-400
+                    dark:focus:ring-offset-gray-700
+                  "
                   :value="role"
                   :checked="user.roles.includes(role.name)"
                   @input="
@@ -79,12 +129,20 @@
         </div>
       </div>
     </div>
-    <Modal :show="openDeleteModal" @close="() => (openDeleteModal = false)">
+    <Modal
+      :show="openDeleteModal"
+      :initial-focus="() => $refs.initialFocus"
+      @close="() => (openDeleteModal = false)"
+    >
       <h3 class="text-lg font-semibold mb-6">
         {{ $t('edit_account.sure_delete') }}
       </h3>
       <div class="self-end flex gap-4">
-        <button class="button uppercase" @click="openDeleteModal = false">
+        <button
+          ref="initialFocus"
+          class="button uppercase"
+          @click="openDeleteModal = false"
+        >
           {{ $t('edit_account.cancel_delete') }}
         </button>
         <button
