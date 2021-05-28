@@ -9,7 +9,7 @@
           hover:bg-primary-700
           focus:bg-primary-700
           hidden
-          md:block
+          lg:block
         "
       >
         {{ $t('login.title') }}
@@ -21,7 +21,7 @@
         to="/admin"
         class="
           hidden
-          md:block
+          lg:block
           px-4
           hover:bg-primary-700
           focus:bg-primary-700
@@ -46,7 +46,7 @@
           hover:bg-primary-700
           focus:bg-primary-700
           hidden
-          md:block
+          lg:block
         "
         @click="logout"
       >
