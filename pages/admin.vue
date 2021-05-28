@@ -11,7 +11,7 @@
       >
         <div
           v-for="(user, index) of users"
-          :key="user.name + index"
+          :key="user.id"
           class="relative rounded-lg shadow px-6 py-7 bg-gray-50 dark:bg-gray-700"
         >
           <button
@@ -33,7 +33,7 @@
                 v-model="user.name"
                 :title="user.name"
                 type="text"
-                class="flex-1 w-full min-w-0 truncate bg-transparent border-none focus:ring-2 focus:ring-primary-400 rounded"
+                class="flex-1 w-full min-w-0 truncate editable-text"
               />
             </h3>
             <label class="flex items-center gap-2" :for="'emailValid' + index">
@@ -47,16 +47,10 @@
             </label>
           </div>
           <div class="pt-4 space-y-2">
-            <label
-              >{{ $t('admin.email') }} :
-              <input
-                v-model="user.email"
-                type="text"
-                class="bg-transparent border-none focus:ring-2 focus:ring-primary-400 rounded"
-              />
-            </label>
+            <span>{{ $t('admin.email') }} :</span>
+            <input v-model="user.email" type="text" class="editable-text" />
             <div>
-              {{ $t('admin.roles') }} :
+              <span>{{ $t('admin.roles') }} :</span>
               <label
                 v-for="role of availableRoles"
                 :key="role.name + user.id"
