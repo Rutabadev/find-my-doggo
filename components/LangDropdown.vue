@@ -58,7 +58,7 @@
           rounded-md
           shadow-lg
           bg-white
-          dark:bg-gray-800
+          dark:bg-gray-700
           ring-1 ring-black ring-opacity-5
         "
       >
@@ -74,8 +74,8 @@
               dark:text-gray-100
               hover:bg-gray-100
               focus:bg-gray-100
-              dark:hover:bg-gray-700
-              dark:focus:bg-gray-700
+              dark:hover:bg-gray-600
+              dark:focus:bg-gray-600
               cursor-pointer
             "
             href="#"
@@ -94,7 +94,7 @@ import Vue from 'vue'
 export default Vue.extend({
   data(): {
     langDropdownOpen: boolean
-    selectedItem: undefined | number
+    selectedItem: undefined | HTMLElement
   } {
     return {
       langDropdownOpen: false,
@@ -113,14 +113,10 @@ export default Vue.extend({
   watch: {
     langDropdownOpen(langDropdownOpen: boolean) {
       if (langDropdownOpen) {
-        window.addEventListener('keydown', this.downHandler)
-        window.addEventListener('keydown', this.upHandler)
-        window.addEventListener('keydown', this.spaceHandler)
+        window.addEventListener('keydown', this.keyHandler)
         window.addEventListener('click', this.outsideClickHandler)
       } else {
-        window.removeEventListener('keydown', this.downHandler)
-        window.removeEventListener('keydown', this.upHandler)
-        window.removeEventListener('keydown', this.spaceHandler)
+        window.removeEventListener('keydown', this.keyHandler)
         window.removeEventListener('click', this.outsideClickHandler)
         this.selectedItem = undefined
       }
@@ -134,44 +130,35 @@ export default Vue.extend({
       ;(this.$refs.dropdownButton as HTMLElement).focus()
     },
 
-    downHandler({ code }: KeyboardEvent) {
-      if (code === 'ArrowDown') {
-        this.selectedItem =
-          this.selectedItem !== undefined
-            ? Math.min(
-                this.selectedItem + 1,
-                (this.$refs.menuItemsContainer as HTMLElement)
-                  .childElementCount - 1
-              )
-            : 0
-        ;(
-          (this.$refs.menuItemsContainer as HTMLElement).children[
-            this.selectedItem
-          ] as HTMLElement
-        ).focus()
-      }
-    },
-
-    upHandler({ code }: KeyboardEvent) {
-      if (code === 'ArrowUp') {
-        this.selectedItem =
-          this.selectedItem !== undefined
-            ? Math.max(this.selectedItem - 1, 0)
-            : (this.$refs.menuItemsContainer as HTMLElement).childElementCount -
-              1
-        ;(
-          (this.$refs.menuItemsContainer as HTMLElement).children[
-            this.selectedItem
-          ] as HTMLElement
-        ).focus()
-      }
-    },
-
-    spaceHandler(e: KeyboardEvent) {
-      if (e.code === 'Space') {
-        e.preventDefault()
-        this.langDropdownOpen = false
-        ;(this.$refs.dropdownButton as HTMLElement).focus()
+    keyHandler(e: KeyboardEvent) {
+      e.preventDefault()
+      const { code } = e
+      switch (code) {
+        case 'ArrowDown':
+          this.selectedItem = this.selectedItem
+            ? this.selectedItem.nextSibling
+              ? (this.selectedItem.nextSibling as HTMLElement)
+              : this.selectedItem
+            : ((this.$refs.menuItemsContainer as HTMLElement)
+                .firstChild as HTMLElement)
+          this.selectedItem.focus()
+          break
+        case 'ArrowUp':
+          this.selectedItem = this.selectedItem
+            ? this.selectedItem.previousSibling
+              ? (this.selectedItem.previousSibling as HTMLElement)
+              : this.selectedItem
+            : ((this.$refs.menuItemsContainer as HTMLElement)
+                .lastChild as HTMLElement)
+          this.selectedItem.focus()
+          break
+        case 'Space':
+          this.selectedItem?.click()
+          break
+        case 'Escape':
+          this.langDropdownOpen = false
+          ;(this.$refs.dropdownButton as HTMLElement).focus()
+          break
       }
     },
 
