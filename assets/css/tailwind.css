@@ -23,6 +23,7 @@
     @apply font-medium;
 
     .dark & {
+      @apply focus:ring-primary-400;
       @apply hover:bg-primary-500;
       @apply focus:bg-primary-500;
       @apply text-white;
