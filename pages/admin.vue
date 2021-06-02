@@ -66,7 +66,10 @@
                 class="flex-1 w-full min-w-0 truncate editable-text"
               />
             </h3>
-            <label class="flex items-center gap-2" :for="'emailValid' + index">
+            <label
+              class="flex items-center gap-2 select-none"
+              :for="'emailValid' + index"
+            >
               <input
                 :id="'emailValid' + index"
                 v-model="user.emailValid"
@@ -99,6 +102,7 @@
                   gap-2
                   transform
                   translate-y-0.5
+                  select-none
                 "
                 :for="role.name + user.id"
               >
