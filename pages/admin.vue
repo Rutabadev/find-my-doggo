@@ -67,7 +67,7 @@
               />
             </h3>
             <label
-              class="flex items-center gap-2 select-none"
+              class="flex items-center gap-2 select-none cursor-pointer"
               :for="'emailValid' + index"
             >
               <input
@@ -81,6 +81,7 @@
                   text-primary-500
                   focus:ring-primary-400
                   dark:focus:ring-offset-gray-700
+                  cursor-pointer
                 "
                 type="checkbox"
               />
@@ -103,6 +104,7 @@
                   transform
                   translate-y-0.5
                   select-none
+                  cursor-pointer
                 "
                 :for="role.name + user.id"
               >
@@ -115,6 +117,7 @@
                     bg-transparent
                     focus:ring-primary-400
                     dark:focus:ring-offset-gray-700
+                    cursor-pointer
                   "
                   :value="role"
                   :checked="user.roles.includes(role.name)"
