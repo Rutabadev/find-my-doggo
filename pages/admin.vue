@@ -54,6 +54,7 @@
                   px-2.5
                   bg-secondary-500
                   text-white
+                  dark:text-gray-800
                 "
               >
                 {{ user.id }}

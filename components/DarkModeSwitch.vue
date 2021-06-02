@@ -11,13 +11,12 @@
         w-10
         h-6
         text-secondary-500
-        dark:text-blue-400
         bg-gray-100
-        dark:bg-blue-900
+        dark:bg-gray-800
         transition
         shadow-inner
-        ring-2 ring-gray-200
-        dark:ring-blue-900
+        ring-2 ring-gray-300
+        dark:ring-gray-700
       "
     >
       <div
@@ -25,7 +24,7 @@
           h-6
           w-6
           bg-white
-          dark:bg-gray-800
+          dark:bg-gray-600
           rounded-full
           shadow
           transform-gpu
@@ -34,6 +33,7 @@
         :class="isDarkMode ? 'translate-x-4 rotate-0' : 'translate -rotate-180'"
       >
         <IconMoon v-if="isDarkMode"></IconMoon>
+
         <IconSun v-else></IconSun>
       </div>
     </div>
@@ -42,6 +42,7 @@
 
 <script lang="ts">
 import Vue from 'vue'
+
 export default Vue.extend({
   computed: {
     isDarkMode(): boolean {
@@ -60,6 +61,7 @@ export default Vue.extend({
 
     resetPreference(): void {
       const wantToReset = confirm(this.$i18n.t('dark_mode_reset').toString())
+
       if (wantToReset) {
         this.$colorMode.preference = 'system'
       }
@@ -72,7 +74,9 @@ export default Vue.extend({
           meta: [
             {
               hid: 'color-scheme',
+
               name: 'color-scheme',
+
               content: 'dark light',
             },
           ],

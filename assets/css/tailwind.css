@@ -20,12 +20,12 @@
     @apply hover:bg-primary-800;
     @apply focus:bg-primary-800;
     @apply text-gray-100;
+    @apply font-medium;
 
     .dark & {
-      @apply bg-primary-500;
-      @apply hover:bg-primary-600;
-      @apply focus:bg-primary-600;
-      @apply text-gray-50;
+      @apply hover:bg-primary-500;
+      @apply focus:bg-primary-500;
+      @apply text-white;
     }
 
     &.red {
@@ -50,7 +50,8 @@
   }
 
   .editable-text {
-    @apply bg-transparent border-none hover:bg-gray-200 dark:hover:bg-gray-600 focus:bg-transparent dark:focus:bg-transparent focus:ring-2 focus:ring-primary-400 rounded transition-colors duration-300;
+    @apply bg-transparent border-none hover:bg-gray-200 dark:hover:bg-gray-600 focus:bg-transparent dark:focus:bg-transparent focus:ring-2 focus:ring-primary-400 rounded duration-300;;
+    transition-property: background-color;
   }
 }
 
