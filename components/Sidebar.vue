@@ -6,12 +6,16 @@
       @click="toggleSidebar"
     ></div>
     <div
-      class="absolute inset-0 w-2/3 max-w-xs motion-safe:duration-200 z-10"
-      :class="show ? 'visible' : 'invisible'"
-      :style="{
-        transform: show ? 'translate3d(0, 0, 0)' : 'translate3d(-102%, 0, 0)',
-        'will-change': 'transform',
-      }"
+      class="
+        absolute
+        inset-0
+        w-2/3
+        max-w-xs
+        motion-safe:duration-200
+        z-10
+        transform-gpu
+      "
+      :class="show ? 'visible translate-x-0' : 'invisible -translate-x-full'"
     >
       <div class="relative w-full h-screen">
         <svg

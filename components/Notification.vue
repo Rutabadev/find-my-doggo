@@ -9,8 +9,8 @@
       bg-secondary-500
       ml-4
       -mr-8
+      mb-px
     "
-    style="margin-bottom: 1px"
   >
     <span
       class="

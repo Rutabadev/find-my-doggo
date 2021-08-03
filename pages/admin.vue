@@ -6,8 +6,14 @@
         {{ $t('admin.update') }}
       </button>
       <div
-        class="mx-auto max-w-md sm:max-w-none grid gap-4 lg:gap-x-8"
-        style="grid-template-columns: repeat(auto-fit, minmax(37ch, 1fr))"
+        class="
+          mx-auto
+          max-w-md
+          sm:max-w-none
+          grid grid-cols-[repeat(auto-fit,minmax(37ch,1fr))]
+          gap-4
+          lg:gap-8
+        "
       >
         <div
           v-for="(user, index) of users"
