@@ -6,7 +6,7 @@
       dark:bg-gray-800
       text-gray-800
       dark:text-gray-300
-      transition
+      motion-safe:transition
       min-h-screen
     "
   >

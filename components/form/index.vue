@@ -7,7 +7,6 @@
       rounded-lg
       bg-white
       dark:bg-gray-700
-      transition
       shadow-md
       p-5
       flex flex-col
