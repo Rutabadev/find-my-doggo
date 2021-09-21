@@ -26,7 +26,7 @@ import Vue from 'vue'
 
 export default Vue.extend({
   mounted() {
-    // Ping the backend to wake him up from sleep state in heroku
+    // Ping the backend to wake him up from sleep state in Heroku
     this.$api.ping.get()
   },
 

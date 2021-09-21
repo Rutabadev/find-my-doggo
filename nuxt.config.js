@@ -1,4 +1,5 @@
 export default {
+  // These end up in process.env
   env: {
     version: JSON.stringify(require('./package.json').version),
     startTime: Date.now(),
@@ -53,8 +54,9 @@ export default {
 
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)
   axios: {
+    // Used as fallback if no runtime config is provided (API_URL)
     baseURL: 'https://find-my-doggo-api.herokuapp.com/', // Deployed version
-    // baseURL: 'http://localhost:3001', // Used as fallback if no runtime config is provided (API_URL)
+    // baseURL: 'http://localhost:3001',
   },
 
   auth: {
