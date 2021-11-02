@@ -28,21 +28,6 @@
             dark:bg-gray-700
           "
         >
-          <button
-            class="
-              absolute
-              top-0
-              right-0
-              rounded-full
-              p-2
-              text-red-500
-              focus:ring-1 focus:ring-red-400
-              focus:outline-none
-            "
-            @click="handleOpenDeleteModal(user.id)"
-          >
-            <IconCross class="w-5 h-5" />
-          </button>
           <div
             class="
               pb-2
@@ -140,6 +125,21 @@
               </label>
             </div>
           </div>
+          <button
+            class="
+              absolute
+              top-0
+              right-0
+              rounded-full
+              p-2
+              text-red-500
+              focus:ring-1 focus:ring-red-400
+              focus:outline-none
+            "
+            @click="handleOpenDeleteModal(user.id)"
+          >
+            <IconCross class="w-5 h-5" />
+          </button>
         </div>
       </div>
     </div>
