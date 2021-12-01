@@ -4,12 +4,12 @@
       <NuxtLink
         to="/login"
         class="
+          hidden
+          lg:block
           uppercase
           px-4
           hover:bg-primary-700
           focus:bg-primary-700
-          hidden
-          lg:block
         "
       >
         {{ $t('login.title') }}
@@ -39,14 +39,14 @@
       <button
         aria-label="log out"
         class="
+          hidden
+          lg:block
           cursor-pointer
           whitespace-nowrap
           uppercase
           px-4
           hover:bg-primary-700
           focus:bg-primary-700
-          hidden
-          lg:block
         "
         @click="logout"
       >
@@ -68,10 +68,10 @@ export default Vue.extend({
 })
 </script>
 
-<style scoped lang="postcss">
+<style lang="postcss" scoped>
 /* Fix for vertical center of NuxtLinks */
 .user-section {
-  a {
+  & a {
     line-height: 64px;
   }
 }

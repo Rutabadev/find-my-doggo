@@ -103,10 +103,10 @@ export default Vue.extend({
 })
 </script>
 
-<style scoped>
+<style lang="postcss" scoped>
 .field {
-  input:focus ~ label,
-  input:not(:placeholder-shown) ~ label {
+  & input:focus ~ label,
+  & input:not(:placeholder-shown) ~ label {
     @apply p-0;
     @apply border-none;
     @apply transform;
@@ -115,7 +115,7 @@ export default Vue.extend({
     @apply -translate-y-7;
   }
 
-  input[type='email'] {
+  & input[type='email'] {
     &:valid {
       @apply text-green-600;
     }
@@ -124,7 +124,7 @@ export default Vue.extend({
       @apply text-red-500;
     }
 
-    .dark & {
+    @nest .dark & {
       &:valid {
         @apply text-green-400;
       }

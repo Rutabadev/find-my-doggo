@@ -1,13 +1,13 @@
 <template>
   <main
     class="
-      flex flex-col
+      min-h-screen
       bg-gray-100
       dark:bg-gray-800
+      flex flex-col
       text-gray-800
       dark:text-gray-300
-      motion-safe:transition
-      min-h-screen
+      motion-safe:transition-colors
     "
   >
     <Navbar />

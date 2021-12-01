@@ -98,7 +98,7 @@ export default Vue.extend({
 })
 </script>
 
-<style lang="postcss">
+<style lang="postcss" scoped>
 .slide {
   &-right-enter-active,
   &-right-leave-active {

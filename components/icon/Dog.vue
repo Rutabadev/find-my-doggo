@@ -101,7 +101,7 @@ export default Vue.extend({
     --tongue-speed: 200ms;
     transition: transform 200ms;
 
-    #left-ear {
+    & #left-ear {
       animation: left-ear var(--ear-speed) ease-in-out alternate infinite;
       transform-origin: top right;
       transform-box: fill-box;
@@ -116,7 +116,7 @@ export default Vue.extend({
       }
     }
 
-    #right-ear {
+    & #right-ear {
       animation: right-ear var(--ear-speed) ease-in-out alternate infinite;
       transform-origin: top left;
       transform-box: fill-box;
@@ -131,7 +131,7 @@ export default Vue.extend({
       }
     }
 
-    #tongue {
+    & #tongue {
       animation: tongue var(--tongue-speed) ease-in-out alternate infinite;
       transform-origin: top;
       transform-box: fill-box;
@@ -149,22 +149,23 @@ export default Vue.extend({
     &.hovered {
       transform: rotate(-15deg);
 
-      #left-ear,
-      #right-ear,
-      #tongue {
+      & #left-ear,
+      & #right-ear,
+      & #tongue {
         animation: none;
       }
 
-      #tongue {
+      & #tongue {
         display: none;
       }
 
-      #mouth {
+      & #mouth {
         clip-path: polygon(0 0, 100% 0, 100% 10%, 0 10%);
       }
     }
   }
-  :not(:is(#dog, #head)) {
+
+  & :not(:is(#dog, #head)) {
     pointer-events: none;
   }
 }

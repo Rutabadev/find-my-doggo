@@ -79,7 +79,7 @@ export default Vue.extend({
         await this.$auth.loginWith('local', {
           data: this.loginInfo,
         })
-      } catch (error) {
+      } catch (error: any) {
         handleFormErrors(this, error)
       }
       this.isLoading = false
@@ -88,7 +88,7 @@ export default Vue.extend({
 })
 </script>
 
-<style lang="postcss">
+<style lang="postcss" scoped>
 .slide {
   &-left-enter-active,
   &-left-leave-active {

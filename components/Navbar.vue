@@ -13,8 +13,8 @@
         <LangDropdown class="hidden lg:block"></LangDropdown>
         <DarkModeSwitch class="hidden lg:block h-full"></DarkModeSwitch>
       </div>
-      <IconTitle class="place-self-center" />
-      <UserSection class="place-self-end" />
+      <IconTitle class="justify-self-center" />
+      <UserSection class="justify-self-end" />
     </nav>
     <Sidebar :show="showSidebar" @onToggleSidebar="toggleSidebar"></Sidebar>
   </div>

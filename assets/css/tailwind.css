@@ -23,7 +23,7 @@
     @apply font-medium;
     @apply tracking-wide;
 
-    .dark & {
+    @nest .dark & {
       @apply focus:ring-primary-400;
       @apply hover:bg-primary-500;
       @apply focus:bg-primary-500;
@@ -46,7 +46,7 @@
     @apply text-primary-600;
     @apply hover:underline;
 
-    .dark & {
+    @nest .dark & {
       @apply text-secondary-500;
     }
   }
@@ -58,16 +58,14 @@
 }
 
 /* Transition fade par défaut sur toutes les pages */
-.page {
-  &-enter-active,
-  &-leave-active {
-    transition: opacity 0.3s;
-  }
+.page-enter-active,
+.page-leave-active {
+  transition: opacity 0.3s;
+}
 
-  &-enter,
-  &-leave-active {
-    opacity: 0;
-  }
+.page-enter,
+.page-leave-active {
+  opacity: 0;
 }
 
 @keyframes shake {
@@ -93,14 +91,12 @@
   }
 }
 
-.shake {
-  &-enter-active,
-  &-leave-active {
-    animation: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
-  }
+.shake-enter-active,
+.shake-leave-active {
+  animation: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+}
 
-  &-enter,
-  &-leave-to {
-    opacity: 0;
-  }
+.shake-enter,
+.shake-leave-to {
+  opacity: 0;
 }
