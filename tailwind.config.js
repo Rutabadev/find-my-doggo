@@ -16,6 +16,9 @@ module.exports = {
         primary: colors.indigo,
         secondary: colors.yellow,
       },
+      dropShadow: {
+        hard: '0 0 4px rgba(0 0 0 / 1)',
+      },
     },
   },
   variants: {

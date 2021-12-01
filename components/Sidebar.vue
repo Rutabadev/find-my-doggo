@@ -20,7 +20,14 @@
       <div class="relative w-full h-screen">
         <svg
           viewBox="0 0 214 720"
-          class="sidebar-svg absolute z-[-1] text-primary-600 w-full h-full"
+          class="
+            drop-shadow-hard
+            absolute
+            z-[-1]
+            text-primary-600
+            w-full
+            h-full
+          "
           fill="currentColor"
           preserveAspectRatio="none"
           xmlns="http://www.w3.org/2000/svg"
@@ -221,9 +228,3 @@ export default Vue.extend({
   },
 })
 </script>
-
-<style scoped>
-.sidebar-svg {
-  filter: drop-shadow(0 0 4px hsla(0, 0%, 10%, 0.5));
-}
-</style>

@@ -1,7 +1,7 @@
 <template>
   <svg
     id="dog"
-    class="h-64 w-64"
+    class="h-64 w-64 drop-shadow-xl"
     :class="headHovered ? 'hovered' : undefined"
     viewBox="0 0 300 300"
     fill="none"
@@ -107,43 +107,16 @@ export default Vue.extend({
       transform-box: fill-box;
     }
 
-    @keyframes left-ear {
-      from {
-        transform: rotate(0deg);
-      }
-      to {
-        transform: rotate(-6deg);
-      }
-    }
-
     & #right-ear {
       animation: right-ear var(--ear-speed) ease-in-out alternate infinite;
       transform-origin: top left;
       transform-box: fill-box;
     }
 
-    @keyframes right-ear {
-      from {
-        transform: rotate(0deg);
-      }
-      to {
-        transform: rotate(6deg);
-      }
-    }
-
     & #tongue {
       animation: tongue var(--tongue-speed) ease-in-out alternate infinite;
       transform-origin: top;
       transform-box: fill-box;
-    }
-
-    @keyframes tongue {
-      from {
-        transform: scaleY(1.4);
-      }
-      to {
-        transform: scaleY(1.7);
-      }
     }
 
     &.hovered {
@@ -167,6 +140,33 @@ export default Vue.extend({
 
   & :not(:is(#dog, #head)) {
     pointer-events: none;
+  }
+}
+
+@keyframes tongue {
+  from {
+    transform: scaleY(1.4);
+  }
+  to {
+    transform: scaleY(1.7);
+  }
+}
+
+@keyframes right-ear {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(6deg);
+  }
+}
+
+@keyframes left-ear {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(-6deg);
   }
 }
 </style>

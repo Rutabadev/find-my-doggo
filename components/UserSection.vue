@@ -5,7 +5,8 @@
         to="/login"
         class="
           hidden
-          lg:block
+          lg:flex
+          items-center
           uppercase
           px-4
           hover:bg-primary-700
@@ -21,7 +22,8 @@
         to="/admin"
         class="
           hidden
-          lg:block
+          lg:flex
+          items-center
           px-4
           hover:bg-primary-700
           focus:bg-primary-700
@@ -32,7 +34,14 @@
       </NuxtLink>
       <NuxtLink
         to="/user"
-        class="px-4 hover:bg-primary-700 focus:bg-primary-700 truncate"
+        class="
+          flex
+          items-center
+          px-4
+          hover:bg-primary-700
+          focus:bg-primary-700
+          truncate
+        "
       >
         {{ $auth.user.name }}
       </NuxtLink>
@@ -67,12 +76,3 @@ export default Vue.extend({
   },
 })
 </script>
-
-<style lang="postcss" scoped>
-/* Fix for vertical center of NuxtLinks */
-.user-section {
-  & a {
-    line-height: 64px;
-  }
-}
-</style>
