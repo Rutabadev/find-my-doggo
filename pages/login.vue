@@ -89,19 +89,19 @@ export default Vue.extend({
 </script>
 
 <style lang="postcss" scoped>
-.slide {
-  &-left-enter-active,
-  &-left-leave-active {
-    transition: opacity 0.25s ease-in-out, transform 0.25s ease-in-out;
-  }
-  &-left-leave-to {
-    --inversed-slide-distance: calc(var(--slide-distance) * -1);
-    opacity: 0;
-    transform: translate3d(var(--inversed-slide-distance), 0, 0);
-  }
-  &-left-enter {
-    opacity: 0;
-    transform: translate3d(var(--slide-distance), 0, 0);
-  }
+.slide-left-enter-active,
+.slide-left-leave-active {
+  transition: opacity 0.25s ease-in-out, transform 0.25s ease-in-out;
+}
+
+.slide-left-leave-to {
+  --inversed-slide-distance: calc(var(--slide-distance) * -1);
+  opacity: 0;
+  transform: translate3d(var(--inversed-slide-distance), 0, 0);
+}
+
+.slide-left-enter {
+  opacity: 0;
+  transform: translate3d(var(--slide-distance), 0, 0);
 }
 </style>
