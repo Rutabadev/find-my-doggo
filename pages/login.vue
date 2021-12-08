@@ -88,7 +88,12 @@ export default Vue.extend({
 })
 </script>
 
-<style lang="postcss" scoped>
+<style lang="postcss">
+/*
+  This style must not be scoped
+  because the enter animation starts before it is mounted
+*/
+
 .slide-left-enter-active,
 .slide-left-leave-active {
   transition: opacity 0.25s ease-in-out, transform 0.25s ease-in-out;
